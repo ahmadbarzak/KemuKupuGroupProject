@@ -1,18 +1,28 @@
 package application;
+
+/**
+ * The entry point into the application
+ * Sets up main stage and opens up main menu
+ */
 	
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	public void start(Stage primaryStage){
+		try{
+			Parent root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
+			Scene scene= new Scene(root); 
+			primaryStage.setTitle("Kēmu Kupu");
+			
+			primaryStage.setMinWidth(1200);
+			primaryStage.setMinHeight(900);
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -22,5 +32,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-	}
+	} 
+	
+
 }
