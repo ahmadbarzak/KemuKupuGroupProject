@@ -1,8 +1,9 @@
 package application;
 
 /**
- * This class is the controller class for most of the quiz functionality, CAN SPLIT UP INTO SMALLER ONES IF EASIER
- * Controls WordAttempt.fxml, Correct.fxml, FirstIncorrect.fxml, SecondIncorrect.fxml
+ * This class is the controller class for some of the quiz functionality
+ * Controls what outcome screen to switch to 
+ * Controls BeginQuiz.fxml, Correct.fxml, FirstIncorrect.fxml, SecondIncorrect.fxml
  */
 
 import javafx.event.ActionEvent;
@@ -22,62 +23,64 @@ public class QuizController {
 	private Scene scene;
 	private Parent root;
 	
-	//@FXML private Button playWord, dontKnow, submitWord
-	@FXML private Label wordNum, wordTotal, attemptNum, attemptTotal; 
-	@FXML Slider playbackSpeed;
-	@FXML TextField wordAttempt;
+	private static int maxNumWords; 	// Number of words to be tested
+	private static int wordProgress; 	// Current word number
+	private static int wordAttempt; 	// Current attempt number
+	private static int currentScore; 	// Current attempt number
 	
 	
 	/**
-	 * This function plays the word
-	 * * IMPLEMENT *
-	 * @param event - button click on speaker
-	 */
-	public void playWord(ActionEvent event) throws IOException{
-		System.out.println("Play word");
-	}
-	
-	/**
-	 * This function does don't know functionality when button is clicked
-	 * * IMPLEMENT *
+	 * This function sets up progress tracker variables
 	 * @param event - button click
 	 */
-	public void dontKnow(ActionEvent event) throws IOException{
-		System.out.println("Dont Know");
-	}
-	
-	/**
-	 * This function submits the spelling and then switches to appropriate outcome screen
-	 * * IMPLEMENT *
-	 * @param event - button click
-	 */
-	public void submitWord(ActionEvent event) throws IOException{
-		String attempt = wordAttempt.getText();
-		System.out.println("Submit Word " + attempt);
+	public void quizSetUp(ActionEvent event) throws IOException{
+		maxNumWords = 5; //fix
+		wordProgress = 1;
+		wordAttempt = 0;
+		currentScore = 0;
 		
-		toCorrect(event);
-		//toFirstIncorrect(event);
-		//toSecondIncorrect(event);
+		toWordAttempt(event);
 	}
-	
 	
 	/**
 	 * This function switches screen from outcome to next word or reward screen
 	 * @param event - button click
 	 */
 	public void toNext(ActionEvent event) throws IOException{
-		System.out.println("Next Word");
-		//toWordAttempt(event);
-		toReward(event);
+		wordProgress+=1;
+		wordAttempt=0;
+		
+		if (wordProgress > maxNumWords) {
+			toReward(event);
+		} else if (wordProgress <=maxNumWords) {
+			toWordAttempt(event);
+		}
 	}
 	
-	/**
-	 * This function switches screen from outcome to try again (first incorrect)
-	 * @param event - button click
-	 */
-	public void toTryAgain(ActionEvent event) throws IOException{
-		System.out.println("Try Again");
-		toWordAttempt(event);
+	
+	// Getters & Setters for use in child class (AttemptController.java)
+	public static int getMaxNumWords() {
+		return maxNumWords;
+	}
+
+	public static int getWordProgress() {
+		return wordProgress;
+	}
+
+	public static int getWordAttempt() {
+		return wordAttempt;
+	}
+	
+	public static int getCurrentScore() {
+		return currentScore;
+	}
+
+	public static void setWordAttempt(int wordAttempt) {
+		QuizController.wordAttempt = wordAttempt;
+	}
+	
+	public static void setCurrentScore(int currentScore) {
+		QuizController.currentScore = currentScore;
 	}
 	
 	

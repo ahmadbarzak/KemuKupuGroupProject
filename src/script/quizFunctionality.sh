@@ -47,11 +47,31 @@ randomWord(){
   echo "$randWord" >> src/script/tempWords
 }
 
+checkSpelling(){
+	local testWordNumber=$1
+	local attempt=$2
+	local attemptNum=$3
+
+	local actual=`sed "${testWordNumber}q;d" src/script/tempWords`
+
+	shopt -s nocasematch
+	if [[ $attempt == $actual ]] && [ $attemptNum -eq 1 ]; then
+		return 1
+	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 1 ]; then
+		return 2
+	elif [[ $attempt == $actual ]] && [ $attemptNum -eq 2 ]; then
+		return 3
+	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 2 ]; then
+		return 4
+	fi
+}
 
 
 
 
 option=$1
+wordNum=$2
+attemptNumber=$3
 
 case $option in
 	"getWords" )
@@ -61,5 +81,20 @@ case $option in
 		maxWords $topic
 		maxWordCount=$?
 		getTestWords $topic $maxWordCount
+	;;
+	"play" )
+	# Run at every word attempt, plays x1 for first try, x2 for second try
+	word=`sed "${wordNum}q;d" src/script/tempWords`
+	for (( i = 0; i < $attemptNumber; i++ )); do
+		echo $word | festival --tts
+	done
+	;;
+	"wordCheck" )
+		# Run when spelling attempt is submitted
+		# Returns echo of exit status referring to words progress status
+		spellingAttempt=$4
+		checkSpelling $wordNum $spellingAttempt $attemptNumber
+		wordStatus=$?
+		echo "$wordStatus"
 	;;
 esac

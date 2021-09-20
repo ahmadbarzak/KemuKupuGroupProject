@@ -2,6 +2,7 @@ package application;
 
 /**
  * This class is the controller class for the reward screen
+ * Allows user to see final score and pick whether to play again, pick a new topic, or go to opening menu
  * Controls RewardSceen.fxml
  */
 
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RewardController implements Initializable{	
+public class RewardController extends QuizController implements Initializable{	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -29,8 +30,8 @@ public class RewardController implements Initializable{
 	//To implement show score
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gameScore.setText("3");
-		maxScore.setText("5");
+		gameScore.setText(Integer.toString(getCurrentScore()));
+		maxScore.setText(Integer.toString(getMaxNumWords()));
 	}
 	
 	
@@ -38,8 +39,8 @@ public class RewardController implements Initializable{
 	 * These functions switch screens
 	 * @param event - button click
 	 */
-	public void toPlayAgain(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+	public void toPlayAgain(ActionEvent event) throws IOException{			
+		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setTitle("Kēmu Kupu: New Quiz");
