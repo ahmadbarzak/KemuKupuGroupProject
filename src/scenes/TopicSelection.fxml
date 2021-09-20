@@ -20,47 +20,47 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="colours" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toColours" prefHeight="75.0" prefWidth="400.0" text="COLOURS" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="colours" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="COLOURS" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="days1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toDays1" prefHeight="75.0" prefWidth="400.0" text="DAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="days1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="DAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="months1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toMonths1" prefHeight="75.0" prefWidth="400.0" text="MONTHS 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="months1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="MONTHS 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="days2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toDays2" prefHeight="75.0" prefWidth="400.0" text="DAYS 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="days2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="DAYS 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="weather" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toWeather" prefHeight="75.0" prefWidth="400.0" text="WEATHER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="weather" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="WEATHER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="babies" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toBabies" prefHeight="75.0" prefWidth="400.0" text="BABIES" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="babies" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="BABIES" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="feelings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toFeelings" prefHeight="75.0" prefWidth="400.0" text="FEELINGS" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="feelings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="FEELINGS" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="compassPoints" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toCompassPoints" prefHeight="75.0" prefWidth="400.0" text="COMPASS POINTS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="compass" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="COMPASS POINTS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="engineering" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toEngineering" prefHeight="75.0" prefWidth="400.0" text="ENGINEERING" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="engineering" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="ENGINEERING" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
@@ -68,7 +68,7 @@
             <Insets top="150.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="work" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toWork" prefHeight="75.0" prefWidth="400.0" text="WORK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="work" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="WORK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
@@ -76,12 +76,12 @@
             <Insets top="37.5" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="months2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toMonths2" prefHeight="75.0" prefWidth="400.0" text="MONTHS 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="months2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="MONTHS 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="software" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toSoftware" prefHeight="75.0" prefWidth="400.0" text="SOFTWARE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="software" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="SOFTWARE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
@@ -89,7 +89,7 @@
             <Insets top="37.5" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="uniLife" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toUniLife" prefHeight="75.0" prefWidth="400.0" text="UNI LIFE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="uni" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#toTopic" prefHeight="75.0" prefWidth="400.0" text="UNI LIFE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
