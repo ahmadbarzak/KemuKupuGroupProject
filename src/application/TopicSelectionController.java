@@ -2,6 +2,7 @@ package application;
 
 /**
  * This class is the controller class for the topic selection page
+ * Allows user to select a topic and then generates the test words
  * Controls TopicSelection.fxml
  */
 
@@ -53,7 +54,7 @@ public class TopicSelectionController {
 	 * @param event - button click on any topic
 	 */
 	public void toAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setTitle("Kēmu Kupu: New Quiz");
