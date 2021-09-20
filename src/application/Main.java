@@ -2,7 +2,7 @@ package application;
 
 /**
  * The entry point into the application
- * Sets up main stage and opens up main menu
+ * Loads up opening menu as applications opening scene
  */
 	
 import javafx.application.Application;

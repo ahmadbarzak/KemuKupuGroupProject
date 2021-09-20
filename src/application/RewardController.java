@@ -27,7 +27,9 @@ public class RewardController extends QuizController implements Initializable{
 	@FXML private Label gameScore, maxScore;
 	
 	
-	//To implement show score
+	/**
+	 * This function displays the users score
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore()));
@@ -35,10 +37,8 @@ public class RewardController extends QuizController implements Initializable{
 	}
 	
 	
-	/**
-	 * These functions switch screens
-	 * @param event - button click
-	 */
+	
+	// Functions to switch to other quiz GUI screens
 	public void toPlayAgain(ActionEvent event) throws IOException{			
 		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

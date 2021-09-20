@@ -2,8 +2,8 @@ package application;
 
 /**
  * This class is the controller class for the Opening Menu GUI
+ * Allows user to navigate to game modules menu or to quit the application
  * Controls Opening.fxml
- * Sets up on action behavior for buttons
  */
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class OpeningMenuController {
 	@FXML private Button quit;
 	
 	/**
-	 * This function switches to topic selection menu
+	 * This function switches to the topic selection menu
 	 * @param event - button click on modules button
 	 */
 	public void toGameModules(ActionEvent event) throws IOException{		
@@ -61,6 +61,5 @@ public class OpeningMenuController {
 		
 	}
 		
-
-
+	
 }

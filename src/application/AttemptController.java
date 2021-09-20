@@ -1,5 +1,12 @@
 package application;
 
+/**
+ * This class is the controller class for the quiz attempt screen
+ * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
+ * Uses wordProgress, wordAttempt, currentScore from parent QuizController.java class
+ * Controls WordAttempt.fxml
+ */
+
 import java.io.BufferedReader;
 
 /**
@@ -29,13 +36,12 @@ import javafx.scene.control.TextField;
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordNum, wordTotal, attemptNum; 
-	@FXML Slider playbackSpeed;
 	@FXML TextField wordAttempt;
+	@FXML Slider playbackSpeed;
 	
 	
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
-	 * Will then play word to be tested by user
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -48,12 +54,13 @@ public class AttemptController extends QuizController implements Initializable{
 	}
 	
 	/**
-	 * This function plays the word
-	 * * IMPLEMENT *
+	 * This function plays the given quiz word
+	 * Will play once first time, and twice second time
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
 		try {
+			// Calling play case in script file to execute festival to play word
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt())};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
@@ -66,7 +73,6 @@ public class AttemptController extends QuizController implements Initializable{
 	
 	/**
 	 * This function does don't know functionality when button is clicked
-	 * * IMPLEMENT *
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
@@ -75,22 +81,24 @@ public class AttemptController extends QuizController implements Initializable{
 	
 	/**
 	 * This function submits the spelling and then switches to appropriate outcome screen
-	 * * IMPLEMENT *
 	 * @param event - button click
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
 		
 		try {
+			// Calling wordCheck case in script file to check if entered word = actual word
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
 			
 			// Obtaining users spelling result
+			// 1 = correct on first go, 2 = incorrect on first go, 3 = correct on second go, 4 = incorrect on second go
 			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
 			String correctStatus=stdout.readLine();
 			
+			// Switching to appropriate outcome screen depending
 			if(correctStatus.equals("1") || correctStatus.equals("3") ) {
 				setCurrentScore((getCurrentScore()+1));
 				toCorrect(event); // Correct on first or second attempt
