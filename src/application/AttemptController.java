@@ -27,6 +27,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +40,7 @@ public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordNum, wordTotal, attemptNum; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	
+	double speed;
 	
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
@@ -51,6 +53,16 @@ public class AttemptController extends QuizController implements Initializable{
 		wordNum.setText(Integer.toString(getWordProgress()));
 		wordTotal.setText(Integer.toString(getMaxNumWords()));
 		attemptNum.setText(Integer.toString(getWordAttempt()));
+		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
+			
+			//Gets the value of the playback speed slider
+			@Override
+			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+				// TODO Auto-generated method stub
+				speed = (playbackSpeed.getValue())/50;
+				System.out.println(speed);
+			}
+		});
 	}
 	
 	/**
@@ -61,7 +73,7 @@ public class AttemptController extends QuizController implements Initializable{
 	public void playWord(ActionEvent event) throws IOException{
 		try {
 			// Calling play case in script file to execute festival to play word
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt())};
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
@@ -76,7 +88,23 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
-		toSecondIncorrect(event);	
+		//toSecondIncorrect(event);	
+		try {
+			// Calling play case in script file to execute festival to play word
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "secondLetter", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt())};
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			process.waitFor();
+			// Obtaining users spelling result
+			// 1 = correct on first go, 2 = incorrect on first go, 3 = correct on second go, 4 = incorrect on second go
+			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
+			String secondLetter=stdout.readLine();
+			System.out.println(secondLetter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**
