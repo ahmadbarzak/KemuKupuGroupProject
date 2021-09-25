@@ -103,10 +103,25 @@ public class AttemptController extends QuizController implements Initializable{
 				setCurrentScore((getCurrentScore()+1));
 				toCorrect(event); // Correct on first or second attempt
 			} else if(correctStatus.equals("2")) {
+				hintGetter();
 				toFirstIncorrect(event); // Incorrect first attempt	
 			} else if(correctStatus.equals("4")) {
 				toSecondIncorrect(event); // Incorrect second attempt
 			}					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void hintGetter() throws IOException{
+		try {
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), wordAttempt.getText()};
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String character = stdout.readLine();
+			System.out.println(character);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
