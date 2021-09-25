@@ -114,4 +114,10 @@ case $option in
 		wordStatus=$?
 		echo "$wordStatus"
 	;;
+	"hint" )
+		# Retrieves second letter from word and returns
+		# echo of letter to be displayed as a hint upon incorrect attempt
+		actual=`sed "${wordNum}q;d" src/script/tempWords`
+		echo ${actual:1:1}
+	;;
 esac
