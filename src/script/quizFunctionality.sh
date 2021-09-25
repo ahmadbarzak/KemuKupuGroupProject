@@ -65,17 +65,18 @@ checkSpelling(){
 	local attempt=$2
 	local attemptNum=$3
 
+	
 	local actual=`sed "${testWordNumber}q;d" src/script/tempWords`
-
+	local actualUnderscored=${actual// /_}
 	shopt -s nocasematch # Case insensitive checking
 
-	if [[ $attempt == $actual ]] && [ $attemptNum -eq 1 ]; then
+	if [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
 		return 1 # correct on first go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 1 ]; then
+	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
 		return 2 # incorrect on first go
-	elif [[ $attempt == $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
 		return 3 # correct on second go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
 		return 4 # incorrect on second go
 	fi
 }
@@ -86,7 +87,7 @@ checkSpelling(){
 option=$1
 wordNum=$2 # Current progress through game
 attemptNumber=$3 # Current attempt (1/2)
-playbackSpeed=$4
+playbackSpeed=$5
 
 case $option in
 	"getWords" )
