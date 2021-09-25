@@ -137,7 +137,7 @@ public class AttemptController extends QuizController implements Initializable{
 	public String hintGetter(){
 		String character = null;
 		try {
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), wordAttempt.getText()};
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
