@@ -20,7 +20,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="incorrect" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="keep practicing!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="48.0" />
          </font>
