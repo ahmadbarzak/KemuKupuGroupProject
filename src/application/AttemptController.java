@@ -76,7 +76,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
-		System.out.println("Dont Know");
+		toSecondIncorrect(event);	
 	}
 	
 	/**

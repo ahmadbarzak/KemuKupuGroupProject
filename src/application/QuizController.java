@@ -133,6 +133,10 @@ public class QuizController {
 		QuizController.wordAttempt = wordAttempt;
 	}
 	
+	public static void setWordProgress(int wordProgress) {
+		QuizController.wordProgress = wordProgress;
+	}
+	
 	public static void setCurrentScore(int currentScore) {
 		QuizController.currentScore = currentScore;
 	}
