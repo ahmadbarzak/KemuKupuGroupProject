@@ -88,7 +88,6 @@ checkSpelling(){
 option=$1
 wordNum=$2 # Current progress through game
 attemptNumber=$3 # Current attempt (1/2)
-playbackSpeed=$4
 
 case $option in
 	"getWords" )
@@ -103,6 +102,7 @@ case $option in
 	"play" )
 	# Obtains and then plays the current test word
 	word=`sed "${wordNum}q;d" src/script/tempWords`
+  playbackSpeed=$4
 
   # Will play once for first attempt and twice for second attempt
 	for (( i = 0; i < $attemptNumber; i++ )); do
