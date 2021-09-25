@@ -115,8 +115,4 @@ case $option in
 		wordStatus=$?
 		echo "$wordStatus"
 	;;
-	"secondLetter" )
-		#Returns second letter of word
-		word=`sed "${wordNum}q;d" src/script/tempWords`
-		echo "${word: 1:1}"
 esac

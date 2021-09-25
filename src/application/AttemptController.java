@@ -88,23 +88,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
-		//toSecondIncorrect(event);	
-		try {
-			// Calling play case in script file to execute festival to play word
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "secondLetter", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt())};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-			// Obtaining users spelling result
-			// 1 = correct on first go, 2 = incorrect on first go, 3 = correct on second go, 4 = incorrect on second go
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
-			String secondLetter=stdout.readLine();
-			System.out.println(secondLetter);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		toSecondIncorrect(event);	
 	}
 	
 	/**
