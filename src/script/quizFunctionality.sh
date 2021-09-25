@@ -69,14 +69,16 @@ checkSpelling(){
 
 	shopt -s nocasematch # Case insensitive checking
 
-	if [[ $attempt == $actual ]] && [ $attemptNum -eq 1 ]; then
+	if [[ "$attempt" == "$actual" ]] && [ $attemptNum -eq 1 ]; then
 		return 1 # correct on first go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 1 ]; then
+	elif [[ "$attempt" != "$actual" ]] && [ $attemptNum -eq 1 ]; then
 		return 2 # incorrect on first go
-	elif [[ $attempt == $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ "$attempt" == "$actual" ]] && [ $attemptNum -eq 2 ]; then
 		return 3 # correct on second go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ "$attempt" != "$actual" ]] && [ $attemptNum -eq 2 ]; then
 		return 4 # incorrect on second go
+  else
+    return 100
 	fi
 }
 
@@ -109,8 +111,8 @@ case $option in
 	"wordCheck" )
 		# Checks users attempt with actual spelling
 		# Returns echo of exit status referring to words correctness status
-		spellingAttempt=$4 # User's spelling attempt
-		checkSpelling $wordNum $spellingAttempt $attemptNumber
+		spellingAttempt="$4" # User's spelling attempt
+		checkSpelling $wordNum "$spellingAttempt" $attemptNumber
 		wordStatus=$?
 		echo "$wordStatus"
 	;;
