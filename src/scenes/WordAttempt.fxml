@@ -145,5 +145,21 @@
             <Insets bottom="210.0" />
          </GridPane.margin>
       </Text>
+      <Label fx:id="secondLetterIs" text="second letter is: " textFill="#ebe5d9" visible="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="Monospaced Bold" size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="15.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="secondLetter" text="X" textFill="#ebe5d9" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="Monospaced Bold" size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

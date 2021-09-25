@@ -35,7 +35,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 public class AttemptController extends QuizController implements Initializable{
-	@FXML private Label wordNum, wordTotal, attemptNum; 
+	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
 	
@@ -46,6 +46,12 @@ public class AttemptController extends QuizController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setWordAttempt((getWordAttempt()+1));
+		
+		if(getWordAttempt()==2) {
+			secondLetterIs.setVisible(true);
+			secondLetter.setText(hintGetter());
+			secondLetter.setVisible(true);
+		}
 		
 		// Setting fxml labels
 		wordNum.setText(Integer.toString(getWordProgress()));
@@ -103,7 +109,7 @@ public class AttemptController extends QuizController implements Initializable{
 				setCurrentScore((getCurrentScore()+1));
 				toCorrect(event); // Correct on first or second attempt
 			} else if(correctStatus.equals("2")) {
-				hintGetter();
+				// hintGetter();
 				toFirstIncorrect(event); // Incorrect first attempt	
 			} else if(correctStatus.equals("4")) {
 				toSecondIncorrect(event); // Incorrect second attempt
@@ -113,18 +119,20 @@ public class AttemptController extends QuizController implements Initializable{
 		}
 	}
 	
-	public void hintGetter() throws IOException{
+	public String hintGetter(){
+		String character = null;
 		try {
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), wordAttempt.getText()};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
 			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			String character = stdout.readLine();
-			System.out.println(character);
+			character = stdout.readLine();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return character;
 	}
 
 }
