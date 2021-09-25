@@ -88,6 +88,7 @@ checkSpelling(){
 option=$1
 wordNum=$2 # Current progress through game
 attemptNumber=$3 # Current attempt (1/2)
+playbackSpeed=$4
 
 case $option in
 	"getWords" )
@@ -105,7 +106,7 @@ case $option in
 
   # Will play once for first attempt and twice for second attempt
 	for (( i = 0; i < $attemptNumber; i++ )); do
-		echo $word | festival --tts
+		echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
 	done
 	;;
 	"wordCheck" )
