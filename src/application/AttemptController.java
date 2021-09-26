@@ -51,6 +51,7 @@ public class AttemptController extends QuizController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setWordAttempt((getWordAttempt()+1));
+		speed=1;
 		
 		wordNum.setText(Integer.toString(getWordProgress()));
 		wordTotal.setText(Integer.toString(getMaxNumWords()));
@@ -67,7 +68,7 @@ public class AttemptController extends QuizController implements Initializable{
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				speed = (playbackSpeed.getValue())/50;
+				speed = 2.25-(playbackSpeed.getValue())/50;
 			}
 		});
 	}

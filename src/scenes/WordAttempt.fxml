@@ -93,7 +93,7 @@
             <Insets top="30.0" />
          </GridPane.margin>
       </TextField>
-      <Slider fx:id="playbackSpeed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Slider fx:id="playbackSpeed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="200.0" value="50.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></Slider>
@@ -161,5 +161,21 @@
             <Insets right="15.0" />
          </GridPane.margin>
       </Label>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="0.5x" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold Italic" size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="-40.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="2x" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold Italic" size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="-20.0" />
+         </GridPane.margin>
+      </Text>
    </children>
 </GridPane>
