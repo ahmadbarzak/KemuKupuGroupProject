@@ -16,13 +16,13 @@ chmod +x src/script/QuizFunctionality.sh
 1. Run code below in terminal while in same directory as 1.2.  
 (Remember to change */home/student/javafx-sdk-11.0.2/javafx* to your own javaFX library location).
 ```shell
-java --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKepu.jar
+java --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKupu.jar
 ```
 
 2. ***If running on the SOFTENG206 Virtual Machine***, quiz sometimes renders improperly so instead run this code in terminal.  
 (Remember to change */home/student/javafx-sdk-11.0.2/javafx* to your own javaFX library location).
 ```shell
-java -Djdk.gtk.version=2 --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKepu.jar
+java -Djdk.gtk.version=2 --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKupu.jar
 ```
 
 ### Running via Eclipse ###
