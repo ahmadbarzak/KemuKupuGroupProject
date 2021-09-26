@@ -32,14 +32,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
+	@FXML Button submitButton;
 	double speed;
 	
 	/**
@@ -92,6 +95,16 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
 		toSecondIncorrect(event);	
+	}
+	
+	/**
+	 *  This function performs submit functionality when enter key is pressed
+	 * @param event - enter key press
+	 * **/
+	public void submitOnEnter(KeyEvent key) {
+		if(key.getCode().toString().equals("ENTER")){
+		        submitButton.fire();
+		}
 	}
 	
 	/**
