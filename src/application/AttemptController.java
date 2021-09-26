@@ -78,8 +78,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void playWord(ActionEvent event) throws IOException{
 		try {
+			System.out.println("Submitted");
 			// Calling play case in script file to execute festival to play word
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), wordAttempt.getText(),Double.toString(speed)};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
@@ -103,9 +104,11 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
-		
+		attempt = attempt.replaceAll(" ", "_").toLowerCase();
+		System.out.println(attempt);
 		try {
 			// Calling wordCheck case in script file to check if entered word = actual word
+			System.out.println(attempt);
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
