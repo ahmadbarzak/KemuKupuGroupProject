@@ -1,5 +1,7 @@
 # SOFTENG 206 ASSIGNMENT 3: KĒMU KUPU #
 
+ This is the first stage (prototype) of the SOFTENG206 design project, the quiz platform Kēmu Kupu.
+
 ## To Run This Program ##
 
 ### Running via Command Line ###
@@ -13,13 +15,13 @@ chmod +x src/script/QuizFunctionality.sh
 ```
 
 #### 2. Run .jar via Command Line ####
-1. Run code below in terminal while in same directory as 1.2.  
+1. Run code below in terminal while in same directory as 1.2. -make sure the src file is in the same directory as the .jar file.  
 (Remember to change */home/student/javafx-sdk-11.0.2/javafx* to your own javaFX library location).
 ```shell
 java --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKupu.jar
 ```
 
-2. ***If running on the SOFTENG206 Virtual Machine***, quiz sometimes renders improperly so instead run this code in terminal.  
+2. ***If running on the SOFTENG206 Virtual Machine***, quiz sometimes renders improperly so instead run this code in terminal while in the same directory as 1.2. -make sure the src file is in the same directory as the .jar file.  
 (Remember to change */home/student/javafx-sdk-11.0.2/javafx* to your own javaFX library location).
 ```shell
 java -Djdk.gtk.version=2 --module-path /home/student/javafx-sdk-11.0.2/javafx --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar kemuKupu.jar
