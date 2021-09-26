@@ -25,7 +25,7 @@ getTestWords(){
 	local file=$1
   local maxWords=$2
 
-	rm src/script/tempWords # Resets test word list
+	rm src/script/tempWords
 
   # Uses maxWords() to determine number of words to generate and randomWords() to generate the words
 	for (( i = 1; i<=$maxWords ; i++ )); do
@@ -65,17 +65,19 @@ checkSpelling(){
 	local attempt=$2
 	local attemptNum=$3
 
-	local actual=`sed "${testWordNumber}q;d" src/script/tempWords`
 
+	local actual=`sed "${testWordNumber}q;d" src/script/tempWords`
+	local actualUnderscored=${actual// /_} # Allows for spaces
 	shopt -s nocasematch # Case insensitive checking
 
-	if [[ $attempt == $actual ]] && [ $attemptNum -eq 1 ]; then
+
+	if [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
 		return 1 # correct on first go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 1 ]; then
+	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
 		return 2 # incorrect on first go
-	elif [[ $attempt == $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
 		return 3 # correct on second go
-	elif [[ $attempt != $actual ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
 		return 4 # incorrect on second go
 	fi
 }
@@ -98,20 +100,27 @@ case $option in
 		getTestWords $topic $maxWordCount
 	;;
 	"play" )
-	# Obtains and then plays the current test word
-	word=`sed "${wordNum}q;d" src/script/tempWords`
+  	# Obtains and then plays the current test word
+  	word=`sed "${wordNum}q;d" src/script/tempWords`
+    playbackSpeed=$4
 
-  # Will play once for first attempt and twice for second attempt
-	for (( i = 0; i < $attemptNumber; i++ )); do
-		echo $word | festival --tts
-	done
+    # Will play once for first attempt and twice for second attempt
+  	for (( i = 0; i < $attemptNumber; i++ )); do
+  		echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
+  	done
 	;;
 	"wordCheck" )
 		# Checks users attempt with actual spelling
 		# Returns echo of exit status referring to words correctness status
-		spellingAttempt=$4 # User's spelling attempt
-		checkSpelling $wordNum $spellingAttempt $attemptNumber
+		spellingAttempt="$4" # User's spelling attempt
+		checkSpelling $wordNum "$spellingAttempt" $attemptNumber
 		wordStatus=$?
 		echo "$wordStatus"
+	;;
+	"hint" )
+		# Retrieves second letter from word and returns
+		# Returns echo of letter to be displayed as a hint upon incorrect attempt
+		actual=`sed "${wordNum}q;d" src/script/tempWords`
+		echo ${actual:1:1}
 	;;
 esac

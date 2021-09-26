@@ -44,8 +44,6 @@ public class OpeningMenuController {
 	 * @param event - button click on quit button
 	 */
 	public void toQuit(ActionEvent event) throws IOException{
-		
-		// Confirms if user wants to clear statics
 		Alert alert= new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Quit Kēmu Kupu?");
 		alert.setHeaderText("Are you sure you want to quit Kēmu Kupu?");

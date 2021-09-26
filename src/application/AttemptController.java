@@ -27,6 +27,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,10 +37,10 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 public class AttemptController extends QuizController implements Initializable{
-	@FXML private Label wordNum, wordTotal, attemptNum; 
+	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	
+	double speed;
 	
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
@@ -47,10 +49,24 @@ public class AttemptController extends QuizController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setWordAttempt((getWordAttempt()+1));
 		
-		// Setting fxml labels
 		wordNum.setText(Integer.toString(getWordProgress()));
 		wordTotal.setText(Integer.toString(getMaxNumWords()));
 		attemptNum.setText(Integer.toString(getWordAttempt()));
+		
+		// 2nd letter labels for 2nd attempt
+		if(getWordAttempt()==2) {
+			secondLetterIs.setVisible(true);
+			secondLetter.setText(hintGetter());
+			secondLetter.setVisible(true);
+		}
+		
+		// Gets the value of the play back speed slider
+		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+				speed = (playbackSpeed.getValue())/50;
+			}
+		});
 	}
 	
 	/**
@@ -60,8 +76,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void playWord(ActionEvent event) throws IOException{
 		try {
-			// Calling play case in script file to execute festival to play word
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt())};
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
@@ -85,20 +100,18 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
+		attempt = attempt.replaceAll(" ", "_").toLowerCase(); // To allow for submissions with spaces
 		
 		try {
-			// Calling wordCheck case in script file to check if entered word = actual word
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
 			
 			// Obtaining users spelling result
-			// 1 = correct on first go, 2 = incorrect on first go, 3 = correct on second go, 4 = incorrect on second go
 			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
 			String correctStatus=stdout.readLine();
 			
-			// Switching to appropriate outcome screen depending
 			if(correctStatus.equals("1") || correctStatus.equals("3") ) {
 				setCurrentScore((getCurrentScore()+1));
 				toCorrect(event); // Correct on first or second attempt
@@ -110,6 +123,26 @@ public class AttemptController extends QuizController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * This function gets the second letter of the word
+	 * @return character - String containing second letter
+	 */
+	public String hintGetter(){
+		String character = null;
+		try {
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			character = stdout.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return character;
 	}
 
 }
