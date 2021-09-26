@@ -70,6 +70,7 @@ checkSpelling(){
 	local actualUnderscored=${actual// /_}
 	shopt -s nocasematch # Case insensitive checking
 
+
 	if [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
 		return 1 # correct on first go
 	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
@@ -78,6 +79,8 @@ checkSpelling(){
 		return 3 # correct on second go
 	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
 		return 4 # incorrect on second go
+  else
+    return 100
 	fi
 }
 
@@ -102,6 +105,7 @@ case $option in
 	"play" )
 	# Obtains and then plays the current test word
 	word=`sed "${wordNum}q;d" src/script/tempWords`
+  playbackSpeed=$4
 
   # Will play once for first attempt and twice for second attempt
 	for (( i = 0; i < $attemptNumber; i++ )); do
@@ -111,9 +115,15 @@ case $option in
 	"wordCheck" )
 		# Checks users attempt with actual spelling
 		# Returns echo of exit status referring to words correctness status
-		spellingAttempt=$4 # User's spelling attempt
-		checkSpelling $wordNum $spellingAttempt $attemptNumber
+		spellingAttempt="$4" # User's spelling attempt
+		checkSpelling $wordNum "$spellingAttempt" $attemptNumber
 		wordStatus=$?
 		echo "$wordStatus"
+	;;
+	"hint" )
+		# Retrieves second letter from word and returns
+		# echo of letter to be displayed as a hint upon incorrect attempt
+		actual=`sed "${wordNum}q;d" src/script/tempWords`
+		echo ${actual:1:1}
 	;;
 esac
