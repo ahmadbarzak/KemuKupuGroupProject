@@ -43,26 +43,14 @@ public class QuizController {
 		wordAttempt=0;
 		
 		if (wordProgress > maxNumWords) {
-			if(getQuizType().equals("practice")) {
-				toPracticeReward(event);
-			} else if(getQuizType().equals("test")) {
-				toReward(event);
-			}
+			toReward(event);
 		} else if (wordProgress <=maxNumWords) {
-			if(getQuizType().equals("practice")) {
-				toPracticeWordAttempt(event);
-			} else if(getQuizType().equals("test")) {
-				toWordAttempt(event);
-			}
+			toWordAttempt(event);
 		}
 	}
 	
 	public void tryAgain(ActionEvent event) throws IOException {
-		if(getQuizType().equals("practice")) {
-			toPracticeWordAttempt(event);
-		} else if(getQuizType().equals("test")) {
-			toWordAttempt(event);
-		}
+		toWordAttempt(event);
 	}
 	
 	public void pronounciation(ActionEvent event) throws IOException, InterruptedException {
@@ -92,55 +80,47 @@ public class QuizController {
 	}
 	
 	public void toSecondIncorrect(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/SecondIncorrect.fxml"));
+		
+		if(getQuizType().equals("practice")) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
+			root = loader.load();	
+			
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
+			String testWord = getScriptStdOut(command);
+			
+			QuizController secondIncorrectController = loader.getController();
+			secondIncorrectController.displayCorrectSpelling(testWord);
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/SecondIncorrect.fxml"));
+		}
+		
+
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	public void toPracticeSecondIncorrect(ActionEvent event) throws IOException{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
-		root = loader.load();	
-		
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
-		String testWord = getScriptStdOut(command);
-		
-		QuizController secondIncorrectController = loader.getController();
-		secondIncorrectController.displayCorrectSpelling(testWord);
-		
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}	
 	
 	public void toWordAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+		if(getQuizType().equals("practice")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+		}
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 	
-	public void toPracticeWordAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void toReward(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void toPracticeReward(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/PracticeRewardScreen.fxml"));
+	public void toReward(ActionEvent event) throws IOException{		
+		if(getQuizType().equals("practice")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeRewardScreen.fxml"));
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
+		}
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

@@ -18,11 +18,7 @@ public class QuizSetupController extends QuizController{
 		getWords(getTopicFile());
 		setMaxNumWords(getMaxWordNum());
 		
-		if(getQuizType().equals("practice")) {
-			toPracticeWordAttempt(event);
-		} else if(getQuizType().equals("test")) {
-			toWordAttempt(event);
-		}
+		toWordAttempt(event);
 	}
 	
 	/**
