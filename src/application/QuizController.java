@@ -32,36 +32,6 @@ public class QuizController {
 	private static String topicFile;
 	private static String quizType;
 	
-	@FXML private Label correctSpelling;
-	
-	/**
-	 * This function switches screen from outcome to next word or reward screen depending on progress
-	 * @param event - button click
-	 */
-	public void toNext(ActionEvent event) throws IOException{
-		wordProgress+=1;
-		wordAttempt=0;
-		
-		if (wordProgress > maxNumWords) {
-			toReward(event);
-		} else if (wordProgress <=maxNumWords) {
-			toWordAttempt(event);
-		}
-	}
-	
-	public void tryAgain(ActionEvent event) throws IOException {
-		toWordAttempt(event);
-	}
-	
-	public void pronounciation(ActionEvent event) throws IOException, InterruptedException {
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Integer.toString(1)};
-		callScriptCase(command);
-	}
-	
-	public void displayCorrectSpelling(String word) {
-		correctSpelling.setText(word);
-	}
-	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event) throws IOException{
 		root= FXMLLoader.load(getClass().getResource("/scenes/Correct.fxml"));
@@ -80,7 +50,6 @@ public class QuizController {
 	}
 	
 	public void toSecondIncorrect(ActionEvent event) throws IOException{
-		
 		if(getQuizType().equals("practice")) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
 			root = loader.load();	
@@ -88,7 +57,7 @@ public class QuizController {
 			String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 			String testWord = getScriptStdOut(command);
 			
-			QuizController secondIncorrectController = loader.getController();
+			OutcomeController secondIncorrectController = loader.getController();
 			secondIncorrectController.displayCorrectSpelling(testWord);
 		} else if(getQuizType().equals("test")) {
 			root= FXMLLoader.load(getClass().getResource("/scenes/SecondIncorrect.fxml"));
