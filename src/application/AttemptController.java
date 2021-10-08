@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class AttemptController extends QuizController implements Initializable{
-	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter; 
+	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
@@ -33,12 +33,16 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setWordAttempt((getWordAttempt()+1));
 		speed=1;
-		
+	
 		wordNum.setText(Integer.toString(getWordProgress()));
 		wordTotal.setText(Integer.toString(getMaxNumWords()));
+		score.setText(Integer.toString(getCurrentScore()));
+		
+		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText(Integer.toString(getWordAttempt()));
+		
+		timer.setText("timer");
 		
 		// 2nd letter labels for 2nd attempt
 		if(getWordAttempt()==2) {
@@ -75,16 +79,6 @@ public class AttemptController extends QuizController implements Initializable{
 	}
 	
 	/**
-	 *  This function performs submit functionality when enter key is pressed
-	 * @param event - enter key press
-	 * **/
-	public void submitOnEnter(KeyEvent key) {
-		if(key.getCode().toString().equals("ENTER")){
-		        submitButton.fire();
-		}
-	}
-	
-	/**
 	 * This function submits the spelling and then switches to appropriate outcome screen
 	 * @param event - button click
 	 */
@@ -96,8 +90,7 @@ public class AttemptController extends QuizController implements Initializable{
 		String correctStatus=getScriptStdOut(command);		
 		
 		determineOutcomeScreen(event,correctStatus);
-	}
-	
+	}	
 	
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
 		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
@@ -107,6 +100,16 @@ public class AttemptController extends QuizController implements Initializable{
 			toFirstIncorrect(event); // Incorrect first attempt	
 		} else if(correctStatus.equals("4")) {
 			toSecondIncorrect(event); // Incorrect second attempt
+		}
+	}
+	
+	/**
+	 *  This function performs submit functionality when enter key is pressed
+	 * @param event - enter key press
+	 * **/
+	public void submitOnEnter(KeyEvent key) {
+		if(key.getCode().toString().equals("ENTER")){
+		        submitButton.fire();
 		}
 	}
 	
