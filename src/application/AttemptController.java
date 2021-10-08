@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class AttemptController extends QuizController implements Initializable{
-	@FXML private Label wordNum, wordTotal, attemptNum, timer, score, dashedWord; 
+	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
@@ -36,10 +36,9 @@ public class AttemptController extends QuizController implements Initializable{
 		speed=1;
 	
 		setWordAttempt((getWordAttempt()+1));
-		attemptNum.setText(Integer.toString(getWordAttempt()));
-		wordNum.setText(Integer.toString(getWordProgress()));
-		wordTotal.setText(Integer.toString(getMaxNumWords()));
-		score.setText(Integer.toString(getCurrentScore())); // TO UPDATE!
+		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
+		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
 		
 		timer.setText("timer"); // TO DO!
 		
@@ -102,7 +101,7 @@ public class AttemptController extends QuizController implements Initializable{
 	}	
 	
 	
-	// Chnage scoring
+	// Chnage scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
 		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
 			setCurrentScore((getCurrentScore()+1));
