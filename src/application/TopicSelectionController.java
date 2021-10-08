@@ -23,18 +23,15 @@ public class TopicSelectionController {
 	private String topic;
 	
 	/**
-	 * This function gets the topic name from the respective button click, 
-	 * generates the quiz words, and then switches to begin quiz scene
+	 * This function gets the topic name from the respective button click, and then switches to begin quiz scene
 	 * Essential for fx button id to be exactly the same as the filename for the corresponding word list
 	 * @param event - button click on topic button
 	 */
 	public void getTopic(ActionEvent event) throws IOException{
-		// Getting topic name via java fx button id
 		Button topicButton = (Button) event.getSource();
 		topic = topicButton.getId();
 		QuizController.setTopic("src/words/"+topic);
 		
-		// Changing to quiz begin quiz scene
 		toAttempt(event);
 	}	
 	

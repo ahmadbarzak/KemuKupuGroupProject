@@ -26,6 +26,10 @@ public class OpeningMenuController {
 	
 	@FXML private Button quit;
 	
+	/**
+	 * This function gets the quiz type from the respective button click, and then switches to topic selection scene
+	 * @param event - button click on quiz button
+	 */
 	public void getQuizType(ActionEvent event) throws IOException{
 		Button topicButton = (Button) event.getSource();
 		String quizType = topicButton.getId();
