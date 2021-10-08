@@ -56,13 +56,4 @@ public class RewardController extends QuizController implements Initializable{
 		stage.show();
 	}
 	
-	public void toOpeningMenu(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu");
-		stage.setScene(scene);
-		stage.show();
-	}
-	
 }	
