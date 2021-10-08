@@ -78,6 +78,14 @@ public class QuizController {
 		stage.show();
 	}
 	
+	public void toPracticeWordAttempt(ActionEvent event) throws IOException{
+		root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	public void toReward(ActionEvent event) throws IOException{
 		root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

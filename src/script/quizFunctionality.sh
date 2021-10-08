@@ -7,10 +7,13 @@ maxWords(){
   # Returns:
     # maxWords - maximum number of words to be tested
   local file=$1
-  local NUM_WORDS=`cat $file | wc -l`
+  local quizType=$2
   local maxWords=5 # 5 is usual max but can be less as some topics have less than 5 words in the word list
+  local NUM_WORDS=`cat $file | wc -l`
 
-  if [[ $NUM_WORDS -lt 5 ]]; then
+  if [[ $quizType == "practice" ]]; then
+    maxWords=$NUM_WORDS;
+  elif [[ $quizType == "test" ]] && [[ $NUM_WORDS -lt 5 ]]; then
     maxWords=$NUM_WORDS
   fi
 
@@ -93,9 +96,10 @@ case $option in
 	"getWords" )
 		# Generates the random test words from the chosen topic and stores in src/script/tempWords
     topic=$2 # User's chosen topic
+    quizType=$3
     touch src/script/tempWords
 
-    maxWords $topic
+    maxWords $topic $quizType
 		maxWordCount=$?
 		getTestWords $topic $maxWordCount
 	;;

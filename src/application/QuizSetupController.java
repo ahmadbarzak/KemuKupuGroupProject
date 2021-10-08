@@ -17,9 +17,12 @@ public class QuizSetupController extends QuizController{
 		
 		getWords(getTopicFile());
 		setMaxNumWords(getMaxWordNum());
-		System.out.println(getQuizType());
 		
-		toWordAttempt(event);
+		if(getQuizType().equals("practice")) {
+			toPracticeWordAttempt(event);
+		} else if(getQuizType().equals("test")) {
+			toWordAttempt(event);
+		}
 	}
 	
 	/**
@@ -27,7 +30,7 @@ public class QuizSetupController extends QuizController{
 	 * @param topicFilename - name of the filename containing topic's word list
 	 */
 	public void getWords(String topicFileName){
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName};
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName,getQuizType()};
 		callScriptCase(command);
 	}
 	
