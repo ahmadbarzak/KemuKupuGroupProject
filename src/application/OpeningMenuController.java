@@ -30,7 +30,20 @@ public class OpeningMenuController {
 	 * This function switches to the topic selection menu
 	 * @param event - button click on modules button
 	 */
-	public void toGameModules(ActionEvent event) throws IOException{		
+	public void toTestModules(ActionEvent event) throws IOException{		
+		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Topic Selection");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	/**
+	 * This function switches to the topic selection menu
+	 * @param event - button click on modules button
+	 */
+	public void toReviewModules(ActionEvent event) throws IOException{		
 		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

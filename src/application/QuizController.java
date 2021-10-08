@@ -29,6 +29,25 @@ public class QuizController {
 	private static int currentScore; 	// Current score
 	
 	
+	
+	/**
+	 * This function creates a list of the words to be tested and stores them in src/script/tempWords
+	 * @param topicFilename - name of the filename containing topic's word list
+	 */
+	public void getWords(String topicFileName){
+		try {
+			// Calling getWords case in script file to create and populate a text file with quiz words
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName};
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			process.waitFor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score)
 	 * @param event - button click on begin quiz

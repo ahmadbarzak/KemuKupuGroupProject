@@ -25,7 +25,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="word" textAlignment="RIGHT" wrappingWidth="125.61294555664062" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="word" textAlignment="RIGHT" wrappingWidth="125.61294555664062" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -33,7 +33,7 @@
             <Insets left="50.0" top="15.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="wordNum" text="x" textFill="#ebe5d9" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="wordNum" text="x" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -41,7 +41,7 @@
             <Insets right="160.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="of" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="of" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -49,7 +49,7 @@
             <Insets right="90.0" top="15.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="wordTotal" text="X" textFill="#ebe5d9" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="wordTotal" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -97,7 +97,7 @@
          <GridPane.margin>
             <Insets top="60.0" />
          </GridPane.margin></Slider>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="attempt" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="attempt" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -105,7 +105,7 @@
             <Insets left="50.0" top="50.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="attemptNum" text="x" textFill="#ebe5d9" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="attemptNum" text="x" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -113,7 +113,7 @@
             <Insets right="160.0" top="47.0" />
          </GridPane.margin>
       </Label>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="of" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="of" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -121,7 +121,7 @@
             <Insets right="90.0" top="50.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="attemptTotal" text="2" textFill="#ebe5d9" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="attemptTotal" text="2" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="30.0" />
          </font>
@@ -177,22 +177,6 @@
             <Insets top="75.0" />
          </GridPane.margin>
       </Text>
-      <Label alignment="CENTER" text="timer" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label alignment="CENTER" text="score" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
       <Label alignment="CENTER" text=" -------- -- -- --------" textAlignment="CENTER" textFill="#ebe5d9" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="64.0" />
@@ -201,5 +185,13 @@
             <Insets bottom="25.0" left="-300.0" right="-300.0" />
          </GridPane.margin>
       </Label>
+      <Button mnemonicParsing="false" style="-fx-background-color: #ebe5d9;" text="&lt; EXIT PRACTICE" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font name="Monospaced Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="25.0" top="20.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>
