@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -21,7 +22,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="you scored" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="you scored" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="75.0" />
          </font>
@@ -29,47 +30,61 @@
             <Insets />
          </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#141414" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="290.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
          <GridPane.margin>
-            <Insets top="110.0" />
+            <Insets bottom="20.0" right="-100.0" />
          </GridPane.margin>
       </Button>
-      <Label fx:id="gameScore" text="x" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="gameScore" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="150.0" />
          </font>
          <GridPane.margin>
-            <Insets right="175.0" />
+            <Insets bottom="-25.0" right="175.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#141414" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="32.0" />
+            <Font name="Monospaced Bold" size="45.0" />
          </font>
+         <GridPane.margin>
+            <Insets left="-100.0" right="-100.0" />
+         </GridPane.margin>
       </Button>
-      <Label fx:id="maxScore" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="maxScore" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="150.0" />
          </font>
          <GridPane.margin>
-            <Insets left="175.0" />
+            <Insets bottom="-25.0" left="175.0" />
          </GridPane.margin>
       </Label>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="/" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="/" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
-            <Font name="Monospaced Bold" size="150.0" />
+            <Font name="Monospaced Bold" size="120.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="-10.0" />
+         </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" onAction="#toGameModules" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#141414" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="75.0" prefWidth="290.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
          <GridPane.margin>
-            <Insets top="25.0" />
+            <Insets bottom="20.0" left="-100.0" />
          </GridPane.margin>
       </Button>
+      <TextArea prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="-90.0" left="-100.0" right="-100.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Monospaced Bold" size="27.0" />
+         </font>
+      </TextArea>
    </children>
 </GridPane>

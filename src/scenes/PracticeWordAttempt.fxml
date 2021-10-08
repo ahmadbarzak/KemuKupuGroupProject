@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="getTopic://javafx.com/fxml" fx:controller="application.AttemptController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="getTopic://javafx.com/fxml" fx:controller="application.PracticeAttemptController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,14 +25,6 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label fx:id="wordProgress" text="word x of X" textFill="#ebe5d9" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="30.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="10.0" />
-         </GridPane.margin>
-      </Label>
       <Button mnemonicParsing="false" onAction="#playWord" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #5b88bf;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <graphic>
             <ImageView fitHeight="145.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
@@ -73,14 +65,6 @@
          <GridPane.margin>
             <Insets top="60.0" />
          </GridPane.margin></Slider>
-      <Label fx:id="attemptNum" text="attempt x of x" textFill="#ebe5d9" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="30.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="40.0" />
-         </GridPane.margin>
-      </Label>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="(adjust speed)" textAlignment="CENTER" wrappingWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="28.0" />
@@ -113,28 +97,36 @@
             <Insets top="75.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="timer" alignment="CENTER" text="timer" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="score" alignment="CENTER" text="current score: 0" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="30.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="dashedWord" alignment="CENTER" text="------" textAlignment="CENTER" textFill="#ebe5d9" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label fx:id="dashedWord" alignment="CENTER" text=" -------- -- -- --------" textAlignment="CENTER" textFill="#ebe5d9" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="64.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="25.0" left="-300.0" right="-300.0" />
+         </GridPane.margin>
+      </Label>
+      <Button mnemonicParsing="false" onAction="#toOpeningMenu" style="-fx-background-color: #ebe5d9;" text="&lt; EXIT PRACTICE" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font name="Monospaced Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="25.0" top="20.0" />
+         </GridPane.margin>
+      </Button>
+      <Label fx:id="wordProgress" text="word x of X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font name="Monospaced Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="attemptNum" text="attempt x of x" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font name="Monospaced Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="50.0" />
          </GridPane.margin>
       </Label>
    </children>

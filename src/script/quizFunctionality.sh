@@ -7,10 +7,13 @@ maxWords(){
   # Returns:
     # maxWords - maximum number of words to be tested
   local file=$1
-  local NUM_WORDS=`cat $file | wc -l`
+  local quizType=$2
   local maxWords=5 # 5 is usual max but can be less as some topics have less than 5 words in the word list
+  local NUM_WORDS=`cat $file | wc -l`
 
-  if [[ $NUM_WORDS -lt 5 ]]; then
+  if [[ $quizType == "practice" ]]; then
+    maxWords=$NUM_WORDS;
+  elif [[ $quizType == "test" ]] && [[ $NUM_WORDS -lt 5 ]]; then
     maxWords=$NUM_WORDS
   fi
 
@@ -93,9 +96,10 @@ case $option in
 	"getWords" )
 		# Generates the random test words from the chosen topic and stores in src/script/tempWords
     topic=$2 # User's chosen topic
+    quizType=$3
     touch src/script/tempWords
 
-    maxWords $topic
+    maxWords $topic $quizType
 		maxWordCount=$?
 		getTestWords $topic $maxWordCount
 	;;
@@ -104,10 +108,7 @@ case $option in
   	word=`sed "${wordNum}q;d" src/script/tempWords`
     playbackSpeed=$4
 
-    # Will play once for first attempt and twice for second attempt
-  	for (( i = 0; i < $attemptNumber; i++ )); do
-  		echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
-  	done
+    echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
 	;;
 	"wordCheck" )
 		# Checks users attempt with actual spelling
@@ -122,5 +123,14 @@ case $option in
 		# Returns echo of letter to be displayed as a hint upon incorrect attempt
 		actual=`sed "${wordNum}q;d" src/script/tempWords`
 		echo ${actual:1:1}
+	;;
+  "getMaxWords" )
+    maxNum=`cat src/script/tempWords | wc -l | sed 's/ //g'`
+    echo "$maxNum"
+  ;;
+  "getTestWord" )
+  	# Obtains and then plays the current test word
+  	word=`sed "${wordNum}q;d" src/script/tempWords`
+    echo "$word"
 	;;
 esac

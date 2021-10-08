@@ -37,7 +37,6 @@ public class RewardController extends QuizController implements Initializable{
 	}
 	
 	
-	
 	// Functions to switch to other quiz GUI screens
 	public void toPlayAgain(ActionEvent event) throws IOException{			
 		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
@@ -53,15 +52,6 @@ public class RewardController extends QuizController implements Initializable{
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setTitle("Kēmu Kupu: Topic Selection");
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void toOpeningMenu(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu");
 		stage.setScene(scene);
 		stage.show();
 	}

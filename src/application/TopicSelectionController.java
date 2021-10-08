@@ -20,41 +20,20 @@ public class TopicSelectionController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;	
+	private String topic;
 	
 	/**
-	 * This function gets the topic name from the respective button click, 
-	 * generates the quiz words, and then switches to begin quiz scene
+	 * This function gets the topic name from the respective button click, and then switches to begin quiz scene
 	 * Essential for fx button id to be exactly the same as the filename for the corresponding word list
 	 * @param event - button click on topic button
 	 */
-	public void toTopic(ActionEvent event) throws IOException{
-		// Getting topic name via java fx button id
+	public void getTopic(ActionEvent event) throws IOException{
 		Button topicButton = (Button) event.getSource();
-		String topic = topicButton.getId();
+		topic = topicButton.getId();
+		QuizController.setTopic("src/words/"+topic);
 		
-		// Generating word list
-		getWords("src/words/"+topic);
-		
-		// Changing to quiz begin quiz scene
 		toAttempt(event);
 	}	
-	
-	/**
-	 * This function creates a list of the words to be tested and stores them in src/script/tempWords
-	 * @param topicFilename - name of the filename containing topic's word list
-	 */
-	public void getWords(String topicFileName){
-		try {
-			// Calling getWords case in script file to create and populate a text file with quiz words
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	/**
 	 * This function switches to begin quiz scene

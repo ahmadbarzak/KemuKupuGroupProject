@@ -8,43 +8,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.OpeningMenuController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="getTopic://javafx.com/fxml" fx:controller="application.OpeningMenuController">
+   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="Kēmu Kupu" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="test" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getQuizType" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="test" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="150.0" />
+            <Font name="Monospaced Bold" size="45.0" />
          </font>
-      </Text>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome to" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="72.0" />
-         </font>
-      </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="modules" textFill="#141414" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
-         <font>
-            <Font name="Monospaced Bold" size="45.0" />
-         </font>
       </Button>
-      <Button fx:id="quit" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toQuit" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="quit" textAlignment="CENTER" textFill="#141414" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toQuit" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="quit" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="42.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="practice" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getQuizType" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="practice" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="45.0" />
          </font>
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets />
          </GridPane.margin>
       </Button>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="haere mai ki" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="60.0" />
+         </font>
+      </Text>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="kēmu kupu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="Monospaced Bold" size="200.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-75.0" />
+         </GridPane.margin>
+      </Text>
    </children>
 </GridPane>
