@@ -30,52 +30,6 @@ public class QuizController {
 	private static String topicFile;
 	private static String quizType;
 	
-	
-	
-	/**
-	 * This function creates a list of the words to be tested and stores them in src/script/tempWords
-	 * @param topicFilename - name of the filename containing topic's word list
-	 */
-	public void getWords(String topicFileName){
-		try {
-			// Calling getWords case in script file to create and populate a text file with quiz words
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score)
-	 * @param event - button click on begin quiz
-	 */
-	public void quizSetUp(ActionEvent event) throws IOException{
-		wordProgress = 1;
-		wordAttempt = 0;
-		currentScore = 0;
-		
-		getWords(topicFile);
-		System.out.println(quizType);
-		
-		// Getting number of words being tested, not always 5 as not all files have 5 words
-		try {
-			String command = "cat src/script/tempWords | wc -l | sed 's/ //g'";
-			ProcessBuilder pb = new ProcessBuilder("/bin/bash","-c", command);
-			Process process = pb.start();
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			process.waitFor();
-			maxNumWords = Integer.parseInt(stdout.readLine());	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		toWordAttempt(event);
-	}
-	
 	/**
 	 * This function switches screen from outcome to next word or reward screen depending on progress
 	 * @param event - button click
@@ -90,8 +44,6 @@ public class QuizController {
 			toWordAttempt(event);
 		}
 	}	
-	
-	
 	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event) throws IOException{
@@ -151,6 +103,14 @@ public class QuizController {
 	public static int getCurrentScore() {
 		return currentScore;
 	}
+	
+	public static String getTopicFile() {
+		return topicFile;
+	}
+	
+	public static String getQuizType() {
+		return quizType;
+	}
 
 	public static void setWordAttempt(int wordAttempt) {
 		QuizController.wordAttempt = wordAttempt;
@@ -158,6 +118,10 @@ public class QuizController {
 	
 	public static void setWordProgress(int wordProgress) {
 		QuizController.wordProgress = wordProgress;
+	}
+	
+	public static void setMaxNumWords(int maxNumWords) {
+		QuizController.maxNumWords = maxNumWords;
 	}
 	
 	public static void setCurrentScore(int currentScore) {
