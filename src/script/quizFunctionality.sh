@@ -108,10 +108,7 @@ case $option in
   	word=`sed "${wordNum}q;d" src/script/tempWords`
     playbackSpeed=$4
 
-    # Will play once for first attempt and twice for second attempt
-  	for (( i = 0; i < $attemptNumber; i++ )); do
-  		echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
-  	done
+    echo "(voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch "$playbackSpeed") (SayText \""$word"\")" | festival --pipe
 	;;
 	"wordCheck" )
 		# Checks users attempt with actual spelling
