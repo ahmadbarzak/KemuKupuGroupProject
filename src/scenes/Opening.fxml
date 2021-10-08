@@ -28,7 +28,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toQuit" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="quit" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="quit" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toQuit" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="quit" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="42.0" />
          </font>
