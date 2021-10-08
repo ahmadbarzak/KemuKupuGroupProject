@@ -7,26 +7,9 @@ package application;
  * Controls WordAttempt.fxml
  */
 
-import java.io.BufferedReader;
-
-/**
- * This class is the controller class for the attempt functionality
- * Allows user to play word, control speed, and submit spelling (or skip word)
- * Controls WordAttempt.fxml
- */
-
 import java.io.IOException;
-import java.io.InputStreamReader;
-
-/**
- * This class is the controller class for the quiz word attempt functionality -plays words and checks the spelling
- * Uses variables and methods from parent QuizController
- * Controls WordAttempt.fxml
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -79,15 +62,8 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
-		try {
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
+		callScriptCase(command);
 	}
 	
 	/**
@@ -116,26 +92,21 @@ public class AttemptController extends QuizController implements Initializable{
 		String attempt = wordAttempt.getText();
 		attempt = attempt.replaceAll(" ", "_").toLowerCase(); // To allow for submissions with spaces
 		
-		try {
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			
-			// Obtaining users spelling result
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
-			String correctStatus=stdout.readLine();
-			
-			if(correctStatus.equals("1") || correctStatus.equals("3") ) {
-				setCurrentScore((getCurrentScore()+1));
-				toCorrect(event); // Correct on first or second attempt
-			} else if(correctStatus.equals("2")) {
-				toFirstIncorrect(event); // Incorrect first attempt	
-			} else if(correctStatus.equals("4")) {
-				toSecondIncorrect(event); // Incorrect second attempt
-			}					
-		} catch (Exception e) {
-			e.printStackTrace();
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
+		String correctStatus=getScriptStdOut(command);		
+		
+		determineOutcomeScreen(event,correctStatus);
+	}
+	
+	
+	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
+		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
+			setCurrentScore((getCurrentScore()+1));
+			toCorrect(event); // Correct on first or second attempt
+		} else if(correctStatus.equals("2")) {
+			toFirstIncorrect(event); // Incorrect first attempt	
+		} else if(correctStatus.equals("4")) {
+			toSecondIncorrect(event); // Incorrect second attempt
 		}
 	}
 	
@@ -144,17 +115,8 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @return character - String containing second letter
 	 */
 	public String hintGetter(){
-		String character = null;
-		try {
-			String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			character = stdout.readLine();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
+		String character = getScriptStdOut(command);
 		
 		return character;
 	}

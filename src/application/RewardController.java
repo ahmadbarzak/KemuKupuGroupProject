@@ -37,7 +37,6 @@ public class RewardController extends QuizController implements Initializable{
 	}
 	
 	
-	
 	// Functions to switch to other quiz GUI screens
 	public void toPlayAgain(ActionEvent event) throws IOException{			
 		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));

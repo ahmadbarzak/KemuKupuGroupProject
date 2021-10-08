@@ -123,4 +123,8 @@ case $option in
 		actual=`sed "${wordNum}q;d" src/script/tempWords`
 		echo ${actual:1:1}
 	;;
+  "getMaxWords" )
+    maxNum=`cat src/script/tempWords | wc -l | sed 's/ //g'`
+    echo "$maxNum"
+  ;;
 esac

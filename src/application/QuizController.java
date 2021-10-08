@@ -43,7 +43,7 @@ public class QuizController {
 		} else if (wordProgress <=maxNumWords) {
 			toWordAttempt(event);
 		}
-	}	
+	}
 	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event) throws IOException{
@@ -134,6 +134,42 @@ public class QuizController {
 	
 	public static void setQuizType(String quizType) {
 		QuizController.quizType = quizType;
+	}
+	
+	
+	// Script case call methods
+	/**
+	 * This function allows the user to call cases from the BASH script
+	 * @param command - string[] containing command, case, and parameters
+	 */
+	public void callScriptCase(String[] command) {
+		try {
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			process.waitFor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This function allows the user to retrieve the stdout from calling a case from the BASH script
+	 * @param command - string[] containing command, case, and parameters
+	 */
+	public String getScriptStdOut(String[] command) {
+		String scriptStdOut="";
+		try {
+			ProcessBuilder pb = new ProcessBuilder();
+			pb.command(command);
+			Process process = pb.start();
+			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
+			scriptStdOut=stdout.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return scriptStdOut;
 	}
 	
 }	
