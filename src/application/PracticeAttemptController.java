@@ -1,8 +1,8 @@
 package application;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -42,6 +42,6 @@ public class PracticeAttemptController extends AttemptController{
 				speed = 2.25-(playbackSpeed.getValue())/50;
 			}
 		});
-	}
+	}	
 
 }

@@ -8,10 +8,12 @@ package application;
  */
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -30,6 +32,8 @@ public class QuizController {
 	private static String topicFile;
 	private static String quizType;
 	
+	@FXML private Label correctSpelling;
+	
 	/**
 	 * This function switches screen from outcome to next word or reward screen depending on progress
 	 * @param event - button click
@@ -39,10 +43,35 @@ public class QuizController {
 		wordAttempt=0;
 		
 		if (wordProgress > maxNumWords) {
-			toReward(event);
+			if(getQuizType().equals("practice")) {
+				toPracticeReward(event);
+			} else if(getQuizType().equals("test")) {
+				toReward(event);
+			}
 		} else if (wordProgress <=maxNumWords) {
+			if(getQuizType().equals("practice")) {
+				toPracticeWordAttempt(event);
+			} else if(getQuizType().equals("test")) {
+				toWordAttempt(event);
+			}
+		}
+	}
+	
+	public void tryAgain(ActionEvent event) throws IOException {
+		if(getQuizType().equals("practice")) {
+			toPracticeWordAttempt(event);
+		} else if(getQuizType().equals("test")) {
 			toWordAttempt(event);
 		}
+	}
+	
+	public void pronounciation(ActionEvent event) throws IOException, InterruptedException {
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Integer.toString(1)};
+		callScriptCase(command);
+	}
+	
+	public void displayCorrectSpelling(String word) {
+		correctSpelling.setText(word);
 	}
 	
 	// Functions to switch to other quiz GUI screens
@@ -70,6 +99,22 @@ public class QuizController {
 		stage.show();
 	}
 	
+	public void toPracticeSecondIncorrect(ActionEvent event) throws IOException{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
+		root = loader.load();	
+		
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
+		String testWord = getScriptStdOut(command);
+		
+		QuizController secondIncorrectController = loader.getController();
+		secondIncorrectController.displayCorrectSpelling(testWord);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}	
+	
 	public void toWordAttempt(ActionEvent event) throws IOException{
 		root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,6 +133,14 @@ public class QuizController {
 	
 	public void toReward(ActionEvent event) throws IOException{
 		root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void toPracticeReward(ActionEvent event) throws IOException{
+		root= FXMLLoader.load(getClass().getResource("/scenes/PracticeRewardScreen.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

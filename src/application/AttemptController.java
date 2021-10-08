@@ -83,7 +83,11 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
-		toSecondIncorrect(event);	
+		if(getQuizType().equals("practice")) {
+			toPracticeSecondIncorrect(event);
+		} else if(getQuizType().equals("test")) {
+			toSecondIncorrect(event);
+		}
 	}
 	
 	/**
@@ -109,7 +113,11 @@ public class AttemptController extends QuizController implements Initializable{
 		} else if(correctStatus.equals("2")) {
 			toFirstIncorrect(event); // Incorrect first attempt	
 		} else if(correctStatus.equals("4")) {
-			toSecondIncorrect(event); // Incorrect second attempt
+			if(getQuizType().equals("practice")) {
+				toPracticeSecondIncorrect(event);
+			} else if(getQuizType().equals("test")) {
+				toSecondIncorrect(event);
+			}
 		}
 	}
 	
