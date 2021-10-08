@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class AttemptController extends QuizController implements Initializable{
-	@FXML private Label wordNum, wordTotal, attemptNum, secondLetterIs, secondLetter, timer, score, dashedWord; 
+	@FXML private Label wordNum, wordTotal, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
@@ -35,20 +35,21 @@ public class AttemptController extends QuizController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
 	
-		wordNum.setText(Integer.toString(getWordProgress()));
-		wordTotal.setText(Integer.toString(getMaxNumWords()));
-		score.setText(Integer.toString(getCurrentScore()));
-		
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText(Integer.toString(getWordAttempt()));
+		wordNum.setText(Integer.toString(getWordProgress()));
+		wordTotal.setText(Integer.toString(getMaxNumWords()));
+		score.setText(Integer.toString(getCurrentScore())); // TO UPDATE!
 		
-		timer.setText("timer");
+		timer.setText("timer"); // TO DO!
 		
-		// 2nd letter labels for 2nd attempt
+		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
-			secondLetterIs.setVisible(true);
-			secondLetter.setText(hintGetter());
-			secondLetter.setVisible(true);
+			StringBuilder dashedSecondLetterHint = new StringBuilder(dashedCurrentWord);
+			dashedSecondLetterHint.replace(1, 2, hintGetter());
+			dashedWord.setText(dashedSecondLetterHint.toString());
+		} else {
+			dashedWord.setText(dashedCurrentWord);
 		}
 		
 		// Gets the value of the play back speed slider
@@ -58,6 +59,14 @@ public class AttemptController extends QuizController implements Initializable{
 				speed = 2.25-(playbackSpeed.getValue())/50;
 			}
 		});
+	}
+	
+	
+	public String getDashed(){
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
+		String testWord = getScriptStdOut(command);
+		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "_"
+		return dashedWord;
 	}
 	
 	/**
@@ -92,6 +101,8 @@ public class AttemptController extends QuizController implements Initializable{
 		determineOutcomeScreen(event,correctStatus);
 	}	
 	
+	
+	// Chnage scoring
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
 		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
 			setCurrentScore((getCurrentScore()+1));
@@ -123,5 +134,4 @@ public class AttemptController extends QuizController implements Initializable{
 		
 		return character;
 	}
-
 }

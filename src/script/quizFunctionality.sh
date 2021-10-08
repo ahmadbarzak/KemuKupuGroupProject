@@ -131,4 +131,9 @@ case $option in
     maxNum=`cat src/script/tempWords | wc -l | sed 's/ //g'`
     echo "$maxNum"
   ;;
+  "getTestWord" )
+  	# Obtains and then plays the current test word
+  	word=`sed "${wordNum}q;d" src/script/tempWords`
+    echo "$word"
+	;;
 esac
