@@ -27,6 +27,8 @@ public class QuizController {
 	private static int wordProgress; 	// Current word number
 	private static int wordAttempt; 	// Current attempt number
 	private static int currentScore; 	// Current score
+	private static String topicFile;
+	private static String quizType;
 	
 	
 	
@@ -47,7 +49,6 @@ public class QuizController {
 		}
 	}
 	
-	
 	/**
 	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score)
 	 * @param event - button click on begin quiz
@@ -56,6 +57,9 @@ public class QuizController {
 		wordProgress = 1;
 		wordAttempt = 0;
 		currentScore = 0;
+		
+		getWords(topicFile);
+		System.out.println(quizType);
 		
 		// Getting number of words being tested, not always 5 as not all files have 5 words
 		try {
@@ -158,6 +162,14 @@ public class QuizController {
 	
 	public static void setCurrentScore(int currentScore) {
 		QuizController.currentScore = currentScore;
+	}
+	
+	public static void setTopic(String topicFile) {
+		QuizController.topicFile = topicFile;
+	}
+	
+	public static void setQuizType(String quizType) {
+		QuizController.quizType = quizType;
 	}
 	
 }	
