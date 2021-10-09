@@ -27,7 +27,7 @@
             <Font name="Monospaced Bold" size="75.0" />
          </font>
          <GridPane.margin>
-            <Insets />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </Text>
       <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
@@ -38,12 +38,12 @@
             <Insets right="-100.0" top="95.0" />
          </GridPane.margin>
       </Button>
-      <Label fx:id="gameScore" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="gameScore" prefWidth="350.0" text="200.0" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="100.0" />
+            <Font name="Monospaced Bold" size="96.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="-120.0" right="175.0" />
+            <Insets bottom="-125.0" left="-125.0" />
          </GridPane.margin>
       </Label>
       <Button maxHeight="75.0" minHeight="75.0" mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
@@ -54,12 +54,12 @@
             <Insets left="-100.0" right="-100.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Label fx:id="maxScore" text="X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="maxScore" text="200.0" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="100.0" />
+            <Font name="Monospaced Bold" size="96.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="-120.0" left="175.0" />
+            <Insets bottom="-125.0" right="-125.0" />
          </GridPane.margin>
       </Label>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="/" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
