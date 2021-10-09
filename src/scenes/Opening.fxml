@@ -57,7 +57,7 @@
             <Insets bottom="-75.0" />
          </GridPane.margin>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="help" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#help" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="help" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font name="Monospaced Bold" size="42.0" />
          </font>
