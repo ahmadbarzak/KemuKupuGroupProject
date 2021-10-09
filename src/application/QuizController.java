@@ -11,6 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +30,21 @@ public class QuizController {
 	private static int currentScore; 	// Current score
 	private static String topicFile;
 	private static String quizType;
+	
+	
+	public void exitQuiz(ActionEvent event) {
+		Alert alert= new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Quit Game?");
+		alert.setHeaderText("Are you sure you want to quit this game, you will lose all your progress?");
+		
+		if(alert.showAndWait().get()== ButtonType.OK) {
+			try {
+				toOpeningMenu(event);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event) throws IOException{
@@ -106,6 +124,15 @@ public class QuizController {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setTitle("Kēmu Kupu");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void toGameModules(ActionEvent event) throws IOException{		
+		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Topic Selection");
 		stage.setScene(scene);
 		stage.show();
 	}

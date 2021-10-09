@@ -48,4 +48,17 @@ public class TopicSelectionController {
 		stage.show();
 	}
 	
+	/**
+	 * This function switches to main menu scene
+	 * @param event - button click on any topic
+	 */
+	public void toOpeningMenu(ActionEvent event) throws IOException{		
+		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 }	
