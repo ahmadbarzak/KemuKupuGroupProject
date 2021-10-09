@@ -33,7 +33,6 @@ public class AttemptController extends QuizController implements Initializable{
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
