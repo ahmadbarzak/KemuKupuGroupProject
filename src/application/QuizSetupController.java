@@ -18,7 +18,7 @@ public class QuizSetupController extends QuizController{
 		setWordAttempt(0);
 		setCurrentScore(0);
 		
-		getWords(getTopicFile());
+		getWords("src/words/"+getTopic());
 		setMaxNumWords(getMaxWordNum());
 		
 		toWordAttempt(event);

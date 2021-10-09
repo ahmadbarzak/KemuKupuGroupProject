@@ -133,4 +133,13 @@ case $option in
   	word=`sed "${wordNum}q;d" src/script/tempWords`
     echo "$word"
 	;;
+  "saveScore" )
+    name=$2
+    score=$3
+    topic=$4
+
+    let score=score*100
+
+    echo "$score $name $topic" >> src/script/leaderboard
+  ;;
 esac

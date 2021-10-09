@@ -28,7 +28,7 @@ public class QuizController {
 	private static int wordProgress; 	// Current word number
 	private static int wordAttempt; 	// Current attempt number
 	private static int currentScore; 	// Current score
-	private static String topicFile;
+	private static String topic;
 	private static String quizType;
 	
 	
@@ -155,8 +155,8 @@ public class QuizController {
 		return currentScore;
 	}
 	
-	public static String getTopicFile() {
-		return topicFile;
+	public static String getTopic() {
+		return topic;
 	}
 	
 	public static String getQuizType() {
@@ -179,8 +179,8 @@ public class QuizController {
 		QuizController.currentScore = currentScore;
 	}
 	
-	public static void setTopic(String topicFile) {
-		QuizController.topicFile = topicFile;
+	public static void setTopic(String topic) {
+		QuizController.topic = topic;
 	}
 	
 	public static void setQuizType(String quizType) {

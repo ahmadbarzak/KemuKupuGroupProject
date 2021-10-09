@@ -14,9 +14,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RewardController extends QuizController implements Initializable{	
@@ -34,6 +37,28 @@ public class RewardController extends QuizController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore()));
 		maxScore.setText(Integer.toString(getMaxNumWords()));
+	}
+	
+	public void saveScore(ActionEvent event){
+		String name = getUserName();
+
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
+		callScriptCase(command);
+	}
+	
+	public String getUserName() {
+		TextInputDialog dialog = new TextInputDialog("Enter name");
+		dialog.setTitle("Save your test score");
+		dialog.setHeaderText("Enter the name you want to save your score under");
+		 
+		Optional<String> result = dialog.showAndWait();
+		String name = "none.";
+		 
+		if (result.isPresent()) {
+		    name = result.get();
+		}
+		
+		return name;
 	}
 	
 	

@@ -51,6 +51,15 @@ public class OpeningMenuController {
 		stage.show();
 	}
 	
+	public void toLeaderboard(ActionEvent event) throws IOException{				
+		root= FXMLLoader.load(getClass().getResource("/scenes/Leaderboard.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Topic Selection");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	/**
 	 * This function quits the application
 	 * @param event - button click on quit button
