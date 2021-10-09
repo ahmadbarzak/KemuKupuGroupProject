@@ -1,5 +1,7 @@
 package application;
 
+import java.beans.EventHandler;
+
 /**
  * This class is the controller class for the quiz attempt screen
  * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
@@ -10,6 +12,10 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -20,6 +26,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
+import javafx.event.*;
+
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
@@ -27,7 +36,7 @@ public class AttemptController extends QuizController implements Initializable{
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
 	double speed;
-	
+	int seconds = 10;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
@@ -40,7 +49,23 @@ public class AttemptController extends QuizController implements Initializable{
 		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
 		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
 		
+		
+		//
 		timer.setText("timer"); // TO DO!
+		BackgroundTask bGTask = new BackgroundTask();
+		bGTask.messageProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				// TODO Auto-generated method stub
+				String text = bGTask.getMessage();
+				timer.setText("Time: "+ text);
+			}
+			
+		});
+		
+		Thread thrd = new Thread(bGTask);
+		thrd.start();
 		
 		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
