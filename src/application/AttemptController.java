@@ -1,7 +1,5 @@
 package application;
 
-import java.beans.EventHandler;
-
 /**
  * This class is the controller class for the quiz attempt screen
  * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
@@ -12,10 +10,6 @@ import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.TimerTask;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -26,8 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.util.Duration;
-import javafx.event.*;
 
 
 public class AttemptController extends QuizController implements Initializable{
@@ -41,7 +33,7 @@ public class AttemptController extends QuizController implements Initializable{
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
@@ -149,22 +141,27 @@ public class AttemptController extends QuizController implements Initializable{
 	
 	// Change scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
-		String[] timerStringSplitted = timer.getText().split(" ");
-		int timeScoreFactor;
+		int timeScoreFactor=1;
+		if(getQuizType().equals("test")) {
+			String[] timerStringSplitted = timer.getText().split(" ");
 			try {
-					timeScoreFactor = Integer.parseInt(timerStringSplitted[1]);
-				}
-				catch(Exception NumberFormatException) {
-					timeScoreFactor = 1;
-				}
+				timeScoreFactor = Integer.parseInt(timerStringSplitted[1]);
+			} catch(Exception NumberFormatException) {
+				timeScoreFactor = 1;
+			}
+		} 
 
 		if(correctStatus.equals("1")) {
-			setCurrentScore((getCurrentScore()+ScoreBonus+(timeScoreFactor)));
+			if(getQuizType().equals("test")) {
+				setCurrentScore((getCurrentScore()+ScoreBonus+(timeScoreFactor)));
+			}	
 			toCorrect(event); // Correct on first attempt
 		} else if(correctStatus.equals("2")) {
 			toFirstIncorrect(event); // Incorrect first attempt	
 		} else if (correctStatus.equals("3")) {
-			setCurrentScore((getCurrentScore()+(0.5*ScoreBonus)+(timeScoreFactor)));
+			if(getQuizType().equals("test")) {
+				setCurrentScore((getCurrentScore()+(0.5*ScoreBonus)+(timeScoreFactor)));
+			}
 			toCorrect(event); // Correct on second attempt
 		} else if(correctStatus.equals("4")) {
 			toSecondIncorrect(event);
