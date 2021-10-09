@@ -204,7 +204,6 @@ public class QuizController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 	
 	/**
