@@ -28,7 +28,7 @@ public class BackgroundTask extends Task {
 			}
 			
 			System.out.println("Finished");	
-			updateMessage(line);
+			updateMessage("Times up!!");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

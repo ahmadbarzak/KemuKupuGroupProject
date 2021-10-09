@@ -40,6 +40,7 @@ public class AttemptController extends QuizController implements Initializable{
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
@@ -47,7 +48,7 @@ public class AttemptController extends QuizController implements Initializable{
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
 		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
-		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
+		score.setText("current score: "+Double.toString(getCurrentScore())); // TO UPDATE!
 		
 		
 		//
@@ -63,6 +64,10 @@ public class AttemptController extends QuizController implements Initializable{
 			}
 			
 		});
+		
+		//Is executed when the countdown time is over
+		bGTask.setOnSucceeded(event
+	            -> timer.setText(bGTask.getMessage()));
 		
 		Thread thrd = new Thread(bGTask);
 		thrd.start();
@@ -99,7 +104,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
+		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
+		
 		callScriptCase(command);
 	}
 	
@@ -108,6 +115,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
+		
 		toSecondIncorrect(event);	
 	}
 	
@@ -126,13 +134,25 @@ public class AttemptController extends QuizController implements Initializable{
 	}	
 	
 	
-	// Chnage scoring!!
+	// Change scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
-		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
-			setCurrentScore((getCurrentScore()+1));
-			toCorrect(event); // Correct on first or second attempt
+		String[] timerStringSplitted = timer.getText().split(" ");
+		int timeScoreFactor;
+			try {
+					timeScoreFactor = Integer.parseInt(timerStringSplitted[1]);
+				}
+				catch(Exception NumberFormatException) {
+					timeScoreFactor = 1;
+				}
+
+		if(correctStatus.equals("1")) {
+			setCurrentScore((getCurrentScore()+(1*timeScoreFactor)));
+			toCorrect(event); // Correct on first attempt
 		} else if(correctStatus.equals("2")) {
 			toFirstIncorrect(event); // Incorrect first attempt	
+		} else if (correctStatus.equals("3")) {
+			setCurrentScore((getCurrentScore()+(0.5*timeScoreFactor)));
+			toCorrect(event); // Correct on second attempt
 		} else if(correctStatus.equals("4")) {
 			toSecondIncorrect(event); // Incorrect second attempt
 		}

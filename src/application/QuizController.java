@@ -26,7 +26,7 @@ public class QuizController {
 	private static int maxNumWords; 	// Number of words to be tested
 	private static int wordProgress; 	// Current word number
 	private static int wordAttempt; 	// Current attempt number
-	private static int currentScore; 	// Current score
+	private static double currentScore; 	// Current score
 	private static String topicFile;
 	private static String quizType;
 	
@@ -117,7 +117,7 @@ public class QuizController {
 		return wordAttempt;
 	}
 	
-	public static int getCurrentScore() {
+	public static double getCurrentScore() {
 		return currentScore;
 	}
 	
@@ -141,8 +141,8 @@ public class QuizController {
 		QuizController.maxNumWords = maxNumWords;
 	}
 	
-	public static void setCurrentScore(int currentScore) {
-		QuizController.currentScore = currentScore;
+	public static void setCurrentScore(double d) {
+		QuizController.currentScore = d;
 	}
 	
 	public static void setTopic(String topicFile) {
@@ -158,8 +158,9 @@ public class QuizController {
 	/**
 	 * This function allows the user to call cases from the BASH script
 	 * @param command - string[] containing command, case, and parameters
+	 * @return 
 	 */
-	public void callScriptCase(String[] command) {
+	public Runnable callScriptCase(String[] command) {
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
@@ -168,6 +169,7 @@ public class QuizController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	/**
