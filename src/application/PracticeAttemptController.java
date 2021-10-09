@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * This class is the controller class for the practice quiz attempt screen
+ * Controls WordAttempt.fxml
+ */
+
 
 import java.net.URL;
 import java.util.ResourceBundle;

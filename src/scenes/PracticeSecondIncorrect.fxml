@@ -50,7 +50,7 @@
             <Insets bottom="15.0" left="-150.0" right="-150.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#pronounciation" prefHeight="60.0" prefWidth="290.0" style="-fx-background-color: #ebe5d9;" text="pronounciation" textAlignment="CENTER" textFill="#9b3d3d" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#pronunciation" prefHeight="60.0" prefWidth="290.0" style="-fx-background-color: #ebe5d9;" text="pronunciation" textAlignment="CENTER" textFill="#9b3d3d" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="29.0" />
          </font>

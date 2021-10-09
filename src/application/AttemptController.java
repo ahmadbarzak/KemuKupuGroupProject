@@ -42,6 +42,7 @@ public class AttemptController extends QuizController implements Initializable{
 		
 		timer.setText("timer"); // TO DO!
 		
+		// Showing number of letters in word (and second letter if second attempt)
 		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
 			StringBuilder dashedSecondLetterHint = new StringBuilder(dashedCurrentWord);
@@ -60,7 +61,10 @@ public class AttemptController extends QuizController implements Initializable{
 		});
 	}
 	
-	
+	/**
+	 * This function converts the current test word to dashes
+	 * @return dashedWord - string of dashes
+	 */
 	public String getDashed(){
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		String testWord = getScriptStdOut(command);
@@ -69,8 +73,18 @@ public class AttemptController extends QuizController implements Initializable{
 	}
 	
 	/**
+	 * This function gets the second letter of the word
+	 * @return character - String containing second letter
+	 */
+	public String hintGetter(){
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
+		String character = getScriptStdOut(command);
+		
+		return character;
+	}
+	
+	/**
 	 * This function plays the given quiz word
-	 * Will play once first time, and twice second time
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
@@ -121,16 +135,5 @@ public class AttemptController extends QuizController implements Initializable{
 		if(key.getCode().toString().equals("ENTER")){
 		        submitButton.fire();
 		}
-	}
-	
-	/**
-	 * This function gets the second letter of the word
-	 * @return character - String containing second letter
-	 */
-	public String hintGetter(){
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
-		String character = getScriptStdOut(command);
-		
-		return character;
 	}
 }

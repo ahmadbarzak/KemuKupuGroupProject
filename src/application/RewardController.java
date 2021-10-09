@@ -3,7 +3,7 @@ package application;
 /**
  * This class is the controller class for the reward screen
  * Allows user to see final score and pick whether to play again, pick a new topic, or go to opening menu
- * Controls RewardSceen.fxml
+ * Controls RewardSceen.fxml, PracticeRewardScreen.fxml
  */
 
 import javafx.event.ActionEvent;
