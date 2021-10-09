@@ -1,41 +1,69 @@
 package application;
 
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-public class LeaderboardController {
+public class LeaderboardController implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	private List<String> leaderboard;
 	
-	public void getScores() throws IOException {
-		leaderboard= new ArrayList<String>();
-		Scanner s = new Scanner(new File("src/script/leaderboard"));
-		while (s.hasNextLine()){
-		    leaderboard.add(s.nextLine());
-		}
-		s.close();
+	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
+	private List<String> leaderboard;
+
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		getScores();
 		orderScores();
+		populateLeaderboard();
+	}	
+	
+	public void getScores() {
+		leaderboard= new ArrayList<String>();
+		try {
+			Scanner s;
+			s = new Scanner(new File("src/script/leaderboard"));
+			while (s.hasNextLine()){
+			    leaderboard.add(s.nextLine());
+			}
+			s.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void orderScores() {
 		Collections.sort(leaderboard, new ScoreComparator().reversed());
-	    for(int i = 0; i < leaderboard.size(); i++) {   
-	        System.out.print(leaderboard.get(i));
-	        System.out.println();
+	}
+	
+	public void populateLeaderboard() {
+		for(int i = 0; i < leaderboard.size() && i <15 ; i++) { 
+			String[] leaderboardData = leaderboard.get(i).split(" ");   
+			Double score = (Double.parseDouble(leaderboardData[0])/10.0);  
+			String name = leaderboardData[1];
+			String topic = leaderboardData[2];
+			
+			placingArea.appendText(Integer.toString(i+1)+"\n");
+			nameArea.appendText(name+"\n");
+			scoreArea.appendText(score+"\n");
+			topicArea.appendText(topic+"\n");
 	    }
 	}
 	

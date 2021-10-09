@@ -138,7 +138,7 @@ case $option in
     score=$3
     topic=$4
 
-    let score=score*100
+    let score=score*10
 
     echo "$score $name $topic" >> src/script/leaderboard
   ;;
