@@ -37,20 +37,20 @@
             <Insets bottom="-60.0" />
          </GridPane.margin>
       </Button>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dontKnow" prefHeight="60.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="skip" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dontKnow" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="skip" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="30.0" />
+            <Font name="Monospaced Bold" size="32.0" />
          </font>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button fx:id="submitButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitWord" prefHeight="60.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="submit" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="submitButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitWord" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="submit" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
          <font>
-            <Font name="Monospaced Bold" size="30.0" />
+            <Font name="Monospaced Bold" size="32.0" />
          </font>
       </Button>
       <TextField fx:id="wordAttempt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#submitOnEnter" prefHeight="60.0" prefWidth="600.0" promptText="Enter Word" style="-fx-background-color: #ebe5d9 #ebe5d9;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
@@ -71,14 +71,6 @@
          </font>
          <GridPane.margin>
             <Insets top="100.0" />
-         </GridPane.margin>
-      </Text>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="play word" textAlignment="CENTER" wrappingWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Monospaced Bold" size="55.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="70.0" />
          </GridPane.margin>
       </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="0.5x" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
@@ -105,28 +97,28 @@
             <Insets bottom="25.0" left="-300.0" right="-300.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#toOpeningMenu" style="-fx-background-color: #ebe5d9;" text="&lt; EXIT PRACTICE" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
-            <Font name="Monospaced Bold" size="30.0" />
+            <Font name="Monospaced Bold" size="24.0" />
          </font>
          <GridPane.margin>
             <Insets left="25.0" top="20.0" />
          </GridPane.margin>
       </Button>
-      <Label fx:id="wordProgress" text="word x of X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <Label fx:id="wordProgress" text="play word x of X" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="30.0" />
+            <Font name="Monospaced Bold" size="55.0" />
          </font>
          <GridPane.margin>
-            <Insets top="20.0" />
+            <Insets left="-100.0" right="-100.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="attemptNum" text="attempt x of x" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <Label fx:id="attemptNum" text="attempt x of x" textFill="#ebe5d9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <font>
-            <Font name="Monospaced Bold" size="30.0" />
+            <Font name="Monospaced Bold" size="24.0" />
          </font>
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets top="30.0" />
          </GridPane.margin>
       </Label>
    </children>
