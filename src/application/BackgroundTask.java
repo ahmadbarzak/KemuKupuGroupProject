@@ -23,11 +23,8 @@ public class BackgroundTask extends Task {
 			
 			String line = null;
 			while ((line = stdout.readLine()) != null ) {
-				System.out.println(line);	
 				updateMessage(line);
 			}
-			
-			System.out.println("Finished");	
 			updateMessage(line);
 		} catch(Exception ex) {
 			ex.printStackTrace();

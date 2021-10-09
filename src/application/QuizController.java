@@ -159,7 +159,7 @@ public class QuizController {
 	 * This function allows the user to call cases from the BASH script
 	 * @param command - string[] containing command, case, and parameters
 	 */
-	public void callScriptCase(String[] command) {
+	public static void callScriptCase(String[] command) {
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
