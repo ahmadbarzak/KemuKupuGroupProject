@@ -55,7 +55,7 @@ public class OpeningMenuController {
 	 * This function quits the application
 	 * @param event - button click on quit button
 	 */
-	public void toQuit(ActionEvent event) throws IOException{
+	public void toQuit(ActionEvent event){
 		Alert alert= new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Quit Kēmu Kupu?");
 		alert.setHeaderText("Are you sure you want to quit Kēmu Kupu?");
@@ -67,8 +67,16 @@ public class OpeningMenuController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
+		}	
+	}
+	
+	public void help(ActionEvent event) throws IOException{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Kēmu Kupu Help");
+		alert.setHeaderText("Kēmu Kupu Help");
+		String s ="Click on test to quiz yourself on 5 māori words\n";
+		alert.setContentText(s);
+		alert.show();
 	}
 		
 	

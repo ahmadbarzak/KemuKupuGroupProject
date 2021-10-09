@@ -24,8 +24,8 @@ public class BackgroundTask extends Task {
 			String line = null;
 			while ((line = stdout.readLine()) != null ) {
 				updateMessage(line);
-			}
-			updateMessage(line);
+			}	
+			updateMessage("Times up!!");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
