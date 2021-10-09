@@ -1,5 +1,7 @@
 package application;
 
+import java.beans.EventHandler;
+
 /**
  * This class is the controller class for the quiz attempt screen
  * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
@@ -10,6 +12,10 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -20,6 +26,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
+import javafx.event.*;
+
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
@@ -27,20 +36,41 @@ public class AttemptController extends QuizController implements Initializable{
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
 	double speed;
-	
+	int seconds = 10;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
 	
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
-		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
-		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
+		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		score.setText("current score: "+Double.toString(getCurrentScore())); // TO UPDATE!
 		
+		
+		//
 		timer.setText("timer"); // TO DO!
+		BackgroundTask bGTask = new BackgroundTask();
+		bGTask.messageProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				// TODO Auto-generated method stub
+				String text = bGTask.getMessage();
+				timer.setText("Time: "+ text);
+			}
+			
+		});
+		
+		//Is executed when the countdown time is over
+		bGTask.setOnSucceeded(event
+	            -> timer.setText(bGTask.getMessage()));
+		
+		Thread thrd = new Thread(bGTask);
+		thrd.start();
 		
 		// Showing number of letters in word (and second letter if second attempt)
 		String dashedCurrentWord = getDashed();
@@ -88,7 +118,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
+		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
+		
 		callScriptCase(command);
 	}
 	
@@ -97,7 +129,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
-		toSecondIncorrect(event);
+		toSecondIncorrect(event);	
 	}
 	
 	/**
@@ -115,13 +147,25 @@ public class AttemptController extends QuizController implements Initializable{
 	}	
 	
 	
-	// Chnage scoring!!
+	// Change scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
-		if(correctStatus.equals("1") || correctStatus.equals("3") ) {
-			setCurrentScore((getCurrentScore()+1));
-			toCorrect(event); // Correct on first or second attempt
+		String[] timerStringSplitted = timer.getText().split(" ");
+		int timeScoreFactor;
+			try {
+					timeScoreFactor = Integer.parseInt(timerStringSplitted[1]);
+				}
+				catch(Exception NumberFormatException) {
+					timeScoreFactor = 1;
+				}
+
+		if(correctStatus.equals("1")) {
+			setCurrentScore((getCurrentScore()+(1*timeScoreFactor)));
+			toCorrect(event); // Correct on first attempt
 		} else if(correctStatus.equals("2")) {
 			toFirstIncorrect(event); // Incorrect first attempt	
+		} else if (correctStatus.equals("3")) {
+			setCurrentScore((getCurrentScore()+(0.5*timeScoreFactor)));
+			toCorrect(event); // Correct on second attempt
 		} else if(correctStatus.equals("4")) {
 			toSecondIncorrect(event);
 		}

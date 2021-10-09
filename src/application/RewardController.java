@@ -32,7 +32,7 @@ public class RewardController extends QuizController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gameScore.setText(Integer.toString(getCurrentScore()));
+		gameScore.setText(Double.toString(getCurrentScore()));
 		maxScore.setText(Integer.toString(getMaxNumWords()));
 	}
 	
