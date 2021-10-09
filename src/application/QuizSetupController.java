@@ -1,13 +1,16 @@
 package application;
 
-import java.io.IOException;
+/**
+ * This class sets up a new quiz (test or practice) - gets words and resets game variables
+ */
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 
 public class QuizSetupController extends QuizController{
 	
 	/**
-	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score)
+	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score) and gets words
 	 * @param event - button click on begin quiz
 	 */
 	public void quizSetUp(ActionEvent event) throws IOException{
@@ -18,11 +21,7 @@ public class QuizSetupController extends QuizController{
 		getWords(getTopicFile());
 		setMaxNumWords(getMaxWordNum());
 		
-		if(getQuizType().equals("practice")) {
-			toPracticeWordAttempt(event);
-		} else if(getQuizType().equals("test")) {
-			toWordAttempt(event);
-		}
+		toWordAttempt(event);
 	}
 	
 	/**
@@ -34,6 +33,10 @@ public class QuizSetupController extends QuizController{
 		callScriptCase(command);
 	}
 	
+	/**
+	 * This function gets the number of test words
+	 * @return maxwords - int of number of test words
+	 */
 	public int getMaxWordNum() {
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getMaxWords"};
 		int maxWords = Integer.parseInt(getScriptStdOut(command));

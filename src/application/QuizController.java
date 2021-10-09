@@ -1,10 +1,9 @@
 package application;
 
 /**
- * This class is the controller class for the quiz set up and outcome screen functionality
- * Mainly sets up game variables (progress, score..) and scene switching functions.
- * Is parent class to AttemptController.java and RewardController.java
- * Controls BeginQuiz.fxml, Correct.fxml, FirstIncorrect.fxml, SecondIncorrect.fxml
+ * This class is contains game data variables, screen switching functions, and script call methods
+ * Functions can be used in child classes
+ * Is parent class to AttemptController.java, PracticeAttemptController.java, OutcomeController.java, RewardController.java
  */
 
 import javafx.event.ActionEvent;
@@ -12,8 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,18 +31,18 @@ public class QuizController {
 	private static String topicFile;
 	private static String quizType;
 	
-	/**
-	 * This function switches screen from outcome to next word or reward screen depending on progress
-	 * @param event - button click
-	 */
-	public void toNext(ActionEvent event) throws IOException{
-		wordProgress+=1;
-		wordAttempt=0;
+	
+	public void exitQuiz(ActionEvent event) {
+		Alert alert= new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Quit Game?");
+		alert.setHeaderText("Are you sure you want to quit this game, you will lose all your progress?");
 		
-		if (wordProgress > maxNumWords) {
-			toReward(event);
-		} else if (wordProgress <=maxNumWords) {
-			toWordAttempt(event);
+		if(alert.showAndWait().get()== ButtonType.OK) {
+			try {
+				toOpeningMenu(event);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -63,31 +64,55 @@ public class QuizController {
 	}
 	
 	public void toSecondIncorrect(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/SecondIncorrect.fxml"));
+		if(getQuizType().equals("practice")) {
+			// Shows the correct spelling
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
+			root = showCorrectSpelling(loader);
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/SecondIncorrect.fxml"));
+		}
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	/** This function retrieves the current test word to display on incorrect screen 
+	 * @param loader - scene to show test word on
+	 * @return root - root node to load
+	 * **/ 
+	public Parent showCorrectSpelling(FXMLLoader loader) throws IOException {
+		root = loader.load();	
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
+		String testWord = getScriptStdOut(command);
+		OutcomeController secondIncorrectController = loader.getController();
+		secondIncorrectController.displayCorrectSpelling(testWord);
+		
+		return root;
+		
 	}
 	
 	public void toWordAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+		if(getQuizType().equals("practice")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+		}
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 	
-	public void toPracticeWordAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void toReward(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
+	public void toReward(ActionEvent event) throws IOException{		
+		if(getQuizType().equals("practice")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeRewardScreen.fxml"));
+		} else if(getQuizType().equals("test")) {
+			root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
+		}
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -103,8 +128,17 @@ public class QuizController {
 		stage.show();
 	}
 	
+	public void toGameModules(ActionEvent event) throws IOException{		
+		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Topic Selection");
+		stage.setScene(scene);
+		stage.show();
+	}
 	
-	// Getters & Setters for use in child class (AttemptController.java RewardController.java)
+	
+	// Getters & Setters
 	public static int getMaxNumWords() {
 		return maxNumWords;
 	}

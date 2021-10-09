@@ -3,7 +3,7 @@ package application;
 /**
  * This class is the controller class for the reward screen
  * Allows user to see final score and pick whether to play again, pick a new topic, or go to opening menu
- * Controls RewardSceen.fxml
+ * Controls RewardSceen.fxml, PracticeRewardScreen.fxml
  */
 
 import javafx.event.ActionEvent;
@@ -43,15 +43,6 @@ public class RewardController extends QuizController implements Initializable{
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setTitle("Kēmu Kupu: New Quiz");
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void toGameModules(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Topic Selection");
 		stage.setScene(scene);
 		stage.show();
 	}

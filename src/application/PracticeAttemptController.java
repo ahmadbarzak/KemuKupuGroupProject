@@ -1,8 +1,13 @@
 package application;
 
+/**
+ * This class is the controller class for the practice quiz attempt screen
+ * Controls WordAttempt.fxml
+ */
+
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -24,7 +29,7 @@ public class PracticeAttemptController extends AttemptController{
 	
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
-		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
 		
 		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
@@ -42,6 +47,6 @@ public class PracticeAttemptController extends AttemptController{
 				speed = 2.25-(playbackSpeed.getValue())/50;
 			}
 		});
-	}
+	}	
 
 }
