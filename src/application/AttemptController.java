@@ -36,7 +36,8 @@ public class AttemptController extends QuizController implements Initializable{
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
 	static double speed;
-	int seconds = 10;
+	int Seconds = 10;
+	int ScoreBonus = 20;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
@@ -158,12 +159,12 @@ public class AttemptController extends QuizController implements Initializable{
 				}
 
 		if(correctStatus.equals("1")) {
-			setCurrentScore((getCurrentScore()+(1*timeScoreFactor)));
+			setCurrentScore((getCurrentScore()+ScoreBonus+(timeScoreFactor)));
 			toCorrect(event); // Correct on first attempt
 		} else if(correctStatus.equals("2")) {
 			toFirstIncorrect(event); // Incorrect first attempt	
 		} else if (correctStatus.equals("3")) {
-			setCurrentScore((getCurrentScore()+(0.5*timeScoreFactor)));
+			setCurrentScore((getCurrentScore()+(0.5*ScoreBonus)+(timeScoreFactor)));
 			toCorrect(event); // Correct on second attempt
 		} else if(correctStatus.equals("4")) {
 			toSecondIncorrect(event);
