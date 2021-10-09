@@ -35,7 +35,7 @@ public class AttemptController extends QuizController implements Initializable{
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
 	@FXML Button submitButton;
-	double speed;
+	static double speed;
 	int seconds = 10;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
@@ -118,10 +118,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
-		
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), Double.toString(speed)};
-		
-		callScriptCase(command);
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
+		Thread thrdTwo = new Thread(bGTaskTwo);
+		thrdTwo.start();
 	}
 	
 	/**

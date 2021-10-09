@@ -194,7 +194,8 @@ public class QuizController {
 	 * @param command - string[] containing command, case, and parameters
 	 * @return 
 	 */
-	public Runnable callScriptCase(String[] command) {
+
+	public static void callScriptCase(String[] command) {
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
