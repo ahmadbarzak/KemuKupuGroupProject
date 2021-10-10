@@ -82,7 +82,8 @@ public class LeaderboardController implements Initializable{
 				String[] command = new String[] {"src/script/quizFunctionality.sh", "clearScores"};
 				ProcessBuilder pb = new ProcessBuilder();
 				pb.command(command);
-				pb.start();
+				Process process = pb.start();
+				process.waitFor();
 				
 				// Reloads scene
 				root= FXMLLoader.load(getClass().getResource("/scenes/Leaderboard.fxml"));
