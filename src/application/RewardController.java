@@ -54,7 +54,7 @@ public class RewardController extends QuizController implements Initializable{
 		
 		Optional<String> result = dialog.showAndWait();
 		 
-		while (result.get().length()>11 || !result.isPresent() || result.get().contains(" ")) {
+		while (result.get().length()>11 || result.get().length()==0 || result.get().contains(" ")) {
 			result = dialog.showAndWait();
 		}
 		
