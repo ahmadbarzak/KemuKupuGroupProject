@@ -14,13 +14,20 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class RewardController extends QuizController implements Initializable{	
 	private Stage stage;
@@ -28,7 +35,15 @@ public class RewardController extends QuizController implements Initializable{
 	private Parent root;
 	
 	@FXML private Label gameScore;
+	@FXML private TextArea firstAttempt,secondAttempt,actual;
+	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 	
+	Image correctImg = new Image("/scenes/fullstar.png");
+	Image halfCorrectImg = new Image("/scenes/halfstar.png");
+	Image skipImg = new Image("/scenes/skip.png");
+	Image wrongImg = new Image("/scenes/wrong.png");
+	
+	ArrayList<ImageView> results = new ArrayList<>();	
 	
 	/**
 	 * This function displays the users score
@@ -36,6 +51,45 @@ public class RewardController extends QuizController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Double.toString(getCurrentScore())+"/200");
+		
+		results.add(word1res);
+		results.add(word2res);
+		results.add(word3res);
+		results.add(word4res);
+		results.add(word5res);
+		
+		File file = new File("src/script/results");
+		try {
+			Scanner input = new Scanner(file);
+			
+			for(int i=0; i<5 && input.hasNextLine(); i++) {
+				String[] data = input.nextLine().split(":");  
+				
+				String actualW = data[0];
+				String attempt1 = data[1];
+				String attempt2 = data[2];
+				String symbolW = data[3];
+				
+				firstAttempt.appendText(attempt1+"\n\n");
+				secondAttempt.appendText(attempt2+"\n\n");
+				actual.appendText(actualW+"\n\n");
+				
+				if(symbolW.equals("1")) {
+					results.get(i).setImage(correctImg);
+				} else if(symbolW.equals("2")) {
+					results.get(i).setImage(halfCorrectImg);
+				} else if(symbolW.equals("3")) {
+					results.get(i).setImage(wrongImg);
+				} else if(symbolW.equals("4")) {
+					results.get(i).setImage(skipImg);
+				}
+			}
+			input.close();	
+			
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void saveScore(ActionEvent event){
