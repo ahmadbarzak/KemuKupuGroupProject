@@ -30,7 +30,7 @@ public class TopicSelectionController {
 	public void getTopic(ActionEvent event) throws IOException{
 		Button topicButton = (Button) event.getSource();
 		topic = topicButton.getId();
-		QuizController.setTopic("src/words/"+topic);
+		QuizController.setTopic(topic);
 		
 		toAttempt(event);
 	}	

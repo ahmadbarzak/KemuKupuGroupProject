@@ -14,9 +14,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RewardController extends QuizController implements Initializable{	
@@ -35,6 +38,30 @@ public class RewardController extends QuizController implements Initializable{
 		gameScore.setText(Double.toString(getCurrentScore())+"/200");
 	}
 	
+	public void saveScore(ActionEvent event){
+		String name = getUserName();
+		
+		int bashScore = (int)getCurrentScore()*10;
+
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
+		callScriptCase(command);
+	}
+	
+	public String getUserName() {
+		TextInputDialog dialog = new TextInputDialog("Enter name");
+		dialog.setTitle("Save your test score");
+		dialog.setHeaderText("Enter the name you want to save your score under\nPlease only enter 10 characters, and use no spaces!");		
+		
+		Optional<String> result = dialog.showAndWait();
+		 
+		while (result.get().length()>11 || !result.isPresent() || result.get().contains(" ")) {
+			result = dialog.showAndWait();
+		}
+		
+		String name=result.get();
+		
+		return name;
+	}	
 	
 	// Functions to switch to other quiz GUI screens
 	public void toPlayAgain(ActionEvent event) throws IOException{			

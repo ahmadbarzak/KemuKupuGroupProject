@@ -39,9 +39,8 @@ public class AttemptController extends QuizController implements Initializable{
 	
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
-		wordProgress.setText("word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
 		score.setText("current score: "+Double.toString(getCurrentScore())); // TO UPDATE!
-		
 		
 		//
 		timer.setText("timer"); // TO DO!
