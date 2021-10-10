@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 /**
  * This class is the controller class for the practice quiz attempt screen
  * Controls WordAttempt.fxml
@@ -10,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,6 +50,13 @@ public class PracticeAttemptController extends AttemptController{
 				speed = 2.25-(playbackSpeed.getValue())/50;
 			}
 		});
-	}	
+	}
+	
+	@Override
+	public void playWord(ActionEvent event) throws IOException{
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
+		Thread thrdTwo = new Thread(bGTaskTwo);
+		thrdTwo.start();
+	}
 
 }
