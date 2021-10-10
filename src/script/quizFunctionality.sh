@@ -153,6 +153,10 @@ case $option in
   ;;
   "writeSkipped" )
     actual=`sed "${wordNum}q;d" src/script/tempWords`
-    echo "$actual:skip:skip:4" >> src/script/results
+    if [ $attemptNumber -eq 1 ]; then
+      echo "$actual:skip:skip:4" >> src/script/results
+    elif [ $attemptNumber -eq 2 ]; then
+      echo ":skip:4" >> src/script/results
+    fi
   ;;
 esac
