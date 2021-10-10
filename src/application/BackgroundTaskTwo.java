@@ -1,12 +1,8 @@
 package application;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import javafx.concurrent.Task;
 
-public class BackgroundTaskTwo extends Task {
+public class BackgroundTaskTwo extends Task<Object> {
 	//This class controls the process for the count down timer
 	double speed;
 	

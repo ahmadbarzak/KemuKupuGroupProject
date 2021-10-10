@@ -115,6 +115,7 @@ public class QuizController {
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Quiz Complete");
 		stage.setScene(scene);
 		stage.show();
 	}

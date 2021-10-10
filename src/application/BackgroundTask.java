@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import javafx.concurrent.Task;
 
-public class BackgroundTask extends Task {
+public class BackgroundTask extends Task<Object> {
 	//This class controls the process for the count down timer
 	
 	@Override
