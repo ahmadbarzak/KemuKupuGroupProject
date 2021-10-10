@@ -86,20 +86,12 @@
             <Font name="Monospaced Bold" size="27.0" />
          </font>
       </TextArea>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveScore" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="save score" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveScore" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="save score" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
-            <Font name="Monospaced Bold" size="32.0" />
+            <Font name="Monospaced Bold" size="35.0" />
          </font>
          <GridPane.margin>
-            <Insets left="-100.0" />
-         </GridPane.margin>
-      </Button>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="leaderboard" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="32.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="-100.0" />
+            <Insets left="-100.0" right="-100.0" />
          </GridPane.margin>
       </Button>
    </children>

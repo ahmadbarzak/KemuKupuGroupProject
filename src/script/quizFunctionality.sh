@@ -142,4 +142,8 @@ case $option in
 
     echo "$score $name $topic" >> src/script/leaderboard
   ;;
+  "clearScores" )
+    rm src/script/leaderboard
+    touch src/script/leaderboard
+  ;;
 esac

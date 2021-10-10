@@ -60,8 +60,7 @@ public class RewardController extends QuizController implements Initializable{
 		String name=result.get();
 		
 		return name;
-	}
-	
+	}	
 	
 	// Functions to switch to other quiz GUI screens
 	public void toPlayAgain(ActionEvent event) throws IOException{			

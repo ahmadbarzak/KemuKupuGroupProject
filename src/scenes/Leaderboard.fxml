@@ -35,7 +35,7 @@
             <Insets right="-100.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#getScores" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="clear scores" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#clearLeaderboard" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="clear scores" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -43,7 +43,7 @@
             <Insets left="-100.0" />
          </GridPane.margin>
       </Button>
-      <TextArea fx:id="placingArea" editable="false" maxWidth="80.0" minWidth="75.0" prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: fff;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextArea fx:id="placingArea" editable="false" maxWidth="80.0" minWidth="75.0" prefHeight="200.0" prefWidth="80.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="-95.0" right="20.0" top="-70.0" />
          </GridPane.margin>
@@ -75,14 +75,6 @@
             <Font name="Monospaced Regular" size="24.0" />
          </font>
       </TextArea>
-      <Label alignment="CENTER" maxHeight="30.0" maxWidth="80.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: fff;" text="PLACE" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="24.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="70.0" right="20.0" />
-         </GridPane.margin>
-      </Label>
       <Label alignment="CENTER" maxHeight="30.0" maxWidth="200.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: fff;" text="TOPIC" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
@@ -105,6 +97,14 @@
          </font>
          <GridPane.margin>
             <Insets bottom="70.0" left="-20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label alignment="CENTER" maxHeight="30.0" maxWidth="80.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: fff;" text="PLACE" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="Monospaced Bold" size="23.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="70.0" right="20.0" />
          </GridPane.margin>
       </Label>
    </children>

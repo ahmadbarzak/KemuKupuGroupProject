@@ -16,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class LeaderboardController implements Initializable{
@@ -65,6 +68,33 @@ public class LeaderboardController implements Initializable{
 			scoreArea.appendText(score+"\n");
 			topicArea.appendText(topic+"\n");
 	    }
+	}
+	
+	public void clearLeaderboard(ActionEvent event) {
+		
+		Alert alert= new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Clear Leaderboard");
+		alert.setHeaderText("Are you sure you want to clear the leaderboard?");
+		alert.setContentText("You will not be able to get them back!");
+		
+		if(alert.showAndWait().get()== ButtonType.OK) {
+			try {
+				String[] command = new String[] {"src/script/quizFunctionality.sh", "clearScores"};
+				ProcessBuilder pb = new ProcessBuilder();
+				pb.command(command);
+				pb.start();
+				
+				// Reloads scene
+				root= FXMLLoader.load(getClass().getResource("/scenes/Leaderboard.fxml"));
+				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	public void toOpeningMenu(ActionEvent event) throws IOException{		
