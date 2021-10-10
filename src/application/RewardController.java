@@ -35,14 +35,15 @@ public class RewardController extends QuizController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gameScore.setText(Integer.toString(getCurrentScore()));
-		maxScore.setText(Integer.toString(getMaxNumWords()));
+		gameScore.setText(Double.toString(getCurrentScore())+"/200");
 	}
 	
 	public void saveScore(ActionEvent event){
 		String name = getUserName();
+		
+		int bashScore = (int)getCurrentScore()*10;
 
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
 		callScriptCase(command);
 	}
 	

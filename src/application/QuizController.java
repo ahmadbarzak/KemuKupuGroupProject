@@ -27,7 +27,7 @@ public class QuizController {
 	private static int maxNumWords; 	// Number of words to be tested
 	private static int wordProgress; 	// Current word number
 	private static int wordAttempt; 	// Current attempt number
-	private static int currentScore; 	// Current score
+	private static double currentScore; 	// Current score
 	private static String topic;
 	private static String quizType;
 	
@@ -151,7 +151,7 @@ public class QuizController {
 		return wordAttempt;
 	}
 	
-	public static int getCurrentScore() {
+	public static double getCurrentScore() {
 		return currentScore;
 	}
 	
@@ -175,7 +175,7 @@ public class QuizController {
 		QuizController.maxNumWords = maxNumWords;
 	}
 	
-	public static void setCurrentScore(int currentScore) {
+	public static void setCurrentScore(double currentScore) {
 		QuizController.currentScore = currentScore;
 	}
 	

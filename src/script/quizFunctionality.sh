@@ -137,9 +137,7 @@ case $option in
     name=$2
     score=$3
     topic=$4
-
-    let score=score*10
-
+    
     echo "$score $name $topic" >> src/script/leaderboard
   ;;
   "clearScores" )
