@@ -11,7 +11,7 @@
 2. In a new terminal, change directory into extracted zip folder.
 3. Run code below to give executable permissions to script file.
 ```shell
-chmod +x src/script/QuizFunctionality.sh
+chmod +x src/script/quizFunctionality.sh
 ```
 
 #### 2. Run .jar via Command Line ####
@@ -32,7 +32,7 @@ java -Djdk.gtk.version=2 --module-path /home/student/javafx-sdk-11.0.2/javafx --
 1. In a new terminal, change directory into project folder
 2. Run code below to give executable permissions to script file
 ```shell
-chmod +x src/script/QuizFunctionality.sh
+chmod +x src/script/quizFunctionality.sh
 ```
 
 #### 2. Configure Eclipse Java Project to Run JavaFX Project ####

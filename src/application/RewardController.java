@@ -27,7 +27,7 @@ public class RewardController extends QuizController implements Initializable{
 	private Scene scene;
 	private Parent root;
 	
-	@FXML private Label gameScore, maxScore;
+	@FXML private Label gameScore;
 	
 	
 	/**

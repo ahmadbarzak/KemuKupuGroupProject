@@ -115,6 +115,7 @@ public class QuizController {
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: Quiz Complete");
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -192,8 +193,10 @@ public class QuizController {
 	/**
 	 * This function allows the user to call cases from the BASH script
 	 * @param command - string[] containing command, case, and parameters
+	 * @return 
 	 */
-	public void callScriptCase(String[] command) {
+
+	public static void callScriptCase(String[] command) {
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);

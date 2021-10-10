@@ -43,7 +43,7 @@ public class TopicSelectionController {
 		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: New Quiz");
+		stage.setTitle("Kēmu Kupu: Quiz");
 		stage.setScene(scene);
 		stage.show();
 	}
