@@ -70,17 +70,22 @@ checkSpelling(){
 
 
 	local actual=`sed "${testWordNumber}q;d" src/script/tempWords`
+
+  local attemptUnderscored=${attempt// /_}
 	local actualUnderscored=${actual// /_} # Allows for spaces
 	shopt -s nocasematch # Case insensitive checking
 
-
-	if [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
+	if [[ $attemptUnderscored == $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
+    echo "$actual:$attempt:n/a:1" >> src/script/results
 		return 1 # correct on first go
-	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
+	elif [[ $attemptUnderscored != $actualUnderscored ]] && [ $attemptNum -eq 1 ]; then
+    echo -n "$actual:$attempt" >> src/script/results
 		return 2 # incorrect on first go
-	elif [[ $attempt == $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attemptUnderscored == $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
+    echo ":$attempt:2" >> src/script/results
 		return 3 # correct on second go
-	elif [[ $attempt != $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
+	elif [[ $attemptUnderscored != $actualUnderscored ]] && [ $attemptNum -eq 2 ]; then
+    echo ":$attempt:3" >> src/script/results
 		return 4 # incorrect on second go
 	fi
 }
@@ -102,6 +107,8 @@ case $option in
     maxWords $topic $quizType
 		maxWordCount=$?
 		getTestWords $topic $maxWordCount
+    rm src/script/results
+    touch src/script/results
 	;;
 	"play" )
   	# Obtains and then plays the current test word
@@ -137,11 +144,15 @@ case $option in
     name=$2
     score=$3
     topic=$4
-    
+
     echo "$score $name $topic" >> src/script/leaderboard
   ;;
   "clearScores" )
     rm src/script/leaderboard
     touch src/script/leaderboard
+  ;;
+  "writeSkipped" )
+    actual=`sed "${wordNum}q;d" src/script/tempWords`
+    echo "$actual:skip:skip:4" >> src/script/results
   ;;
 esac

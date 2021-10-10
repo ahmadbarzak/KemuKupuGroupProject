@@ -49,7 +49,6 @@ public class AttemptController extends QuizController implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-				// TODO Auto-generated method stub
 				String text = bGTask.getMessage();
 				timer.setText("Time: "+ text);
 			}
@@ -118,7 +117,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 * This function does don't know functionality when button is clicked
 	 * @param event - button click
 	 */
-	public void dontKnow(ActionEvent event) throws IOException{
+	public void dontKnow(ActionEvent event) throws IOException{	
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "writeSkipped",Integer.toString(getWordProgress())};
+		callScriptCase(command);
 		toSecondIncorrect(event);	
 	}
 	
@@ -128,7 +129,6 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
-		attempt = attempt.replaceAll(" ", "_").toLowerCase(); // To allow for submissions with spaces
 		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 		String correctStatus=getScriptStdOut(command);		
