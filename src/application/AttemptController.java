@@ -53,7 +53,6 @@ public class AttemptController extends QuizController implements Initializable{
 		
 		
 		//
-		timer.setText("timer"); // TO DO!
 		BackgroundTask bGTask = new BackgroundTask();
 		bGTask.messageProperty().addListener(new ChangeListener<String>() {
 
