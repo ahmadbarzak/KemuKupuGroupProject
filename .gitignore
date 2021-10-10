@@ -24,3 +24,5 @@ hs_err_pid*
 /bin/
 src/script/tempWords
 .classpath
+src/script/leaderboard
+src/script/results

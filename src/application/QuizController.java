@@ -138,6 +138,15 @@ public class QuizController {
 		stage.show();
 	}
 	
+	public void toPlayAgain(ActionEvent event) throws IOException{			
+		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Kēmu Kupu: New Quiz");
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	
 	// Getters & Setters
 	public static int getMaxNumWords() {
