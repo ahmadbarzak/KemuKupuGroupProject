@@ -78,7 +78,7 @@
             <Insets bottom="-130.0" left="-430.0" top="30.0" />
          </GridPane.margin>
          <font>
-            <Font name="Monospaced Regular" size="21.0" />
+            <Font name="Monospaced Regular" size="20.0" />
          </font>
       </TextArea>
       <TextArea fx:id="secondAttempt" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -86,7 +86,7 @@
             <Insets bottom="-130.0" left="-50.0" top="30.0" />
          </GridPane.margin>
          <font>
-            <Font name="Monospaced Regular" size="21.0" />
+            <Font name="Monospaced Regular" size="20.0" />
          </font>
       </TextArea>
       <TextArea fx:id="actual" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -94,7 +94,7 @@
             <Insets bottom="-130.0" right="-330.0" top="30.0" />
          </GridPane.margin>
          <font>
-            <Font name="Monospaced Regular" size="21.0" />
+            <Font name="Monospaced Regular" size="20.0" />
          </font>
       </TextArea>
       <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: fff;" text="First Attempt" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
