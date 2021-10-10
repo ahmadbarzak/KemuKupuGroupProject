@@ -49,14 +49,15 @@ public class RewardController extends QuizController implements Initializable{
 	public String getUserName() {
 		TextInputDialog dialog = new TextInputDialog("Enter name");
 		dialog.setTitle("Save your test score");
-		dialog.setHeaderText("Enter the name you want to save your score under");
-		 
+		dialog.setHeaderText("Enter the name you want to save your score under\nPlease only enter 10 characters, and use no spaces!");		
+		
 		Optional<String> result = dialog.showAndWait();
-		String name = "none.";
 		 
-		if (result.isPresent()) {
-		    name = result.get();
+		while (result.get().length()>11 || !result.isPresent() || result.get().contains(" ")) {
+			result = dialog.showAndWait();
 		}
+		
+		String name=result.get();
 		
 		return name;
 	}
