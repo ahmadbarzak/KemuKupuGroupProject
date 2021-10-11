@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="getTopic://javafx.com/fxml" fx:controller="application.TopicSelectionController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #5b88bf;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.TopicSelectionController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,89 +20,119 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="colours" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="colours" textFill="#5b88bf" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="days1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="days" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="months1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="months 1" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="days2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="days 2" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="weather" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="weather" textFill="#5b88bf" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="babies" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="babies" textFill="#5b88bf" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="feelings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="feelings" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="compass" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="compass points" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="engineering" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="engineering" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="colours" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="colours" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets top="150.0" />
+            <Insets left="-800.0" top="-200.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="work" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="work" textFill="#5b88bf" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="days1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="days" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets top="37.5" />
+            <Insets top="-200.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="months2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="months 2" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Monospaced Bold" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="software" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="software" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="months1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="months 1" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets top="37.5" />
+            <Insets />
          </GridPane.margin>
       </Button>
-      <Button fx:id="uni" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="266.67" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="377.0" style="-fx-background-color: #ebe5d9;" text="uni life" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="days2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="days 2" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets top="37.5" />
+            <Insets right="-800.0" top="-200.0" />
          </GridPane.margin>
       </Button>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="select your topic" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Button fx:id="weather" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="weather" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-200.0" left="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="babies" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="babies" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="feelings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="feelings" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-200.0" right="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="compass" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="compass points" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-200.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="engineering" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="engineering" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-400.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="work" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="work" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-400.0" left="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="months2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="months 2" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="software" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="software" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-600.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="uni" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getTopic" prefHeight="75.0" prefWidth="375.0" style="-fx-background-color: #ebe5d9;" text="uni life" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-400.0" right="-800.0" />
+         </GridPane.margin>
+      </Button>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="select your topic" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="72.0" />
          </font>
+         <GridPane.margin>
+            <Insets top="-600.0" />
+         </GridPane.margin>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>
