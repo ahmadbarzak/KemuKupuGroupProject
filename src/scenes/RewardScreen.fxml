@@ -143,12 +143,12 @@
       </ImageView>
       <ImageView fx:id="word4res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="-275.0" right="-570.0" />
+            <Insets bottom="-175.0" right="-570.0" />
          </GridPane.margin>
       </ImageView>
       <ImageView fx:id="word5res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="-175.0" right="-570.0" />
+            <Insets bottom="-275.0" right="-570.0" />
          </GridPane.margin>
       </ImageView>
    </children>
