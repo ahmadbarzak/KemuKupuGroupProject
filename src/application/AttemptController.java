@@ -40,7 +40,7 @@ public class AttemptController extends QuizController implements Initializable{
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
 		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
-		score.setText("current score: "+Double.toString(getCurrentScore())); // TO UPDATE!
+		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
 		
 		//
 		BackgroundTask bGTask = new BackgroundTask();
@@ -157,7 +157,7 @@ public class AttemptController extends QuizController implements Initializable{
 			toFirstIncorrect(event); // Incorrect first attempt	
 		} else if (correctStatus.equals("3")) {
 			if(getQuizType().equals("test")) {
-				setCurrentScore((getCurrentScore()+(0.5*ScoreBonus)+(timeScoreFactor)));
+				setCurrentScore((getCurrentScore()+(ScoreBonus/2)+(timeScoreFactor)));
 			}
 			toCorrect(event); // Correct on second attempt
 		} else if(correctStatus.equals("4")) {

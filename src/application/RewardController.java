@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -44,13 +46,13 @@ public class RewardController extends QuizController implements Initializable{
 	Image wrongImg = new Image("/scenes/wrong.png");
 	
 	ArrayList<ImageView> results = new ArrayList<>();	
-	
+	int scoreSaved = 0;
 	/**
 	 * This function displays the users score
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gameScore.setText(Double.toString(getCurrentScore())+"/200");
+		gameScore.setText(Integer.toString(getCurrentScore())+"/200");
 		
 		results.add(word1res);
 		results.add(word2res);
@@ -93,8 +95,12 @@ public class RewardController extends QuizController implements Initializable{
 	}
 	
 	public void saveScore(ActionEvent event){
+		if (scoreSaved == 1) {
+			noDoubleSaves();
+			return;
+		}
 		String name = getUserName();
-		
+		scoreSaved = 1;
 		int bashScore = (int)getCurrentScore()*10;
 
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
@@ -116,5 +122,14 @@ public class RewardController extends QuizController implements Initializable{
 		
 		return name;
 	}	
+	
+	public void noDoubleSaves() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Save your test score");
+		alert.setHeaderText("You have already saved your score :)");
+		alert.showAndWait();
+		return;
+	}
+	
 	
 }	
