@@ -135,6 +135,13 @@ public class AttemptController extends QuizController implements Initializable{
 		determineOutcomeScreen(event,correctStatus);
 	}	
 	
+	public void insertMacron(ActionEvent event) throws IOException{
+		String attempt = wordAttempt.getText();
+		Button macronValue = (Button)event.getSource();
+		String macronCharacter = macronValue.getText();
+		wordAttempt.setText(attempt+macronCharacter+"");
+	}	
+	
 	
 	// Change scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
