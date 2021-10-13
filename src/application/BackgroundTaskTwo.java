@@ -12,7 +12,6 @@ public class BackgroundTaskTwo extends Task<Object> {
 	
 	@Override
 	protected Object call() throws Exception {
-		// TODO Auto-generated method stub
 		String wordProgress = Integer.toString(QuizController.getWordProgress());
 		String wordAttempt = Integer.toString(QuizController.getWordAttempt());
 		String wordSpeed = Double.toString(speed);
