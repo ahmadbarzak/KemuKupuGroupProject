@@ -93,7 +93,8 @@ public class RewardController extends QuizController implements Initializable{
 		int bashScore = (int)getCurrentScore();
 
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
-		callScriptCase(command);
+		ScriptCall saveScore = new ScriptCall(command);
+		saveScore.startProcess();
 	}
 
 	public String getUserName() {

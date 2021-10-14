@@ -23,14 +23,9 @@ public class PlayWordBackgroundTask extends Task<Object> {
 		String wordSpeed = Double.toString(speed);
 		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", wordProgress, wordAttempt, wordSpeed};
-		try {
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ScriptCall play = new ScriptCall(command);
+		play.startProcess();
+
 		return null;
 	}
 

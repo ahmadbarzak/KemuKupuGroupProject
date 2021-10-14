@@ -102,19 +102,12 @@ public class LeaderboardController implements Initializable{
 		alert.setContentText("You will not be able to get them back!");
 		
 		if(alert.showAndWait().get()== ButtonType.OK) {
-			try {
-				String[] command = new String[] {"src/script/quizFunctionality.sh", "clearScores"};
-				ProcessBuilder pb = new ProcessBuilder();
-				pb.command(command);
-				Process process = pb.start();
-				process.waitFor();
-				
-				// Reloads scene
-				SwitchScene reloadLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
-				reloadLeaderboard.switchTo();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "clearScores"};
+			ScriptCall clearScores = new ScriptCall(command);
+			clearScores.startProcess();
+			
+			SwitchScene reloadLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
+			reloadLeaderboard.switchTo();
 		}
 		
 	}

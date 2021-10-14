@@ -94,7 +94,8 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public String getDashed(){
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
-		String testWord = getScriptStdOut(command);
+		ScriptCall getTestWord = new ScriptCall(command);
+		String testWord = getTestWord.getStdOut();
 		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "_"
 		return dashedWord;
 	}
@@ -120,7 +121,8 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public String hintGetter(){
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
-		String character = getScriptStdOut(command);
+		ScriptCall hint = new ScriptCall(command);
+		String character = hint.getStdOut();
 		
 		return character;
 	}
@@ -143,7 +145,8 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{	
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "writeSkipped",Integer.toString(getWordProgress()),Integer.toString(getWordAttempt())};
-		callScriptCase(command);
+		ScriptCall writeSkipped = new ScriptCall(command);
+		writeSkipped.startProcess();
 		toSecondIncorrect(event);	
 	}
 	
@@ -168,7 +171,8 @@ public class AttemptController extends QuizController implements Initializable{
 		String attempt = wordAttempt.getText();
 		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
-		String correctStatus=getScriptStdOut(command);		
+		ScriptCall wordCheck = new ScriptCall(command);
+		String correctStatus = wordCheck.getStdOut();	
 		
 		toOutcome(event,correctStatus);
 	}	

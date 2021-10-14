@@ -15,9 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class QuizController {	
 	private Stage stage;
@@ -28,10 +26,14 @@ public class QuizController {
 	private static int wordProgress; 	// Current word number
 	private static int wordAttempt; 	// Current attempt number
 	private static int currentScore; 	// Current score
-	private static String topic;
-	private static String quizType;
+	private static String topic;		// Current topic to test
+	private static String quizType;		// Current quiz type (test or review)
 	
 	
+	/**
+	 * This function allows the user to exit their current game on confirmation
+	 * @param event - button click on exit
+	 */
 	public void exitQuiz(ActionEvent event) {
 		Alert alert= new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Quit Game?");
@@ -79,7 +81,8 @@ public class QuizController {
 		root = loader.load();
 		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
-		String testWord = getScriptStdOut(command);
+		ScriptCall getTestWord = new ScriptCall(command);
+		String testWord = getTestWord.getStdOut();
 		OutcomeController secondIncorrectController = loader.getController();
 		secondIncorrectController.displayCorrectSpelling(testWord);
 		
@@ -178,44 +181,6 @@ public class QuizController {
 	
 	public static void setQuizType(String quizType) {
 		QuizController.quizType = quizType;
-	}
-	
-	
-	// Script case call methods
-	/**
-	 * This function allows the user to call cases from the BASH script
-	 * @param command - string[] containing command, case, and parameters
-	 * @return 
-	 */
-
-	public static void callScriptCase(String[] command) {
-		try {
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			process.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * This function allows the user to retrieve the stdout from calling a case from the BASH script
-	 * @param command - string[] containing command, case, and parameters
-	 */
-	public String getScriptStdOut(String[] command) {
-		String scriptStdOut="";
-		try {
-			ProcessBuilder pb = new ProcessBuilder();
-			pb.command(command);
-			Process process = pb.start();
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));			
-			scriptStdOut=stdout.readLine();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return scriptStdOut;
 	}
 	
 }	

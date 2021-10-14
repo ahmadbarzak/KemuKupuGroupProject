@@ -30,7 +30,8 @@ public class QuizSetupController extends QuizController{
 	 */
 	public void getWords(String topicFileName){
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getWords",topicFileName,getQuizType()};
-		callScriptCase(command);
+		ScriptCall getWords = new ScriptCall(command);
+		getWords.startProcess();
 	}
 	
 	/**
@@ -39,7 +40,9 @@ public class QuizSetupController extends QuizController{
 	 */
 	public int getMaxWordNum() {
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getMaxWords"};
-		int maxWords = Integer.parseInt(getScriptStdOut(command));
+		ScriptCall getMaxWords = new ScriptCall(command);
+		int maxWords = Integer.parseInt(getMaxWords.getStdOut());
+		
 		return maxWords;
 	}
 
