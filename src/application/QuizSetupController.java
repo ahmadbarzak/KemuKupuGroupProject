@@ -4,7 +4,6 @@ package application;
  * This class sets up a new quiz (test or practice) - gets words and resets game variables
  */
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 
 public class QuizSetupController extends QuizController{
@@ -13,7 +12,7 @@ public class QuizSetupController extends QuizController{
 	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score) and gets words
 	 * @param event - button click on begin quiz
 	 */
-	public void quizSetUp(ActionEvent event) throws IOException{
+	public void quizSetUp(ActionEvent event){
 		setWordProgress(1);
 		setWordAttempt(0);
 		setCurrentScore(0);
@@ -24,6 +23,7 @@ public class QuizSetupController extends QuizController{
 		toWordAttempt(event);
 	}
 	
+	
 	/**
 	 * This function creates a list of the words to be tested and stores them in src/script/tempWords
 	 * @param topicFilename - name of the filename containing topic's word list
@@ -33,6 +33,7 @@ public class QuizSetupController extends QuizController{
 		ScriptCall getWords = new ScriptCall(command);
 		getWords.startProcess();
 	}
+	
 	
 	/**
 	 * This function gets the number of test words
