@@ -2,7 +2,7 @@ package application;
 
 /**
  * This class is the controller class for the reward screen
- * Allows user to see final score and pick whether to play again, pick a new topic, or go to opening menu
+ * Allows user to see final score and word outcomes, and pick whether to play again, pick a new topic, or go to opening menu
  * Controls RewardSceen.fxml, PracticeRewardScreen.fxml
  */
 
@@ -26,77 +26,112 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RewardController extends QuizController implements Initializable{	
-
 	@FXML private Label gameScore;
 	@FXML private TextArea firstAttempt,secondAttempt,actual;
 	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 
+	ArrayList<ImageView> resultSymbol;	
 	Image correctImg = new Image("/scenes/fullstar.png");
 	Image halfCorrectImg = new Image("/scenes/halfstar.png");
 	Image skipImg = new Image("/scenes/skip.png");
 	Image wrongImg = new Image("/scenes/wrong.png");
-
-	ArrayList<ImageView> results = new ArrayList<>();	
-	int scoreSaved = 0;
+	
+	private boolean scoreSaved = false;
+	
+	
 	/**
-	 * This function displays the users score
+	 * This function displays the users score, and particular word outcomes
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore())+"/200");
+		initImageViews();
+		populateWordOutcomeTable();
+	}
 
-		results.add(word1res);
-		results.add(word2res);
-		results.add(word3res);
-		results.add(word4res);
-		results.add(word5res);
-
-		try
-		{
+	
+	/**
+	 * This function initializes the resultSymbol imageview array
+	 */
+	public void initImageViews() {
+		resultSymbol = new ArrayList<>();
+		resultSymbol.add(word1res);
+		resultSymbol.add(word2res);
+		resultSymbol.add(word3res);
+		resultSymbol.add(word4res);
+		resultSymbol.add(word5res);
+	}
+	
+	
+	/**
+	 * This function fills in the text field with the users test words and their attempts
+	 */
+	public void populateWordOutcomeTable() {
+		try{
 			BufferedReader reader = new BufferedReader(new FileReader("src/script/results"));
 			String nextLine;
 			for(int i = 0; i<5 && ((nextLine = reader.readLine()) != null); i++) {
 				String[] data = nextLine.split(":");  
+				String currentWord = data[0];
+				String currentAttempt1 = data[1];
+				String currentAttempt2 = data[2];
+				String currentSymbol = data[3];
 
-				String actualW = data[0];
-				String attempt1 = data[1];
-				String attempt2 = data[2];
-				String symbolW = data[3];
-
-				firstAttempt.appendText(attempt1+"\n\n");
-				secondAttempt.appendText(attempt2+"\n\n");
-				actual.appendText(actualW+"\n\n");
-
-				if(symbolW.equals("1")) {
-					results.get(i).setImage(correctImg);
-				} else if(symbolW.equals("2")) {
-					results.get(i).setImage(halfCorrectImg);
-				} else if(symbolW.equals("3")) {
-					results.get(i).setImage(wrongImg);
-				} else if(symbolW.equals("4")) {
-					results.get(i).setImage(skipImg);
-				}
+				firstAttempt.appendText(currentAttempt1+"\n\n");
+				secondAttempt.appendText(currentAttempt2+"\n\n");
+				actual.appendText(currentWord+"\n\n");
+				setSymbol(currentSymbol, i);
 			}
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	public void saveScore(ActionEvent event){
-		if (scoreSaved == 1) {
-			noDoubleSaves();
-			return;
+	
+	
+	/**
+	 * This function sets an appropriate symbol signifying correct on 1st go, 
+	 * correct on 2nd go, incorrect, or skipped for a word
+	 * @param outcome - "1" for correct first go, "2" for correct second go, "3" for incorrect, "4" skip
+	 * @param wordNum - current word data being populated
+	 */
+	public void setSymbol(String outcome, int wordNum) {
+		if(outcome.equals("1")) {
+			resultSymbol.get(wordNum).setImage(correctImg);
+		} else if(outcome.equals("2")) {
+			resultSymbol.get(wordNum).setImage(halfCorrectImg);
+		} else if(outcome.equals("3")) {
+			resultSymbol.get(wordNum).setImage(wrongImg);
+		} else if(outcome.equals("4")) {
+			resultSymbol.get(wordNum).setImage(skipImg);
 		}
+	}
+	
+	
+	/**
+	 * This function allows a user to save their score if they would like
+	 * Only can save score once
+	 * @param event - button click on save score button
+	 */
+	public void saveScore(ActionEvent event){
+		if (scoreSaved) {
+			noDoubleSaves();
+		}
+		
 		String name = getUserName();
-		scoreSaved = 1;
-		int bashScore = (int)getCurrentScore();
-
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
+		
+		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
 		ScriptCall saveScore = new ScriptCall(command);
 		saveScore.startProcess();
+		
+		scoreSaved = true;
 	}
 
+	
+	/**
+	 * This function retrieves a name that the user wants to save their score under
+	 * @return name - string containing the name user entered
+	 */
 	public String getUserName() {
 		TextInputDialog dialog = new TextInputDialog("Enter name");
 		dialog.setTitle("Save your test score");
@@ -113,6 +148,10 @@ public class RewardController extends QuizController implements Initializable{
 		return name;
 	}	
 
+	
+	/**
+	 * This function alerts the user if they have already saved their score
+	 */
 	public void noDoubleSaves() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Save your test score");
