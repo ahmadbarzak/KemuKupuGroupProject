@@ -102,7 +102,7 @@
             <Font name="Monospaced Bold" size="72.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="back" alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>

@@ -23,8 +23,9 @@ public class PracticeAttemptController extends AttemptController{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	@FXML Button submitButton;
+	@FXML Button submitButton, wordPlayer;
 	double speed;
+	int isCancelled = 0;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -33,6 +34,7 @@ public class PracticeAttemptController extends AttemptController{
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
 		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		wordPlayer.fire();
 		
 		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
@@ -54,7 +56,7 @@ public class PracticeAttemptController extends AttemptController{
 	
 	@Override
 	public void playWord(ActionEvent event) throws IOException{
-		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed, isCancelled);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
 	}

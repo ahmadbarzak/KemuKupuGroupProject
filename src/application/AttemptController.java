@@ -9,39 +9,50 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	@FXML Button submitButton;
+	@FXML Button submitButton, wordPlayer, dontKnow, exitButton, beginButton, returnButton;
+	@FXML Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
 	static double speed;
 	int Seconds = 10;
 	int ScoreBonus = 20;
+	int isCancelledValue = 0;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
-	
+
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
 		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
 		score.setText("current score: "+Integer.toString(getCurrentScore())); // TO UPDATE!
-		
+		styleButtons();
+		wordPlayer.fire();
 		//
 		BackgroundTask bGTask = new BackgroundTask();
 		bGTask.messageProperty().addListener(new ChangeListener<String>() {
@@ -51,16 +62,16 @@ public class AttemptController extends QuizController implements Initializable{
 				String text = bGTask.getMessage();
 				timer.setText("Time: "+ text);
 			}
-			
+
 		});
-		
+
 		//Is executed when the countdown time is over
 		bGTask.setOnSucceeded(event
-	            -> timer.setText(bGTask.getMessage()));
-		
+				-> timer.setText(bGTask.getMessage()));
+
 		Thread thrd = new Thread(bGTask);
 		thrd.start();
-		
+
 		// Showing number of letters in word (and second letter if second attempt)
 		String dashedCurrentWord = getDashed();
 		if(getWordAttempt()==2) {
@@ -70,7 +81,7 @@ public class AttemptController extends QuizController implements Initializable{
 		} else {
 			dashedWord.setText(dashedCurrentWord);
 		}
-		
+
 		// Gets the value of the play back speed slider
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
@@ -79,7 +90,7 @@ public class AttemptController extends QuizController implements Initializable{
 			}
 		});
 	}
-	
+
 	/**
 	 * This function converts the current test word to dashes
 	 * @return dashedWord - string of dashes
@@ -90,7 +101,7 @@ public class AttemptController extends QuizController implements Initializable{
 		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "_"
 		return dashedWord;
 	}
-	
+
 	/**
 	 * This function gets the second letter of the word
 	 * @return character - String containing second letter
@@ -98,20 +109,27 @@ public class AttemptController extends QuizController implements Initializable{
 	public String hintGetter(){
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "hint", Integer.toString(getWordProgress())};
 		String character = getScriptStdOut(command);
-		
+
 		return character;
 	}
-	
+
 	/**
 	 * This function plays the given quiz word
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
-		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed, isCancelledValue);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
+		if (isCancelledValue == 1) {
+			cancel(bGTaskTwo);
+		}
 	}
-	
+
+	public void cancel(BackgroundTaskTwo bGTaskTwo) {
+		bGTaskTwo.isCancelledValue = 1;
+	}
+
 	/**
 	 * This function does don't know functionality when button is clicked
 	 * @param event - button click
@@ -119,30 +137,32 @@ public class AttemptController extends QuizController implements Initializable{
 	public void dontKnow(ActionEvent event) throws IOException{	
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "writeSkipped",Integer.toString(getWordProgress()),Integer.toString(getWordAttempt())};
 		callScriptCase(command);
+		isCancelledValue = 1;
 		toSecondIncorrect(event);	
 	}
-	
+
 	/**
 	 * This function submits the spelling and then switches to appropriate outcome screen
 	 * @param event - button click
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
-		
+
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 		String correctStatus=getScriptStdOut(command);		
-		
+		isCancelledValue = 1;
 		determineOutcomeScreen(event,correctStatus);
 	}	
-	
+
+
 	public void insertMacron(ActionEvent event) throws IOException{
 		String attempt = wordAttempt.getText();
 		Button macronValue = (Button)event.getSource();
 		String macronCharacter = macronValue.getText();
 		wordAttempt.setText(attempt+macronCharacter+"");
 	}	
-	
-	
+
+
 	// Change scoring!!
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
 		int timeScoreFactor=1;
@@ -171,14 +191,31 @@ public class AttemptController extends QuizController implements Initializable{
 			toSecondIncorrect(event);
 		}
 	}
-	
+
 	/**
 	 *  This function performs submit functionality when enter key is pressed
 	 * @param event - enter key press
 	 * **/
 	public void submitOnEnter(KeyEvent key) {
 		if(key.getCode().toString().equals("ENTER")){
-		        submitButton.fire();
+			submitButton.fire();
 		}
 	}
+	
+	public void styleButtons() {
+		addHoverEffects(submitButton, "LawnGreen", "Black");
+		addHoverEffects(dontKnow, "Red", "Black");
+		addHoverEffects(exitButton, "Red", "Black");
+		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
+		for (int i = 0; i < 10; i ++) {
+			addHoverEffects(macrons[i], "Black", "White");
+		}
+	}
+	
+	public static void addHoverEffects(Button button, String backgroundColour, String textColour) {
+	    button.setOnMouseEntered(e -> button.setStyle("-fx-background-color:" + backgroundColour + "; -fx-text-fill: " + textColour + ";"));
+	    button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #ebe5d9; -fx-text-fill: #5b88bf;"));
+	}
+	
+	
 }

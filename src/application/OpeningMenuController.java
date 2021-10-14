@@ -7,9 +7,13 @@ package application;
  */
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,17 +23,27 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class OpeningMenuController {
+public class OpeningMenuController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
-	@FXML private Button quit;
+	@FXML private Button test, practise, leaderBoard, help, quit;
 	
 	/**
 	 * This function gets the quiz type from the respective button click, and then switches to topic selection scene
 	 * @param event - button click on quiz button
 	 */
+	
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		AttemptController.addHoverEffects(test, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(practise, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(leaderBoard, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(help, "LawnGreen", "Black");
+		AttemptController.addHoverEffects(quit, "Red", "Black");
+	}
+
+	
 	public void getQuizType(ActionEvent event) throws IOException{
 		Button topicButton = (Button) event.getSource();
 		String quizType = topicButton.getId();
