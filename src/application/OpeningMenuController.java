@@ -9,21 +9,13 @@ package application;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class OpeningMenuController {
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
-	
+public class OpeningMenuController {	
 	@FXML private Button quit;
 	
 	/**
@@ -42,22 +34,25 @@ public class OpeningMenuController {
 	 * This function switches to the topic selection menu
 	 * @param event - button click on modules button
 	 */
-	public void toTopics(ActionEvent event) throws IOException{				
-		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Topic Selection");
-		stage.setScene(scene);
-		stage.show();
+	public void toTopics(ActionEvent event) throws IOException{		
+		SwitchScene switchToTopics = new SwitchScene("/scenes/TopicSelection.fxml",event);
+		switchToTopics.SetTitle("Kēmu Kupu: Topic Selection");
+		switchToTopics.switchTo();
 	}
 	
-	public void toLeaderboard(ActionEvent event) throws IOException{				
-		root= FXMLLoader.load(getClass().getResource("/scenes/Leaderboard.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Topic Selection");
-		stage.setScene(scene);
-		stage.show();
+	public void toLeaderboard(ActionEvent event) throws IOException{	
+		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
+		switchToLeaderboard.SetTitle("Kēmu Kupu: Leaderboard");
+		switchToLeaderboard.switchTo();
+	}
+	
+	public void help(ActionEvent event) throws IOException{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Kēmu Kupu Help");
+		alert.setHeaderText("Kēmu Kupu Help");
+		String s ="Click on test to quiz yourself on 5 māori words\n";
+		alert.setContentText(s);
+		alert.show();
 	}
 	
 	/**
@@ -77,16 +72,6 @@ public class OpeningMenuController {
 				e.printStackTrace();
 			}
 		}	
-	}
-	
-	public void help(ActionEvent event) throws IOException{
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Kēmu Kupu Help");
-		alert.setHeaderText("Kēmu Kupu Help");
-		String s ="Click on test to quiz yourself on 5 māori words\n";
-		alert.setContentText(s);
-		alert.show();
-	}
-		
+	}		
 	
 }

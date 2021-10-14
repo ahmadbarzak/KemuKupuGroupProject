@@ -11,22 +11,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
 
 public class LeaderboardController implements Initializable{
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
-	
 	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
 	private List<String> leaderboard;
 
@@ -91,11 +82,8 @@ public class LeaderboardController implements Initializable{
 				process.waitFor();
 				
 				// Reloads scene
-				root= FXMLLoader.load(getClass().getResource("/scenes/Leaderboard.fxml"));
-				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				scene = new Scene(root);
-				stage.setScene(scene);
-				stage.show();
+				SwitchScene reloadLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
+				reloadLeaderboard.switchTo();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -103,13 +91,10 @@ public class LeaderboardController implements Initializable{
 		
 	}
 	
-	public void toOpeningMenu(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu");
-		stage.setScene(scene);
-		stage.show();
+	public void toOpeningMenu(ActionEvent event){		
+		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
+		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.switchTo();
 	}
 
 }

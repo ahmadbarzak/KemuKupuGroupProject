@@ -48,24 +48,17 @@ public class QuizController {
 	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/Correct.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToCorrect = new SwitchScene("/scenes/Correct.fxml",event);
+		switchToCorrect.switchTo();
 	}
 	
 	public void toFirstIncorrect(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/FirstIncorrect.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToFirstIncorrect = new SwitchScene("/scenes/FirstIncorrect.fxml",event);
+		switchToFirstIncorrect.switchTo();
 	}
 	
 	public void toSecondIncorrect(ActionEvent event) throws IOException{
 		if(getQuizType().equals("practice")) {
-			// Shows the correct spelling
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));	
 			root = showCorrectSpelling(loader);
 		} else if(getQuizType().equals("test")) {
@@ -94,57 +87,46 @@ public class QuizController {
 	}
 	
 	public void toWordAttempt(ActionEvent event) throws IOException{
+		SwitchScene switchToWordAttempt = null;
+		
 		if(getQuizType().equals("practice")) {
-			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeWordAttempt.fxml"));
+			switchToWordAttempt = new SwitchScene("/scenes/PracticeWordAttempt.fxml",event);
 		} else if(getQuizType().equals("test")) {
-			root= FXMLLoader.load(getClass().getResource("/scenes/WordAttempt.fxml"));
+			switchToWordAttempt = new SwitchScene("/scenes/WordAttempt.fxml",event);
 		}
 		
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		switchToWordAttempt.switchTo();
 	}
 	
-	public void toReward(ActionEvent event) throws IOException{		
-		if(getQuizType().equals("practice")) {
-			root= FXMLLoader.load(getClass().getResource("/scenes/PracticeRewardScreen.fxml"));
-		} else if(getQuizType().equals("test")) {
-			root= FXMLLoader.load(getClass().getResource("/scenes/RewardScreen.fxml"));
-		}
+	public void toReward(ActionEvent event) throws IOException{	
+		SwitchScene switchToReward = null;
 		
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Quiz Complete");
-		stage.setScene(scene);
-		stage.show();
+		if(getQuizType().equals("practice")) {
+			switchToReward = new SwitchScene("/scenes/PracticeRewardScreen.fxml",event);
+		} else if(getQuizType().equals("test")) {
+			switchToReward = new SwitchScene("/scenes/RewardScreen.fxml",event);
+		}
+
+		switchToReward.SetTitle("Kēmu Kupu: Quiz Complete");
+		switchToReward.switchTo();
 	}
 	
-	public void toOpeningMenu(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu");
-		stage.setScene(scene);
-		stage.show();
+	public void toOpeningMenu(ActionEvent event) throws IOException{	
+		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
+		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.switchTo();
 	}
 	
 	public void toGameModules(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/TopicSelection.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Topic Selection");
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToTopic = new SwitchScene("/scenes/TopicSelection.fxml",event);
+		switchToTopic.SetTitle("Kēmu Kupu: Topic Selection");
+		switchToTopic.switchTo();
 	}
 	
 	public void toPlayAgain(ActionEvent event) throws IOException{			
-		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: New Quiz");
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToBeginAgain = new SwitchScene("/scenes/BeginQuiz.fxml",event);
+		switchToBeginAgain.SetTitle("Kēmu Kupu: New Quiz");
+		switchToBeginAgain.switchTo();
 	}
 	
 	

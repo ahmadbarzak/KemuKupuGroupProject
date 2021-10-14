@@ -18,7 +18,7 @@ public class Main extends Application {
 		try{
 			Parent root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
 			Scene scene= new Scene(root); 
-			primaryStage.setTitle("Kēmu Kupu");
+			primaryStage.setTitle("Kēmu Kupu: Menu");
 			
 			primaryStage.setMinWidth(1200);
 			primaryStage.setMinHeight(900);

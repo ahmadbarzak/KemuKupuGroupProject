@@ -7,19 +7,11 @@ package application;
  */
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TopicSelectionController {	
-	private Stage stage;
-	private Scene scene;
-	private Parent root;	
+public class TopicSelectionController {		
 	private String topic;
 	
 	/**
@@ -40,12 +32,9 @@ public class TopicSelectionController {
 	 * @param event - button click on any topic
 	 */
 	public void toAttempt(ActionEvent event) throws IOException{
-		root= FXMLLoader.load(getClass().getResource("/scenes/BeginQuiz.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu: Quiz");
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToBeginAgain = new SwitchScene("/scenes/BeginQuiz.fxml",event);
+		switchToBeginAgain.SetTitle("Kēmu Kupu: New Quiz");
+		switchToBeginAgain.switchTo();
 	}
 	
 	/**
@@ -53,12 +42,9 @@ public class TopicSelectionController {
 	 * @param event - button click on any topic
 	 */
 	public void toOpeningMenu(ActionEvent event) throws IOException{		
-		root= FXMLLoader.load(getClass().getResource("/scenes/Opening.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setTitle("Kēmu Kupu");
-		stage.setScene(scene);
-		stage.show();
+		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
+		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.switchTo();
 	}
 	
 }	
