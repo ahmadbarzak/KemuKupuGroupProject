@@ -1,14 +1,14 @@
 package application;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,20 +33,25 @@ public class LeaderboardController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		getScores();
+		try {
+			getScores();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		orderScores();
 		populateLeaderboard();
 	}	
 	
-	public void getScores() {
+	public void getScores() throws IOException {
 		leaderboard= new ArrayList<String>();
 		try {
-			Scanner s;
-			s = new Scanner(new File("src/script/leaderboard"));
-			while (s.hasNextLine()){
-			    leaderboard.add(s.nextLine());
+			
+			BufferedReader reader = new BufferedReader(new FileReader("src/script/leaderboard"));
+			String nextLine;
+			while((nextLine = reader.readLine()) != null) {
+				leaderboard.add(nextLine);
 			}
-			s.close();
+			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +64,7 @@ public class LeaderboardController implements Initializable{
 	public void populateLeaderboard() {
 		for(int i = 0; i < leaderboard.size() && i <15 ; i++) { 
 			String[] leaderboardData = leaderboard.get(i).split(" ");   
-			Double score = (Double.parseDouble(leaderboardData[0])/10.0);  
+			int score = (Integer.parseInt(leaderboardData[0]));  
 			String name = leaderboardData[1];
 			String topic = leaderboardData[2];
 			
