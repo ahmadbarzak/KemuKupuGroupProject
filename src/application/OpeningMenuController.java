@@ -2,11 +2,10 @@ package application;
 
 /**
  * This class is the controller class for the Opening Menu GUI
- * Allows user to navigate to game modules menu or to quit the application
+ * Allows user to navigate to test, practice, help, leaderboard, or to quit
  * Controls Opening.fxml
  */
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -22,7 +21,7 @@ public class OpeningMenuController {
 	 * This function gets the quiz type from the respective button click, and then switches to topic selection scene
 	 * @param event - button click on quiz button
 	 */
-	public void getQuizType(ActionEvent event) throws IOException{
+	public void getQuizType(ActionEvent event){
 		Button topicButton = (Button) event.getSource();
 		String quizType = topicButton.getId();
 		QuizController.setQuizType(quizType);
@@ -30,23 +29,34 @@ public class OpeningMenuController {
 		toTopics(event);
 	}
 	
+	
 	/**
 	 * This function switches to the topic selection menu
-	 * @param event - button click on modules button
+	 * @param event - button click on quiz button
 	 */
-	public void toTopics(ActionEvent event) throws IOException{		
+	public void toTopics(ActionEvent event){		
 		SwitchScene switchToTopics = new SwitchScene("/scenes/TopicSelection.fxml",event);
 		switchToTopics.SetTitle("Kēmu Kupu: Topic Selection");
 		switchToTopics.switchTo();
 	}
 	
-	public void toLeaderboard(ActionEvent event) throws IOException{	
+	
+	/**
+	 * This function switches to the leaderboard
+	 * @param event - button click on leaderboard button
+	 */
+	public void toLeaderboard(ActionEvent event){	
 		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
 		switchToLeaderboard.SetTitle("Kēmu Kupu: Leaderboard");
 		switchToLeaderboard.switchTo();
 	}
 	
-	public void help(ActionEvent event) throws IOException{
+	
+	/**
+	 * This function shows a help dialog box
+	 * @param event - button click on help button
+	 */
+	public void help(ActionEvent event){
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Kēmu Kupu Help");
 		alert.setHeaderText("Kēmu Kupu Help");
@@ -56,7 +66,7 @@ public class OpeningMenuController {
 	}
 	
 	/**
-	 * This function quits the application
+	 * This function quits the application on confirmation
 	 * @param event - button click on quit button
 	 */
 	public void toQuit(ActionEvent event){
