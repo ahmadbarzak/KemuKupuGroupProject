@@ -23,11 +23,10 @@ public class SwitchScene {
 		}
 	}
 	
-	public void SetTitle(String title) {
+	public void setWindowTitle(String title) {
 		stage.setTitle(title);
-		
 	}
-	
+
 	public Parent getRoot() {
 		return root;
 	}

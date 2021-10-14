@@ -33,7 +33,7 @@ public class TopicSelectionController {
 	 */
 	public void toAttempt(ActionEvent event) throws IOException{
 		SwitchScene switchToBeginAgain = new SwitchScene("/scenes/BeginQuiz.fxml",event);
-		switchToBeginAgain.SetTitle("Kēmu Kupu: New Quiz");
+		switchToBeginAgain.setWindowTitle("Kēmu Kupu: New Quiz");
 		switchToBeginAgain.switchTo();
 	}
 	
@@ -43,7 +43,7 @@ public class TopicSelectionController {
 	 */
 	public void toOpeningMenu(ActionEvent event) throws IOException{		
 		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
-		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.setWindowTitle("Kēmu Kupu: Menu");
 		switchToMenu.switchTo();
 	}
 	

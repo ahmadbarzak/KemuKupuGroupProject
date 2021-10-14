@@ -36,7 +36,7 @@ public class OpeningMenuController {
 	 */
 	public void toTopics(ActionEvent event){		
 		SwitchScene switchToTopics = new SwitchScene("/scenes/TopicSelection.fxml",event);
-		switchToTopics.SetTitle("Kēmu Kupu: Topic Selection");
+		switchToTopics.setWindowTitle("Kēmu Kupu: Topic Selection");
 		switchToTopics.switchTo();
 	}
 	
@@ -47,7 +47,7 @@ public class OpeningMenuController {
 	 */
 	public void toLeaderboard(ActionEvent event){	
 		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/Leaderboard.fxml",event);
-		switchToLeaderboard.SetTitle("Kēmu Kupu: Leaderboard");
+		switchToLeaderboard.setWindowTitle("Kēmu Kupu: Leaderboard");
 		switchToLeaderboard.switchTo();
 	}
 	

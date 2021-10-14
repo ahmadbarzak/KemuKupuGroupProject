@@ -83,6 +83,7 @@ public class QuizController {
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		ScriptCall getTestWord = new ScriptCall(command);
 		String testWord = getTestWord.getStdOut();
+		
 		OutcomeController secondIncorrectController = loader.getController();
 		secondIncorrectController.displayCorrectSpelling(testWord);
 		
@@ -111,25 +112,25 @@ public class QuizController {
 			switchToReward = new SwitchScene("/scenes/RewardScreen.fxml",event);
 		}
 
-		switchToReward.SetTitle("Kēmu Kupu: Quiz Complete");
+		switchToReward.setWindowTitle("Kēmu Kupu: Quiz Complete");
 		switchToReward.switchTo();
 	}
 	
 	public void toOpeningMenu(ActionEvent event){	
 		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
-		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.setWindowTitle("Kēmu Kupu: Menu");
 		switchToMenu.switchTo();
 	}
 	
 	public void toGameModules(ActionEvent event){		
 		SwitchScene switchToTopic = new SwitchScene("/scenes/TopicSelection.fxml",event);
-		switchToTopic.SetTitle("Kēmu Kupu: Topic Selection");
+		switchToTopic.setWindowTitle("Kēmu Kupu: Topic Selection");
 		switchToTopic.switchTo();
 	}
 	
 	public void toPlayAgain(ActionEvent event){			
 		SwitchScene switchToBeginAgain = new SwitchScene("/scenes/BeginQuiz.fxml",event);
-		switchToBeginAgain.SetTitle("Kēmu Kupu: New Quiz");
+		switchToBeginAgain.setWindowTitle("Kēmu Kupu: New Quiz");
 		switchToBeginAgain.switchTo();
 	}
 	

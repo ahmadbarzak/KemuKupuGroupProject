@@ -119,7 +119,7 @@ public class LeaderboardController implements Initializable{
 	 */
 	public void toOpeningMenu(ActionEvent event){		
 		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
-		switchToMenu.SetTitle("Kēmu Kupu: Menu");
+		switchToMenu.setWindowTitle("Kēmu Kupu: Menu");
 		switchToMenu.switchTo();
 	}
 
