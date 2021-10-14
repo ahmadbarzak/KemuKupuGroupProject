@@ -11,7 +11,6 @@ public class BackgroundTask extends Task<Object> {
 	
 	@Override
 	protected Object call() throws Exception {
-		// TODO Auto-generated method stub
 		try {
 			String cmd = "for (( i = 20 ; $i > 0; i=i-1)) ; do echo $i ; sleep 1; done";
 			ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);
