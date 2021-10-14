@@ -47,12 +47,12 @@ public class QuizController {
 	}
 	
 	// Functions to switch to other quiz GUI screens
-	public void toCorrect(ActionEvent event) throws IOException{
+	public void toCorrect(ActionEvent event){
 		SwitchScene switchToCorrect = new SwitchScene("/scenes/Correct.fxml",event);
 		switchToCorrect.switchTo();
 	}
 	
-	public void toFirstIncorrect(ActionEvent event) throws IOException{
+	public void toFirstIncorrect(ActionEvent event){
 		SwitchScene switchToFirstIncorrect = new SwitchScene("/scenes/FirstIncorrect.fxml",event);
 		switchToFirstIncorrect.switchTo();
 	}
@@ -75,8 +75,9 @@ public class QuizController {
 	 * @param loader - scene to show test word on
 	 * @return root - root node to load
 	 * **/ 
-	public Parent showCorrectSpelling(FXMLLoader loader) throws IOException {
-		root = loader.load();	
+	public Parent showCorrectSpelling(FXMLLoader loader) throws IOException{
+		root = loader.load();
+		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		String testWord = getScriptStdOut(command);
 		OutcomeController secondIncorrectController = loader.getController();
@@ -86,7 +87,7 @@ public class QuizController {
 		
 	}
 	
-	public void toWordAttempt(ActionEvent event) throws IOException{
+	public void toWordAttempt(ActionEvent event){
 		SwitchScene switchToWordAttempt = null;
 		
 		if(getQuizType().equals("practice")) {
@@ -98,7 +99,7 @@ public class QuizController {
 		switchToWordAttempt.switchTo();
 	}
 	
-	public void toReward(ActionEvent event) throws IOException{	
+	public void toReward(ActionEvent event){	
 		SwitchScene switchToReward = null;
 		
 		if(getQuizType().equals("practice")) {
@@ -111,19 +112,19 @@ public class QuizController {
 		switchToReward.switchTo();
 	}
 	
-	public void toOpeningMenu(ActionEvent event) throws IOException{	
+	public void toOpeningMenu(ActionEvent event){	
 		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
 		switchToMenu.SetTitle("Kēmu Kupu: Menu");
 		switchToMenu.switchTo();
 	}
 	
-	public void toGameModules(ActionEvent event) throws IOException{		
+	public void toGameModules(ActionEvent event){		
 		SwitchScene switchToTopic = new SwitchScene("/scenes/TopicSelection.fxml",event);
 		switchToTopic.SetTitle("Kēmu Kupu: Topic Selection");
 		switchToTopic.switchTo();
 	}
 	
-	public void toPlayAgain(ActionEvent event) throws IOException{			
+	public void toPlayAgain(ActionEvent event){			
 		SwitchScene switchToBeginAgain = new SwitchScene("/scenes/BeginQuiz.fxml",event);
 		switchToBeginAgain.SetTitle("Kēmu Kupu: New Quiz");
 		switchToBeginAgain.switchTo();

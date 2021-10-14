@@ -130,7 +130,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * This function plays the given quiz word at selected speed
 	 * @param event - button click on speaker
 	 */
-	public void playWord(ActionEvent event) throws IOException{
+	public void playWord(ActionEvent event){
 		PlayWordBackgroundTask playWordTask = new PlayWordBackgroundTask(speed);
 		Thread playThread = new Thread(playWordTask);
 		playThread.start();
@@ -152,7 +152,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * This function allows user to enter a macronned letter by button press
 	 * @param event - button click
 	 */
-	public void insertMacron(ActionEvent event) throws IOException{
+	public void insertMacron(ActionEvent event){
 		String attempt = wordAttempt.getText();
 		Button macronValue = (Button)event.getSource();
 		String macronCharacter = macronValue.getText();

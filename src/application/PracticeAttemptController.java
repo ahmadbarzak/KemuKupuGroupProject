@@ -7,13 +7,6 @@ package application;
  * Controls PracticeWordAttempt.fxml
  */
 
-import java.io.IOException;
-
-/**
- * This class is the controller class for the practice quiz attempt screen
- * Controls WordAttempt.fxml
- */
-
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,7 +51,7 @@ public class PracticeAttemptController extends AttemptController{
 	 * @param event - button click on speaker
 	 */
 	@Override
-	public void playWord(ActionEvent event) throws IOException{
+	public void playWord(ActionEvent event){
 		PlayWordBackgroundTask bGTaskTwo = new PlayWordBackgroundTask(speed);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
