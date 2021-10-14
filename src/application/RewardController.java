@@ -116,15 +116,16 @@ public class RewardController extends QuizController implements Initializable{
 	public void saveScore(ActionEvent event){
 		if (scoreSaved) {
 			noDoubleSaves();
+			return;
 		}
 		
 		String name = getUserName();
-		
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
-		ScriptCall saveScore = new ScriptCall(command);
-		saveScore.startProcess();
-		
-		scoreSaved = true;
+		if (name!=null) {
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
+			ScriptCall saveScore = new ScriptCall(command);
+			saveScore.startProcess();
+			scoreSaved = true;
+		}
 	}
 
 	
@@ -133,21 +134,39 @@ public class RewardController extends QuizController implements Initializable{
 	 * @return name - string containing the name user entered
 	 */
 	public String getUserName() {
+		String name = null;
 		TextInputDialog dialog = new TextInputDialog("Enter name");
 		dialog.setTitle("Save your test score");
 		dialog.setHeaderText("Enter the name you want to save your score under\nPlease only enter 10 characters, and use no spaces!");		
 
 		Optional<String> result = dialog.showAndWait();
-
-		while (result.get().length()>11 || result.get().length()==0 || result.get().contains(" ")) {
-			result = dialog.showAndWait();
+		
+		if (result.isPresent()){
+			name=result.get();
 		}
-
-		String name=result.get();
+		
+		if (name==null) {
+			return name;
+		} else if (name.length()>10 || name.length()==0 || name.contains(" ")) {
+			invalidNameAlert();
+			name=getUserName();
+		}
 
 		return name;
 	}	
 
+	
+	/**
+	 * This function alerts the user if the name they entered is invalid
+	 */
+	public void invalidNameAlert() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Invalid Name Entry");
+		alert.setHeaderText("The name you entered was either empty, greater that 10 characters, or contained spaces!");
+		alert.setContentText("Press OK to re-enter a valid name");
+		alert.showAndWait();
+	}
+	
 	
 	/**
 	 * This function alerts the user if they have already saved their score
