@@ -1,13 +1,14 @@
 package application;
-
 import javafx.concurrent.Task;
 
 public class BackgroundTaskTwo extends Task<Object> {
 	//This class controls the process for the count down timer
 	double speed;
+	int isCancelledValue;
 	
-	public BackgroundTaskTwo(double speed) {
+	public BackgroundTaskTwo(double speed, int isCancelledValue) {
 		this.speed = speed;
+		this.isCancelledValue = isCancelledValue;
 	}
 	
 	@Override
@@ -16,15 +17,32 @@ public class BackgroundTaskTwo extends Task<Object> {
 		String wordAttempt = Integer.toString(QuizController.getWordAttempt());
 		String wordSpeed = Double.toString(speed);
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", wordProgress, wordAttempt, wordSpeed};
+
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.command(command);
 			Process process = pb.start();
+			if(isCancelled()) {
+				process.destroy();
+				System.out.println("destroyed");
+				return null;
+			}
 			process.waitFor();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public boolean isCancelled() {
+		if(isCancelledValue == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -29,6 +30,7 @@ public class RewardController extends QuizController implements Initializable{
 
 	@FXML private Label gameScore;
 	@FXML private TextArea firstAttempt,secondAttempt,actual;
+	@FXML Button menu, playAgain, gamesModule, saveScore;
 	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 
 	Image correctImg = new Image("/scenes/fullstar.png");
@@ -44,7 +46,10 @@ public class RewardController extends QuizController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore())+"/200");
-
+		AttemptController.addHoverEffects(menu, "Red", "Black");
+		AttemptController.addHoverEffects(playAgain, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(gamesModule, "LawnGreen", "Black");
+		AttemptController.addHoverEffects(saveScore, "DarkOrange", "Black");
 		results.add(word1res);
 		results.add(word2res);
 		results.add(word3res);

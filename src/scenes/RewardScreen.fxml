@@ -33,7 +33,7 @@
             <Insets bottom="20.0" />
          </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="menu" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -49,7 +49,7 @@
             <Insets bottom="-125.0" left="-100.0" right="-100.0" />
          </GridPane.margin>
       </Label>
-      <Button maxHeight="75.0" minHeight="75.0" mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="playAgain" maxHeight="75.0" minHeight="75.0" mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="35.0" />
          </font>
@@ -57,7 +57,7 @@
             <Insets left="-100.0" right="-100.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="gamesModule" maxWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -65,7 +65,7 @@
             <Insets left="-100.0" top="95.0" />
          </GridPane.margin>
       </Button>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveScore" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="save score" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Button fx:id="saveScore" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveScore" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #ebe5d9;" text="save score" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="35.0" />
          </font>

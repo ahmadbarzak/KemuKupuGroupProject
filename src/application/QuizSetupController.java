@@ -5,22 +5,33 @@ package application;
  */
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class QuizSetupController extends QuizController{
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+
+public class QuizSetupController extends QuizController implements Initializable{
+	@FXML Button beginButton, returnButton;
 	
 	/**
 	 * This function initializes the quiz's progress tracker variables (word number, attempt number, current score) and gets words
 	 * @param event - button click on begin quiz
 	 */
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		AttemptController.addHoverEffects(beginButton, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(returnButton, "Red", "Black");
+	}
+	
+	
 	public void quizSetUp(ActionEvent event) throws IOException{
 		setWordProgress(1);
 		setWordAttempt(0);
 		setCurrentScore(0);
-		
 		getWords("src/words/"+getTopic());
 		setMaxNumWords(getMaxWordNum());
-		
 		toWordAttempt(event);
 	}
 	
