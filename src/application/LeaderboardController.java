@@ -1,5 +1,11 @@
 package application;
 
+/**
+ * This class is the controller class for the leaderboard screen
+ * Allows user to view top 15 scores and clear leaderboard on confirmation
+ * Controls Leaderboard.fxml
+ */
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,41 +26,59 @@ import javafx.scene.control.Alert.AlertType;
 public class LeaderboardController implements Initializable{
 	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
 	private List<String> leaderboard;
-
 	
+	/**
+	 * This function initializes the leaderboard on scene entry or on reload (when leaderboard cleared)
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			getScores();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		orderScores();
-		populateLeaderboard();
+		leaderboard=orderScores(getScores());
+		populateLeaderboard(leaderboard);
 	}	
 	
-	public void getScores() throws IOException {
-		leaderboard= new ArrayList<String>();
+	
+	/**
+	 * This function retrieves all the scores from the text file and converts them into a arraylist
+	 * @return scores - list of strings containing score, name, and topic
+	 */
+	public List<String> getScores(){
+		List<String> scores= new ArrayList<String>();
 		try {
-			
 			BufferedReader reader = new BufferedReader(new FileReader("src/script/leaderboard"));
 			String nextLine;
 			while((nextLine = reader.readLine()) != null) {
-				leaderboard.add(nextLine);
+				scores.add(nextLine);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
+		return scores;
 	}
 	
-	public void orderScores() {
-		Collections.sort(leaderboard, new ScoreComparator().reversed());
+	
+	/**
+	 * This function orders an arraylist in descending order
+	 * @param scores - list of unsorted scores
+	 * @return scores - given list of scores now sorted
+	 */
+	public List<String> orderScores(List<String> scores) {
+		Collections.sort(scores, new ScoreComparator().reversed());
+		
+		return scores;
 	}
 	
-	public void populateLeaderboard() {
-		for(int i = 0; i < leaderboard.size() && i <15 ; i++) { 
-			String[] leaderboardData = leaderboard.get(i).split(" ");   
+	
+	/**
+	 * This function displays the scores on the leaderboard
+	 * @param sortedScores - list of scores sorted in descending order
+	 */
+	public void populateLeaderboard(List<String> sortedScores) {
+		for(int i = 0; i < sortedScores.size() && i <15 ; i++) { 
+			String[] leaderboardData = sortedScores.get(i).split(" ");   
 			int score = (Integer.parseInt(leaderboardData[0]));  
 			String name = leaderboardData[1];
 			String topic = leaderboardData[2];
@@ -66,8 +90,12 @@ public class LeaderboardController implements Initializable{
 	    }
 	}
 	
+	
+	/**
+	 * This function allows the user to clear the leaderboard on confirmation
+	 * @param event - button click on clear leaderboard
+	 */
 	public void clearLeaderboard(ActionEvent event) {
-		
 		Alert alert= new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Clear Leaderboard");
 		alert.setHeaderText("Are you sure you want to clear the leaderboard?");
@@ -91,6 +119,11 @@ public class LeaderboardController implements Initializable{
 		
 	}
 	
+	
+	/**
+	 * This function allows the user to return to the main menu
+	 * @param event - button click on back to menu
+	 */
 	public void toOpeningMenu(ActionEvent event){		
 		SwitchScene switchToMenu = new SwitchScene("/scenes/Opening.fxml",event);
 		switchToMenu.SetTitle("Kēmu Kupu: Menu");
