@@ -28,7 +28,7 @@ public class TimerBackgroundTask extends Task<Object> {
 			while ((line = stdout.readLine()) != null ) {
 				updateMessage(line);
 			}	
-			updateMessage("Times up!!");
+			updateMessage("no time bonus to be awarded");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

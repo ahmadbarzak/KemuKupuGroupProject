@@ -24,7 +24,7 @@
             <Font name="Monospaced Bold" size="45.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-100.0" />
+            <Insets bottom="-100.0" />
          </GridPane.margin>
       </Button>
       <Button fx:id="returnButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
@@ -40,7 +40,7 @@
             <Font name="Monospaced Bold" size="45.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="-100.0" />
+            <Insets top="-100.0" />
          </GridPane.margin>
       </Button>
    </children>

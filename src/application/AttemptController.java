@@ -16,10 +16,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 
 
@@ -96,7 +98,7 @@ public class AttemptController extends QuizController implements Initializable{
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 				String time = timerTask.getMessage();
-				timer.setText("Time: "+ time);
+				timer.setText("time bonus: "+ time);
 			}
 
 		});
@@ -113,7 +115,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * This function converts the current test word to dashes
 	 * @return dashedWord - string of dashes
 	 */
-	public String getDashed(){
+	public String getDashed(){		
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		ScriptCall getTestWord = new ScriptCall(command);
 		String testWord = getTestWord.getStdOut();
@@ -186,16 +188,25 @@ public class AttemptController extends QuizController implements Initializable{
 
 	/**
 	 * This function submits the spelling from the text field
+	 * Error checks for empty or blank spelling attempts
 	 * @param event - button click
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
-		String attempt = wordAttempt.getText();
+		if(wordAttempt.getText().isEmpty() || wordAttempt.getText().isBlank()){
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Empty attempt");
+			alert.setHeaderText("You didn't enter a spelling attempt.\n\nTo skip this word, press skip, otherwise, give it your best shot!");
+			alert.setContentText("Press OK to re-enter an attempt");
+			alert.showAndWait();
+		} else {
+			String attempt = wordAttempt.getText();
 
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
-		ScriptCall checkWord = new ScriptCall(command);
-		String correctStatus = checkWord.getStdOut();
-		
-		determineOutcomeScreen(event,correctStatus);
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
+			ScriptCall checkWord = new ScriptCall(command);
+			String correctStatus = checkWord.getStdOut();
+			
+			determineOutcomeScreen(event,correctStatus);
+		}
 	}
 
 
