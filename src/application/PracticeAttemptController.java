@@ -35,7 +35,7 @@ public class PracticeAttemptController extends AttemptController {
 		setProgressLabels();
 		showDashed(getDashed());
 		styleButtons();
-		//wordPlayer.fire();
+		wordPlayer.fire();
 
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override

@@ -22,14 +22,22 @@ public class OpeningMenuController implements Initializable {
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		styleButtons();
+	}
+
+
+	/**
+	 * This function adds an on-hover effect to the buttons
+	 */
+	public void styleButtons() {
 		HoverEffects.addHoverEffects(test, "DarkOrange", "Black");
 		HoverEffects.addHoverEffects(practice, "DarkOrange", "Black");
 		HoverEffects.addHoverEffects(leaderBoard, "DarkOrange", "Black");
 		HoverEffects.addHoverEffects(help, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(quit, "Red", "Black");
 	}
-
-
+	
+	
 	/**
 	 * This function gets the quiz type from the respective button click, and then switches to topic selection scene
 	 * @param event - button click on quiz button

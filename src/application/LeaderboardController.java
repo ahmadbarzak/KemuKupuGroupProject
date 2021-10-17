@@ -30,16 +30,25 @@ public class LeaderboardController implements Initializable{
 
 	private List<String> leaderboard;
 
+	
 	/**
 	 * This function initializes the leaderboard on scene entry or on reload (when leaderboard cleared)
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		HoverEffects.addHoverEffects(menuButton, "Red", "Black");
-		HoverEffects.addHoverEffects(clearButton, "Red", "Black");
+		styleButtons();
 		leaderboard=orderScores(getScores());
 		populateLeaderboard(leaderboard);
 	}	
+	
+	
+	/**
+	 * This function adds an on-hover effect to the buttons
+	 */
+	public void styleButtons() {
+		HoverEffects.addHoverEffects(menuButton, "Red", "Black");
+		HoverEffects.addHoverEffects(clearButton, "Red", "Black");
+	}
 
 
 	/**

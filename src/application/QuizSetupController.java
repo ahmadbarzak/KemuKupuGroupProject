@@ -18,6 +18,14 @@ public class QuizSetupController extends QuizController implements Initializable
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		styleButtons();
+	}
+	
+	
+	/**
+	 * This function adds an on-hover effect to the buttons
+	 */
+	public void styleButtons() {
 		HoverEffects.addHoverEffects(beginButton, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(returnButton, "Red", "Black");
 		HoverEffects.addHoverEffects(helpButton, "DarkOrange", "Black");

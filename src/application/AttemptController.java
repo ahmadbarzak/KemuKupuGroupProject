@@ -43,12 +43,13 @@ public class AttemptController extends QuizController implements Initializable{
 		setWordAttempt((getWordAttempt()+1));
 
 		styleButtons();
-		//wordPlayer.fire();
 		setProgressLabels();
 		score.setText("current score: "+Integer.toString(getCurrentScore()));
 		showDashed(getDashed());
+		
+		wordPlayer.fire();
 		runTimer();
-
+		
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
@@ -56,6 +57,20 @@ public class AttemptController extends QuizController implements Initializable{
 			}
 		});
 
+	}
+	
+	
+	/**
+	 * This function adds an on-hover effect to the buttons
+	 */
+	public void styleButtons() {
+		HoverEffects.addHoverEffects(submitButton, "LawnGreen", "Black");
+		HoverEffects.addHoverEffects(dontKnow, "Red", "Black");
+		HoverEffects.addHoverEffects(exitButton, "Red", "Black");
+		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
+		for (int i = 0; i < 10; i ++) {
+			HoverEffects.addHoverEffects(macrons[i], "Black", "White");
+		}
 	}
 
 
@@ -183,7 +198,12 @@ public class AttemptController extends QuizController implements Initializable{
 
 
 
-	// Change scoring!!
+	/**
+	 * This function determines the score bonus and then switches to appropriate screen
+	 * @param event - button click
+	 * @param correctStatus - string of "1"=(correct first attempt) "2"=(incorrect first attempt) 
+	 * "3"=(correct second attempt) "4"=(incorrect second attempt)
+	 */
 	public void determineOutcomeScreen(ActionEvent event, String correctStatus) throws IOException {
 		if(getQuizType().equals("test")) {
 			updateScore(correctStatus, getTimeBonus());
@@ -243,20 +263,4 @@ public class AttemptController extends QuizController implements Initializable{
 		}
 	}
 
-	
-	
-	public void styleButtons() {
-		HoverEffects.addHoverEffects(submitButton, "LawnGreen", "Black");
-		HoverEffects.addHoverEffects(dontKnow, "Red", "Black");
-		HoverEffects.addHoverEffects(exitButton, "Red", "Black");
-		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
-		for (int i = 0; i < 10; i ++) {
-			HoverEffects.addHoverEffects(macrons[i], "Black", "White");
-		}
-	}
-
-//	public static void addHoverEffects(Button button, String backgroundColour, String textColour) {
-//	    button.setOnMouseEntered(e -> button.setStyle("-fx-background-color:" + backgroundColour + "; -fx-text-fill: " + textColour + ";"));
-//	    button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #ebe5d9; -fx-text-fill: #5b88bf;"));
-//	}
 }
