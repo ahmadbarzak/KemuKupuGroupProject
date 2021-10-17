@@ -18,9 +18,9 @@ public class QuizSetupController extends QuizController implements Initializable
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		AttemptController.addHoverEffects(beginButton, "LawnGreen", "Black");
-		AttemptController.addHoverEffects(returnButton, "Red", "Black");
-		AttemptController.addHoverEffects(helpButton, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(beginButton, "LawnGreen", "Black");
+		HoverEffects.addHoverEffects(returnButton, "Red", "Black");
+		HoverEffects.addHoverEffects(helpButton, "DarkOrange", "Black");
 	}
 
 

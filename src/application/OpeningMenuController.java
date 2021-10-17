@@ -22,11 +22,11 @@ public class OpeningMenuController implements Initializable {
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		AttemptController.addHoverEffects(test, "DarkOrange", "Black");
-		AttemptController.addHoverEffects(practice, "DarkOrange", "Black");
-		AttemptController.addHoverEffects(leaderBoard, "DarkOrange", "Black");
-		AttemptController.addHoverEffects(help, "LawnGreen", "Black");
-		AttemptController.addHoverEffects(quit, "Red", "Black");
+		HoverEffects.addHoverEffects(test, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(practice, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(leaderBoard, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(help, "LawnGreen", "Black");
+		HoverEffects.addHoverEffects(quit, "Red", "Black");
 	}
 
 

@@ -47,10 +47,10 @@ public class RewardController extends QuizController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore())+"/200");
-		AttemptController.addHoverEffects(menu, "Red", "Black");
-		AttemptController.addHoverEffects(playAgain, "DarkOrange", "Black");
-		AttemptController.addHoverEffects(gamesModule, "LawnGreen", "Black");
-		AttemptController.addHoverEffects(saveScore, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(menu, "Red", "Black");
+		HoverEffects.addHoverEffects(playAgain, "DarkOrange", "Black");
+		HoverEffects.addHoverEffects(gamesModule, "LawnGreen", "Black");
+		HoverEffects.addHoverEffects(saveScore, "DarkOrange", "Black");
 		initImageViews();
 		populateWordOutcomeTable();
 	}

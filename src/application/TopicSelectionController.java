@@ -31,12 +31,12 @@ public class TopicSelectionController implements Initializable {
 		Button[] orangeButtons = {colours, days2, months1, weather, feelings, software};
 		Button[] greenButtons = {days1, babies, months2, compass, work, uni, engineering};
 		for(int i = 0; i < orangeButtons.length; i++) {
-			AttemptController.addHoverEffects(orangeButtons[i], "DarkOrange", "Black");
+			HoverEffects.addHoverEffects(orangeButtons[i], "DarkOrange", "Black");
 		}
 		for(int i = 0; i < greenButtons.length; i++) {
-			AttemptController.addHoverEffects(greenButtons[i], "LawnGreen", "Black");
+			HoverEffects.addHoverEffects(greenButtons[i], "LawnGreen", "Black");
 		}
-		AttemptController.addHoverEffects(back, "Red", "Black");
+		HoverEffects.addHoverEffects(back, "Red", "Black");
 	}
 
 	public void getTopic(ActionEvent event) throws IOException{

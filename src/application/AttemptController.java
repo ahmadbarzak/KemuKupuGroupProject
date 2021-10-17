@@ -246,17 +246,17 @@ public class AttemptController extends QuizController implements Initializable{
 	
 	
 	public void styleButtons() {
-		addHoverEffects(submitButton, "LawnGreen", "Black");
-		addHoverEffects(dontKnow, "Red", "Black");
-		addHoverEffects(exitButton, "Red", "Black");
+		HoverEffects.addHoverEffects(submitButton, "LawnGreen", "Black");
+		HoverEffects.addHoverEffects(dontKnow, "Red", "Black");
+		HoverEffects.addHoverEffects(exitButton, "Red", "Black");
 		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
 		for (int i = 0; i < 10; i ++) {
-			addHoverEffects(macrons[i], "Black", "White");
+			HoverEffects.addHoverEffects(macrons[i], "Black", "White");
 		}
 	}
 
-	public static void addHoverEffects(Button button, String backgroundColour, String textColour) {
-	    button.setOnMouseEntered(e -> button.setStyle("-fx-background-color:" + backgroundColour + "; -fx-text-fill: " + textColour + ";"));
-	    button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #ebe5d9; -fx-text-fill: #5b88bf;"));
-	}
+//	public static void addHoverEffects(Button button, String backgroundColour, String textColour) {
+//	    button.setOnMouseEntered(e -> button.setStyle("-fx-background-color:" + backgroundColour + "; -fx-text-fill: " + textColour + ";"));
+//	    button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #ebe5d9; -fx-text-fill: #5b88bf;"));
+//	}
 }
