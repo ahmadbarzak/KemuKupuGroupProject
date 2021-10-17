@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * This class controls the process for switching scenes
+ */
+
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

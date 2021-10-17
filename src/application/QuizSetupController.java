@@ -17,6 +17,9 @@ public class QuizSetupController extends QuizController implements Initializable
 	@FXML Button beginButton, returnButton, helpButton;
 
 
+	/**
+	 * This function initializes buttons and allows them to have a hover effect
+	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		styleButtons();
 	}
@@ -69,11 +72,20 @@ public class QuizSetupController extends QuizController implements Initializable
 		return maxWords;
 	}
 
+	
+	/**
+	 * This function gives the user a dialog alert with basic instructions on how to play
+	 * @param event - button click on help button
+	 */
 	public void quickHelp(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
+		
+		alert.getDialogPane().setMinWidth(650);
+		
 		alert.setTitle("Quick Test Help");
 		alert.setHeaderText("Pre-test Help");
-		alert.setContentText("To complete a Kēmu Kupu test, press begin quiz to hear the first word.\n"
+		alert.setContentText(
+				"To complete a Kēmu Kupu test, press begin quiz to hear the first word.\n"
 				+ "Enter the spelling of the played word in the text box, or press on the speaker to replay the word.\n"
 				+ "You can adjust the speed of the speech by moving the slider and pressing on the speaker.\n"
 				+ "Once you have entered your spelling, press enter or submit to check.\n"

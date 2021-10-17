@@ -25,12 +25,9 @@ public class QuizController{
 	private Scene scene;
 	private Parent root;
 
-	private static int maxNumWords; 	// Number of words to be tested
-	private static int wordProgress; 	// Current word number
-	private static int wordAttempt; 	// Current attempt number
-	private static int currentScore; 	// Current score
-	private static String topic;
-	private static String quizType;
+	private static int maxNumWords, wordProgress, wordAttempt, currentScore;
+	private static String topic, quizType;
+	
 	@FXML Button playAgain, gamesModule, mainMenu;
 
 
@@ -52,6 +49,7 @@ public class QuizController{
 		}
 	}
 
+	
 	// Functions to switch to other quiz GUI screens
 	public void toCorrect(ActionEvent event){
 		SwitchScene switchToCorrect = new SwitchScene("/scenes/Correct.fxml",event);
@@ -77,6 +75,7 @@ public class QuizController{
 		stage.show();
 	}
 
+	
 	/** This function retrieves the current test word to display on incorrect screen
 	 * @param loader - scene to show test word on
 	 * @return root - root node to load

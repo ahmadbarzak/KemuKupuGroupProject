@@ -39,7 +39,7 @@
             <Insets top="-130.0" />
          </GridPane.margin>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toNext" prefHeight="75.0" prefWidth="220.0" style="-fx-background-color: #ebe5d9;" text="next" textFill="#9b3d3d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="nextButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toNext" prefHeight="75.0" prefWidth="220.0" style="-fx-background-color: #ebe5d9;" text="next" textFill="#9b3d3d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -70,7 +70,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#9b3d3d" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="exitButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#9b3d3d" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>

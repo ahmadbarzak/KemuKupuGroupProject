@@ -42,6 +42,7 @@ public class AttemptController extends QuizController implements Initializable{
 		speed=1;
 		setWordAttempt((getWordAttempt()+1));
 
+		// FXML initialization
 		styleButtons();
 		setProgressLabels();
 		score.setText("current score: "+Integer.toString(getCurrentScore()));
@@ -50,6 +51,7 @@ public class AttemptController extends QuizController implements Initializable{
 		wordPlayer.fire();
 		runTimer();
 		
+		// Slider for speed of synthesis
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
@@ -68,6 +70,7 @@ public class AttemptController extends QuizController implements Initializable{
 		HoverEffects.addHoverEffects(dontKnow, "Red", "Black");
 		HoverEffects.addHoverEffects(exitButton, "Red", "Black");
 		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
+		
 		for (int i = 0; i < 10; i ++) {
 			HoverEffects.addHoverEffects(macrons[i], "Black", "White");
 		}
@@ -196,8 +199,6 @@ public class AttemptController extends QuizController implements Initializable{
 	}
 
 
-
-
 	/**
 	 * This function determines the score bonus and then switches to appropriate screen
 	 * @param event - button click
@@ -222,7 +223,7 @@ public class AttemptController extends QuizController implements Initializable{
 	
 
 	/**
-	 *  This function performs submit functionality when enter key is pressed
+	 * This function performs submit functionality when enter key is pressed
 	 * @param event - enter key press
 	 * **/
 	public void submitOnEnter(KeyEvent key) {

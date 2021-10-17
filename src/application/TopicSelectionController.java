@@ -21,6 +21,10 @@ public class TopicSelectionController implements Initializable {
 	@FXML Button days1, babies, months2, compass, work, uni, engineering;
 	@FXML Button back;
 
+	
+	/**
+	 * This function allows the buttons to have a hover effect
+	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		styleButtons();
 	}

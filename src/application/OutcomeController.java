@@ -9,8 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+
 public class OutcomeController extends QuizController{
 	@FXML private Label correctSpelling;
+	
 	
 	/**
 	 * This function switches screen from outcome to next word or reward screen depending on progress
@@ -30,7 +32,7 @@ public class OutcomeController extends QuizController{
 	
 	
 	/**
-	 * This function allows user to have second attempt at word
+	 * This function allows user to have second attempt at word if they got it incorrect the first go
 	 * Applies to FirstIncorrect.fxml
 	 * @param event - button click
 	 */

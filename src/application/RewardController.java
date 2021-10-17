@@ -48,6 +48,7 @@ public class RewardController extends QuizController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		gameScore.setText(Integer.toString(getCurrentScore())+"/200");
 		styleButtons();
+		
 		initImageViews();
 		populateWordOutcomeTable();
 	}
@@ -145,6 +146,7 @@ public class RewardController extends QuizController implements Initializable{
 
 	/**
 	 * This function retrieves a name that the user wants to save their score under
+	 * Ensures the name is less than 11 characters and contains no spaces
 	 * @return name - string containing the name user entered
 	 */
 	public String getUserName() {

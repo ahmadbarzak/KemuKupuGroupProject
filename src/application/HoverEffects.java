@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * This class controls the process for adding a hover effect to buttons
+ */
+
 import javafx.scene.control.Button;
 
 public class HoverEffects {

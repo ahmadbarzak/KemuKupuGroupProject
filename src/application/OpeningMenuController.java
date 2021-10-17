@@ -20,7 +20,10 @@ import javafx.stage.Stage;
 public class OpeningMenuController implements Initializable {
 	@FXML private Button test, practice, leaderBoard, help, quit;
 
-
+	
+	/**
+	 * This function initializes buttons and allows them to have a hover effect
+	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		styleButtons();
 	}

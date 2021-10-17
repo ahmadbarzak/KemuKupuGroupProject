@@ -27,14 +27,20 @@ public class PracticeAttemptController extends AttemptController {
 	@FXML Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
 	private double speed;
 
+	
+	/**
+	 * This function initializes the progress labels when reloaded and updates playback speed when slider is changed
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
 		setWordAttempt((getWordAttempt()+1));
-
+		
+		// FXML initialization
 		setProgressLabels();
 		showDashed(getDashed());
 		styleButtons();
+		
 		wordPlayer.fire();
 
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {

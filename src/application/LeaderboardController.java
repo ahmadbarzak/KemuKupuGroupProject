@@ -1,8 +1,8 @@
 package application;
 
 /**
- * This class is the controller class for the leaderboard screen
- * Allows user to view top 15 scores and clear leaderboard on confirmation
+ * This class is the controller class for the leader board screen
+ * Allows user to view top 15 scores and clear leader board on confirmation
  * Controls Leaderboard.fxml
  */
 
@@ -32,7 +32,7 @@ public class LeaderboardController implements Initializable{
 
 	
 	/**
-	 * This function initializes the leaderboard on scene entry or on reload (when leaderboard cleared)
+	 * This function initializes the leader board on scene entry or on reload (eg when leader board cleared)
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -57,6 +57,7 @@ public class LeaderboardController implements Initializable{
 	 */
 	public List<String> getScores(){
 		List<String> scores= new ArrayList<String>();
+		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("src/script/leaderboard"));
 			String nextLine;

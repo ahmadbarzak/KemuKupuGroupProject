@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * This class controls the process for calling the BASH script
+ */
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
