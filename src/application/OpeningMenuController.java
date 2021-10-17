@@ -28,7 +28,7 @@ public class OpeningMenuController implements Initializable {
 	private Scene scene;
 	private Parent root;
 	
-	@FXML private Button test, practise, leaderBoard, help, quit;
+	@FXML private Button test, practice, leaderBoard, help, quit;
 	
 	/**
 	 * This function gets the quiz type from the respective button click, and then switches to topic selection scene
@@ -37,7 +37,7 @@ public class OpeningMenuController implements Initializable {
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		AttemptController.addHoverEffects(test, "DarkOrange", "Black");
-		AttemptController.addHoverEffects(practise, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(practice, "DarkOrange", "Black");
 		AttemptController.addHoverEffects(leaderBoard, "DarkOrange", "Black");
 		AttemptController.addHoverEffects(help, "LawnGreen", "Black");
 		AttemptController.addHoverEffects(quit, "Red", "Black");

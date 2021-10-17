@@ -29,7 +29,7 @@
             <Insets />
          </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Button fx:id="mainMenu" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="40.0" />
          </font>
@@ -45,7 +45,7 @@
             <Insets bottom="-25.0" right="175.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="practice again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="playAgain" mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="practice again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="40.0" />
          </font>
@@ -61,7 +61,7 @@
             <Insets bottom="-25.0" left="175.0" />
          </GridPane.margin>
       </Label>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="gamesModule" maxWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ebe5d9;" text="change topic" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Monospaced Bold" size="40.0" />
          </font>

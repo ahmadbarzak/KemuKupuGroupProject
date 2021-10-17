@@ -7,6 +7,7 @@ package application;
  */
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,12 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class QuizController {	
+
+public class QuizController{	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -30,7 +33,8 @@ public class QuizController {
 	private static int currentScore; 	// Current score
 	private static String topic;
 	private static String quizType;
-	
+	@FXML Button playAgain, gamesModule, mainMenu;
+
 	
 	public void exitQuiz(ActionEvent event) {
 		Alert alert= new Alert(AlertType.CONFIRMATION);
@@ -233,6 +237,6 @@ public class QuizController {
 		}
 		
 		return scriptStdOut;
-	}
+	}	
 	
 }	

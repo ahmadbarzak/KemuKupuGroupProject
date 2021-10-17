@@ -4,11 +4,9 @@ import javafx.concurrent.Task;
 public class BackgroundTaskTwo extends Task<Object> {
 	//This class controls the process for the count down timer
 	double speed;
-	int isCancelledValue;
 	
-	public BackgroundTaskTwo(double speed, int isCancelledValue) {
+	public BackgroundTaskTwo(double speed) {
 		this.speed = speed;
-		this.isCancelledValue = isCancelledValue;
 	}
 	
 	@Override
@@ -34,15 +32,6 @@ public class BackgroundTaskTwo extends Task<Object> {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	public boolean isCancelled() {
-		if(isCancelledValue == 1) {
-			return true;
-		}
-		else {
-			return false;
-		}
 	}
 
 }

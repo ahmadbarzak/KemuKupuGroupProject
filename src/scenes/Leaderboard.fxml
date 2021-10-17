@@ -27,7 +27,7 @@
             <Font name="Monospaced Bold" size="75.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="menuButton" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -35,7 +35,7 @@
             <Insets right="-100.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#clearLeaderboard" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="clear scores" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearLeaderboard" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="clear scores" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>

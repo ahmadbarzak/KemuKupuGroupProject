@@ -20,12 +20,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class LeaderboardController implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	@FXML Button menuButton, clearButton;
 	
 	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
 	private List<String> leaderboard;
@@ -38,6 +41,8 @@ public class LeaderboardController implements Initializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		AttemptController.addHoverEffects(menuButton, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(clearButton, "Red", "Black");
 		orderScores();
 		populateLeaderboard();
 	}	

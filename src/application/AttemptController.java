@@ -9,37 +9,28 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.ColorInput;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	@FXML Button submitButton, wordPlayer, dontKnow, exitButton, beginButton, returnButton;
+	@FXML Button submitButton, wordPlayer, dontKnow, exitButton;
 	@FXML Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
 	static double speed;
 	int Seconds = 10;
 	int ScoreBonus = 20;
-	int isCancelledValue = 0;
 	/**
 	 * This function sets the word attempt and progress labels in the scene each time it is loaded
 	 */
@@ -118,16 +109,9 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click on speaker
 	 */
 	public void playWord(ActionEvent event) throws IOException{
-		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed, isCancelledValue);
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
-		if (isCancelledValue == 1) {
-			cancel(bGTaskTwo);
-		}
-	}
-
-	public void cancel(BackgroundTaskTwo bGTaskTwo) {
-		bGTaskTwo.isCancelledValue = 1;
 	}
 
 	/**
@@ -137,7 +121,6 @@ public class AttemptController extends QuizController implements Initializable{
 	public void dontKnow(ActionEvent event) throws IOException{	
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "writeSkipped",Integer.toString(getWordProgress()),Integer.toString(getWordAttempt())};
 		callScriptCase(command);
-		isCancelledValue = 1;
 		toSecondIncorrect(event);	
 	}
 
@@ -150,7 +133,6 @@ public class AttemptController extends QuizController implements Initializable{
 
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "wordCheck", Integer.toString(getWordProgress()), Integer.toString(getWordAttempt()), attempt};
 		String correctStatus=getScriptStdOut(command);		
-		isCancelledValue = 1;
 		determineOutcomeScreen(event,correctStatus);
 	}	
 
@@ -216,6 +198,4 @@ public class AttemptController extends QuizController implements Initializable{
 	    button.setOnMouseEntered(e -> button.setStyle("-fx-background-color:" + backgroundColour + "; -fx-text-fill: " + textColour + ";"));
 	    button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #ebe5d9; -fx-text-fill: #5b88bf;"));
 	}
-	
-	
 }

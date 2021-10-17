@@ -19,13 +19,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
-public class PracticeAttemptController extends AttemptController{
+public class PracticeAttemptController extends AttemptController {
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord; 
 	@FXML TextField wordAttempt;
 	@FXML Slider playbackSpeed;
-	@FXML Button submitButton, wordPlayer;
+	@FXML Button submitButton, wordPlayer, dontKnow, exitButton;
+	@FXML Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
 	double speed;
-	int isCancelled = 0;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -34,6 +34,7 @@ public class PracticeAttemptController extends AttemptController{
 		setWordAttempt((getWordAttempt()+1));
 		attemptNum.setText("attempt "+Integer.toString(getWordAttempt())+" of 2");
 		wordProgress.setText("play word "+Integer.toString(getWordProgress())+" of "+Integer.toString(getMaxNumWords()));
+		styleButtons();
 		wordPlayer.fire();
 		
 		String dashedCurrentWord = getDashed();
@@ -56,7 +57,7 @@ public class PracticeAttemptController extends AttemptController{
 	
 	@Override
 	public void playWord(ActionEvent event) throws IOException{
-		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed, isCancelled);
+		BackgroundTaskTwo bGTaskTwo = new BackgroundTaskTwo(speed);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
 	}

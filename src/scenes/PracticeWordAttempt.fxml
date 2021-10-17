@@ -37,7 +37,7 @@
             <Insets bottom="-60.0" />
          </GridPane.margin>
       </Button>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dontKnow" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="skip" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="dontKnow" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dontKnow" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #ebe5d9;" text="skip" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -97,7 +97,7 @@
             <Insets bottom="25.0" left="-300.0" right="-300.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>
@@ -121,7 +121,7 @@
             <Insets top="30.0" />
          </GridPane.margin>
       </Label>
-            <Button fx:id="macronā" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ā" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Button fx:id="ā" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ā" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -129,7 +129,7 @@
             <Insets left="40.0" top="310.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronē" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ē" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="ē" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ē" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -137,7 +137,7 @@
             <Insets left="40.0" top="470.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronī" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ī" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="ī" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ī" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -145,7 +145,7 @@
             <Insets left="40.0" top="630.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronō" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ō" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="ō" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ō" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -153,7 +153,7 @@
             <Insets left="120.0" top="395.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronū" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ū" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="ū" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="ū" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -161,7 +161,7 @@
             <Insets left="120.0" top="555.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronĀ" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ā" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button fx:id="Ā" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ā" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -169,7 +169,7 @@
             <Insets right="40.0" top="310.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronĒ" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ē" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button fx:id="Ē" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ē" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -177,7 +177,7 @@
             <Insets right="40.0" top="470.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronĪ" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ī" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button fx:id="Ī" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ī" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -185,7 +185,7 @@
             <Insets right="40.0" top="630.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronŌ" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ō" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button fx:id="Ō" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ō" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -193,7 +193,7 @@
             <Insets right="120.0" top="395.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="macronŪ" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ū" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button fx:id="Ū" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #ebe5d9;" onAction="#insertMacron" text="Ū" textFill="#5b88bf" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
