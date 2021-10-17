@@ -66,17 +66,6 @@ public class OpeningMenuController implements Initializable {
 
 
 	/**
-	 * This function switches to the opening menu
-	 * @param event - button click on opening menu button
-	 */
-	public void toOpeningMenu(ActionEvent event){
-		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/OpeningMenu.fxml",event);
-		switchToLeaderboard.setWindowTitle("Kēmu Kupu: Menu");
-		switchToLeaderboard.switchTo();
-	}
-
-
-	/**
 	 * This function switches to a help screen
 	 * @param event - button click on help menu
 	 */

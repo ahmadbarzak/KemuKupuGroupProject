@@ -14,12 +14,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class QuizSetupController extends QuizController implements Initializable{
-	@FXML Button beginButton, returnButton;
+	@FXML Button beginButton, returnButton, helpButton;
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		AttemptController.addHoverEffects(beginButton, "DarkOrange", "Black");
+		AttemptController.addHoverEffects(beginButton, "LawnGreen", "Black");
 		AttemptController.addHoverEffects(returnButton, "Red", "Black");
+		AttemptController.addHoverEffects(helpButton, "DarkOrange", "Black");
 	}
 
 
