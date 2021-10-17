@@ -53,17 +53,26 @@ public class OpeningMenuController {
 	
 	
 	/**
-	 * This function shows a help dialog box
-	 * @param event - button click on help button
+	 * This function switches to the opening menu
+	 * @param event - button click on opening menu button
+	 */
+	public void toOpeningMenu(ActionEvent event){	
+		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/OpeningMenu.fxml",event);
+		switchToLeaderboard.setWindowTitle("Kēmu Kupu: Menu");
+		switchToLeaderboard.switchTo();
+	}
+	
+	
+	/**
+	 * This function switches to a help screen
+	 * @param event - button click on help menu
 	 */
 	public void help(ActionEvent event){
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Kēmu Kupu Help");
-		alert.setHeaderText("Kēmu Kupu Help");
-		String s ="Click on test to quiz yourself on 5 māori words\n";
-		alert.setContentText(s);
-		alert.show();
+		SwitchScene switchToLeaderboard = new SwitchScene("/scenes/Help.fxml",event);
+		switchToLeaderboard.setWindowTitle("Kēmu Kupu: Help");
+		switchToLeaderboard.switchTo();
 	}
+	
 	
 	/**
 	 * This function quits the application on confirmation
