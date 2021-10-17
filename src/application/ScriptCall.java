@@ -10,10 +10,19 @@ import java.io.InputStreamReader;
 public class ScriptCall {
 	private String[] command;
 	
+	
+	/**
+	 * This is the constructor method for ScriptCall which sets the command to be run 
+	 * @param command - string array containing the command to be started
+	 */
 	public ScriptCall(String[] command) {
 		this.command=command;
 	}
 	
+	
+	/**
+	 * This function begins the command
+	 */
 	public void startProcess() {
 		try {
 			ProcessBuilder pb = new ProcessBuilder();
@@ -25,6 +34,11 @@ public class ScriptCall {
 		}
 	}
 		
+	
+	/**
+	 * This function obtains the standard output from the bash file
+	 * @return scriptStdOut - immediate standard output from script
+	 */
 	public String getStdOut() {
 		String scriptStdOut="";
 		try {
