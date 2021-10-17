@@ -16,10 +16,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TopicSelectionController implements Initializable {		
+	@FXML private Button colours, days2, months1, weather, feelings, software;
+	@FXML private Button days1, babies, months2, compass, work, uni, engineering;
+	@FXML private Button back;
+	
 	private String topic;
-	@FXML Button colours, days2, months1, weather, feelings, software;
-	@FXML Button days1, babies, months2, compass, work, uni, engineering;
-	@FXML Button back;
 
 	
 	/**

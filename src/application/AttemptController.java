@@ -25,10 +25,10 @@ import javafx.scene.input.KeyEvent;
 
 public class AttemptController extends QuizController implements Initializable{
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord;
-	@FXML TextField wordAttempt;
-	@FXML Slider playbackSpeed;
-	@FXML Button submitButton, wordPlayer, dontKnow, exitButton;
-	@FXML Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
+	@FXML private TextField wordAttempt;
+	@FXML private Slider playbackSpeed;
+	@FXML private Button submitButton, wordPlayer, dontKnow, exitButton;
+	@FXML private Button ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū;
 	
 	private int SCORE_BONUS = 20;
 	private double speed;

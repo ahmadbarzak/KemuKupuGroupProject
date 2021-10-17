@@ -14,7 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class QuizSetupController extends QuizController implements Initializable{
-	@FXML Button beginButton, returnButton, helpButton;
+	@FXML private Button beginButton, returnButton, helpButton;
 
 
 	/**

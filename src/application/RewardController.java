@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 public class RewardController extends QuizController implements Initializable{
 	@FXML private Label gameScore;
 	@FXML private TextArea firstAttempt,secondAttempt,actual;
-	@FXML Button menu, playAgain, gamesModule, saveScore;
+	@FXML private Button menu, playAgain, gamesModule, saveScore;
 	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 
 	ArrayList<ImageView> resultSymbol;
