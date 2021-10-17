@@ -25,7 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class LeaderboardController implements Initializable{
-	@FXML Button menuButton, clearButton;
+	@FXML private Button menuButton, clearButton;
 	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
 
 	private List<String> leaderboard;

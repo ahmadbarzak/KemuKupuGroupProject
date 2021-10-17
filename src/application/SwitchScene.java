@@ -27,18 +27,19 @@ public class SwitchScene {
 		}
 	}
 	
+	
+	/**
+	 * This function sets the window title of the next scene
+	 * @param title - string containing desired title
+	 */
 	public void setWindowTitle(String title) {
 		stage.setTitle(title);
 	}
-
-	public Parent getRoot() {
-		return root;
-	}
-
-	public void setRoot(Parent root) {
-		this.root = root;
-	}
-
+	
+	
+	/**
+	 * This function switches the screen once all initialisations have occured
+	 */
 	public void switchTo() {
 		stage.setScene(scene);
 		stage.show();
