@@ -2,7 +2,7 @@ package application;
 
 /**
  * This class is the controller class for the reward screen
- * Allows user to see final score and pick whether to play again, pick a new topic, or go to opening menu
+ * Allows user to see final score and word outcomes, and pick whether to play again, pick a new topic, or go to opening menu
  * Controls RewardSceen.fxml, PracticeRewardScreen.fxml
  */
 
@@ -26,22 +26,23 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class RewardController extends QuizController implements Initializable{	
-
+public class RewardController extends QuizController implements Initializable{
 	@FXML private Label gameScore;
 	@FXML private TextArea firstAttempt,secondAttempt,actual;
 	@FXML Button menu, playAgain, gamesModule, saveScore;
 	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 
+	ArrayList<ImageView> resultSymbol;
 	Image correctImg = new Image("/scenes/fullstar.png");
 	Image halfCorrectImg = new Image("/scenes/halfstar.png");
 	Image skipImg = new Image("/scenes/skip.png");
 	Image wrongImg = new Image("/scenes/wrong.png");
 
-	ArrayList<ImageView> results = new ArrayList<>();	
-	int scoreSaved = 0;
+	private boolean scoreSaved = false;
+
+
 	/**
-	 * This function displays the users score
+	 * This function displays the users score, and particular word outcomes
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -50,37 +51,42 @@ public class RewardController extends QuizController implements Initializable{
 		AttemptController.addHoverEffects(playAgain, "DarkOrange", "Black");
 		AttemptController.addHoverEffects(gamesModule, "LawnGreen", "Black");
 		AttemptController.addHoverEffects(saveScore, "DarkOrange", "Black");
-		results.add(word1res);
-		results.add(word2res);
-		results.add(word3res);
-		results.add(word4res);
-		results.add(word5res);
+		initImageViews();
+		populateWordOutcomeTable();
+	}
 
-		try
-		{
+
+	/**
+	 * This function initializes the resultSymbol imageview array
+	 */
+	public void initImageViews() {
+		resultSymbol = new ArrayList<>();
+		resultSymbol.add(word1res);
+		resultSymbol.add(word2res);
+		resultSymbol.add(word3res);
+		resultSymbol.add(word4res);
+		resultSymbol.add(word5res);
+	}
+
+
+	/**
+	 * This function fills in the text field with the users test words and their attempts
+	 */
+	public void populateWordOutcomeTable() {
+		try{
 			BufferedReader reader = new BufferedReader(new FileReader("src/script/results"));
 			String nextLine;
 			for(int i = 0; i<5 && ((nextLine = reader.readLine()) != null); i++) {
-				String[] data = nextLine.split(":");  
+				String[] data = nextLine.split(":");
+				String currentWord = data[0];
+				String currentAttempt1 = data[1];
+				String currentAttempt2 = data[2];
+				String currentSymbol = data[3];
 
-				String actualW = data[0];
-				String attempt1 = data[1];
-				String attempt2 = data[2];
-				String symbolW = data[3];
-
-				firstAttempt.appendText(attempt1+"\n\n");
-				secondAttempt.appendText(attempt2+"\n\n");
-				actual.appendText(actualW+"\n\n");
-
-				if(symbolW.equals("1")) {
-					results.get(i).setImage(correctImg);
-				} else if(symbolW.equals("2")) {
-					results.get(i).setImage(halfCorrectImg);
-				} else if(symbolW.equals("3")) {
-					results.get(i).setImage(wrongImg);
-				} else if(symbolW.equals("4")) {
-					results.get(i).setImage(skipImg);
-				}
+				firstAttempt.appendText(currentAttempt1+"\n\n");
+				secondAttempt.appendText(currentAttempt2+"\n\n");
+				actual.appendText(currentWord+"\n\n");
+				setSymbol(currentSymbol, i);
 			}
 			reader.close();
 		} catch (IOException e) {
@@ -88,35 +94,89 @@ public class RewardController extends QuizController implements Initializable{
 		}
 	}
 
+
+	/**
+	 * This function sets an appropriate symbol signifying correct on 1st go,
+	 * correct on 2nd go, incorrect, or skipped for a word
+	 * @param outcome - "1" for correct first go, "2" for correct second go, "3" for incorrect, "4" skip
+	 * @param wordNum - current word data being populated
+	 */
+	public void setSymbol(String outcome, int wordNum) {
+		if(outcome.equals("1")) {
+			resultSymbol.get(wordNum).setImage(correctImg);
+		} else if(outcome.equals("2")) {
+			resultSymbol.get(wordNum).setImage(halfCorrectImg);
+		} else if(outcome.equals("3")) {
+			resultSymbol.get(wordNum).setImage(wrongImg);
+		} else if(outcome.equals("4")) {
+			resultSymbol.get(wordNum).setImage(skipImg);
+		}
+	}
+
+
+	/**
+	 * This function allows a user to save their score if they would like
+	 * Only can save score once
+	 * @param event - button click on save score button
+	 */
 	public void saveScore(ActionEvent event){
-		if (scoreSaved == 1) {
+		if (scoreSaved) {
 			noDoubleSaves();
 			return;
 		}
-		String name = getUserName();
-		scoreSaved = 1;
-		int bashScore = (int)getCurrentScore();
 
-		String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(bashScore), getTopic()};
-		callScriptCase(command);
+		String name = getUserName();
+		if (name!=null) {
+			String[] command = new String[] {"src/script/quizFunctionality.sh", "saveScore", name, Integer.toString(getCurrentScore()), getTopic()};
+			ScriptCall saveScore = new ScriptCall(command);
+			saveScore.startProcess();
+			scoreSaved = true;
+		}
 	}
 
+
+	/**
+	 * This function retrieves a name that the user wants to save their score under
+	 * @return name - string containing the name user entered
+	 */
 	public String getUserName() {
+		String name = null;
 		TextInputDialog dialog = new TextInputDialog("Enter name");
 		dialog.setTitle("Save your test score");
-		dialog.setHeaderText("Enter the name you want to save your score under\nPlease only enter 10 characters, and use no spaces!");		
+		dialog.setHeaderText("Enter the name you want to save your score under\nPlease only enter 10 characters, and use no spaces!");
 
 		Optional<String> result = dialog.showAndWait();
 
-		while (result.get().length()>11 || result.get().length()==0 || result.get().contains(" ")) {
-			result = dialog.showAndWait();
+		if (result.isPresent()){
+			name=result.get();
 		}
 
-		String name=result.get();
+		if (name==null) {
+			return name;
+		} else if (name.length()>10 || name.length()==0 || name.contains(" ")) {
+			invalidNameAlert();
+			name=getUserName();
+		}
 
 		return name;
-	}	
+	}
 
+
+	/**
+	 * This function alerts the user if the name they entered is invalid
+	 */
+	public void invalidNameAlert() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Invalid Name Entry");
+		alert.setHeaderText("The name you entered was either empty, greater that 10 characters, or contained spaces!");
+		alert.setContentText("Press OK to re-enter a valid name");
+		alert.showAndWait();
+	}
+
+
+	/**
+	 * This function alerts the user if they have already saved their score
+	 */
 	public void noDoubleSaves() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Save your test score");
@@ -126,4 +186,4 @@ public class RewardController extends QuizController implements Initializable{
 	}
 
 
-}	
+}

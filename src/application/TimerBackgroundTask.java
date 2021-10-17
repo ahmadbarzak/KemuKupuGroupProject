@@ -1,13 +1,17 @@
 package application;
 
+/**
+ * This class controls the process for the count down timer
+ * Used in AttemptController and PracticeAttemptController 
+ */
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javafx.concurrent.Task;
 
-public class BackgroundTask extends Task<Object> {
-	//This class controls the process for the count down timer
+public class TimerBackgroundTask extends Task<Object> {
 	
 	@Override
 	protected Object call() throws Exception {

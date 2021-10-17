@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #c29156#c29156;" xmlns="http://javafx.com/javafx" xmlns:fx="getTopic://javafx.com/fxml" fx:controller="application.OutcomeController">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #c29156#c29156;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.OutcomeController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,25 +20,31 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#tryAgain" prefHeight="75.0" prefWidth="220.0" style="-fx-background-color: #ebe5d9;" text="try again" textFill="#c29156" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#tryAgain" prefHeight="75.0" prefWidth="220.0" style="-fx-background-color: #ebe5d9;" text="try again" textFill="#c29156" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
+         <GridPane.margin>
+            <Insets top="600.0" />
+         </GridPane.margin>
       </Button>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="incorrect" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="48.0" />
          </font>
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets top="75.0" />
          </GridPane.margin>
       </Text>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="kia mau!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="kia mau!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="150.0" />
          </font>
+         <GridPane.margin>
+            <Insets top="-130.0" />
+         </GridPane.margin>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#c29156" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitQuiz" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; exit" textFill="#c29156" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>
