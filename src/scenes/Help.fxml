@@ -29,7 +29,7 @@
             <Insets top="-600.0" />
          </GridPane.margin>
       </Text>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #ebe5d9;" text="back to menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="menuButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #ebe5d9;" text="back to menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="32.0" />
          </font>
@@ -37,7 +37,7 @@
             <Insets bottom="-600.0" />
          </GridPane.margin>
       </Button>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; menu" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="backButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; menu" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="24.0" />
          </font>
@@ -45,12 +45,12 @@
             <Insets left="20.0" top="20.0" />
          </GridPane.margin>
       </Button>
-      <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextArea fx:id="helpMessage" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="-95.0" left="-100.0" right="-100.0" top="-70.0" />
          </GridPane.margin>
          <font>
-            <Font name="Monospaced Regular" size="28.0" />
+            <Font name="Monospaced Bold" size="24.0" />
          </font>
       </TextArea>
    </children>
