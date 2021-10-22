@@ -253,9 +253,9 @@ public class AttemptController extends QuizController implements Initializable{
 
 		String[] timerStringSplitted = timer.getText().split(" ");
 		try {
-			timeScoreFactor = Integer.parseInt(timerStringSplitted[1]);
+			timeScoreFactor = Integer.parseInt(timerStringSplitted[2]);
 		} catch(Exception NumberFormatException) {
-			timeScoreFactor = 1;
+			timeScoreFactor = 0;
 		}
 
 		return timeScoreFactor;

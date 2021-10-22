@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 
 public class HelpController implements Initializable{
 	@FXML private TextArea helpMessage;
-	@FXML private Button backButton, menuButton;
+	@FXML private Button backButton;
 	
 	
 	/**
@@ -34,7 +34,6 @@ public class HelpController implements Initializable{
 	 * This function adds an on hover effect to the buttons
 	 */
 	public void styleButtons() {
-		HoverEffects.addHoverEffects(menuButton, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(backButton, "Red", "Black");
 	}
 	
