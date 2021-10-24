@@ -1,16 +1,15 @@
 package application;
 
-/**
- * This class is the controller class for the outcome screens
- * Controls Correct.fxml, FirstIncorrect.fxml, SecondIncorrect.fxml, PracticeSecondIncorrect.fxml
- */
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-
 public class OutcomeController extends QuizController{
+/**
+ * This class is the controller class for the outcome screens
+ * Controls Correct.fxml, FirstIncorrect.fxml, SecondIncorrect.fxml, PracticeSecondIncorrect.fxml
+ */	
+	
 	@FXML private Label correctSpelling;
 	
 	
@@ -20,10 +19,12 @@ public class OutcomeController extends QuizController{
 	 * @param event - button click
 	 */
 	public void toNext(ActionEvent event){
+		// Re-initializing progress and attempt variables
 		setWordProgress(getWordProgress()+1);
 		setWordAttempt(0);
 		
 		if (getWordProgress() > getMaxNumWords()) {
+			// End of test
 			toReward(event);
 		} else if (getWordProgress() <=getMaxNumWords()) {
 			toWordAttempt(event);
@@ -42,7 +43,7 @@ public class OutcomeController extends QuizController{
 	
 	
 	/**
-	 * This function allows user to hear pronunciation of word they got wrong
+	 * This function allows user to hear pronunciation of word they got wrong in practice module
 	 * Applies to SecondIncorrect.fxml
 	 * @param event - button click
 	 */
@@ -54,7 +55,7 @@ public class OutcomeController extends QuizController{
 	
 	
 	/**
-	 * This function allows user to see spelling of word they got wrong
+	 * This function allows user to see spelling of word they got wrong in practice module
 	 * Applies to SecondIncorrect.fxml
 	 * @param event - button click
 	 */

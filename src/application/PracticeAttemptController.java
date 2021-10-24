@@ -1,13 +1,5 @@
 package application;
 
-/**
- * This class is the controller class for the practice quiz attempt screen
- * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
- * Uses wordProgress, wordAttempt, currentScore from parent QuizController.java class to keep track of progress
- * Controls PracticeWordAttempt.fxml
- */
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +12,13 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 public class PracticeAttemptController extends AttemptController {
+/**
+ * This class is the controller class for the practice quiz attempt screen
+ * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
+ * Uses wordProgress, wordAttempt, currentScore from parent QuizController.java class to keep track of progress
+ * Controls PracticeWordAttempt.fxml
+ */
+	
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord;
 	@FXML private TextField wordAttempt;
 	@FXML private Slider playbackSpeed;

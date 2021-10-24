@@ -1,11 +1,5 @@
 package application;
 
-/**
- * This class is the controller class for the reward screen
- * Allows user to see final score and word outcomes, and pick whether to play again, pick a new topic, or go to opening menu
- * Controls RewardSceen.fxml, PracticeRewardScreen.fxml
- */
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +11,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,6 +20,12 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RewardController extends QuizController implements Initializable{
+/**
+ * This class is the controller class for the reward screen
+ * Allows user to see final score and word outcomes, and pick whether to play again, pick a new topic, or go to opening menu
+ * Controls RewardSceen.fxml
+ */	
+	
 	@FXML private Label gameScore;
 	@FXML private TextArea firstAttempt,secondAttempt,actual;
 	@FXML private Button menu, playAgain, gamesModule, saveScore;
@@ -42,7 +41,7 @@ public class RewardController extends QuizController implements Initializable{
 
 
 	/**
-	 * This function displays the users score, and particular word outcomes
+	 * This function displays the users score, and particular word outcomes, and allows for javaFX hover
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

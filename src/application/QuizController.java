@@ -1,11 +1,5 @@
 package application;
 
-/**
- * This class is contains game data variables, screen switching functions, and script call methods
- * Functions can be used in child classes
- * Is parent class to AttemptController.java, PracticeAttemptController.java, OutcomeController.java, RewardController.java
- */
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +13,13 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-
 public class QuizController{
+/**
+ * This class is contains game data variables, screen switching functions, and script call methods
+ * Functions can be used in child classes
+ * Is parent class to AttemptController.java, PracticeAttemptController.java, OutcomeController.java, RewardController.java
+ */
+
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -32,7 +31,7 @@ public class QuizController{
 
 
 	/**
-	 * This function allows the user to exit their current game on confirmation
+	 * This function allows the user to exit their current test on confirmation
 	 * @param event - button click on exit
 	 */
 	public void exitQuiz(ActionEvent event) {
@@ -62,7 +61,9 @@ public class QuizController{
 	}
 
 	public void toSecondIncorrect(ActionEvent event) throws IOException{
+
 		if(getQuizType().equals("practice")) {
+			// Second Incorrect screen for practice includes correct spelling of word
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/PracticeSecondIncorrect.fxml"));
 			root = showCorrectSpelling(loader);
 		} else if(getQuizType().equals("test")) {
@@ -76,7 +77,7 @@ public class QuizController{
 	}
 
 	
-	/** This function retrieves the current test word to display on incorrect screen
+	/** This function retrieves the current test word to display on incorrect screen in prctice module
 	 * @param loader - scene to show test word on
 	 * @return root - root node to load
 	 * **/
@@ -86,7 +87,7 @@ public class QuizController{
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		ScriptCall getTestWord = new ScriptCall(command);
 		String testWord = getTestWord.getStdOut();
-
+		
 		OutcomeController secondIncorrectController = loader.getController();
 		secondIncorrectController.displayCorrectSpelling(testWord);
 
@@ -96,7 +97,8 @@ public class QuizController{
 
 	public void toWordAttempt(ActionEvent event){
 		SwitchScene switchToWordAttempt = null;
-
+		
+		// Different attempt screens for test and practice
 		if(getQuizType().equals("practice")) {
 			switchToWordAttempt = new SwitchScene("/scenes/PracticeWordAttempt.fxml",event);
 		} else if(getQuizType().equals("test")) {
@@ -109,6 +111,7 @@ public class QuizController{
 	public void toReward(ActionEvent event){
 		SwitchScene switchToReward = null;
 
+		// Different reward screens for practice and test
 		if(getQuizType().equals("practice")) {
 			switchToReward = new SwitchScene("/scenes/PracticeRewardScreen.fxml",event);
 		} else if(getQuizType().equals("test")) {

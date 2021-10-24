@@ -1,21 +1,25 @@
 package application;
 
-/**
- * This class controls the process for playing the current word
- * Used in AttemptController and PracticeAttemptController
- */
-
 import javafx.concurrent.Task;
 
 public class PlayWordBackgroundTask extends Task<Object> {
+/**
+ * This class controls the process for playing the current word
+ * Sets up background BASH task to not interfere with timer countdown task
+ * Used in AttemptController and PracticeAttemptController
+ */
+	
 	private double speed;
 
-
+	/**
+	 * This function sets the playback speed for the task to be run
+	 * @param speed
+	 */
 	public PlayWordBackgroundTask(double speed) {
 		this.speed = speed;
 	}
 
-
+	
 	@Override
 	protected Object call() throws Exception {
 		String wordProgress = Integer.toString(QuizController.getWordProgress());

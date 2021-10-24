@@ -1,21 +1,20 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TopicSelectionController implements Initializable {	
 /**
  * This class is the controller class for the topic selection page
  * Allows user to select a topic and then generates the quiz words from that topic's word list
  * Controls TopicSelection.fxml
  */
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class TopicSelectionController implements Initializable {		
+	
 	@FXML private Button colours, days2, months1, weather, feelings, software;
 	@FXML private Button days1, babies, months2, compass, work, uni, engineering;
 	@FXML private Button back;
@@ -24,7 +23,7 @@ public class TopicSelectionController implements Initializable {
 
 	
 	/**
-	 * This function allows the buttons to have a hover effect
+	 * This function sets up JavaFX to allow a hover effect
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		styleButtons();
@@ -32,17 +31,22 @@ public class TopicSelectionController implements Initializable {
 	
 	
 	/**
-	 * This function adds an on-hover effect to the buttons
+	 * This function adds an on-hover effect to the buttons, giving them a different colour when cursor is on them
 	 */
 	public void styleButtons() {
 		Button[] orangeButtons = {colours, days2, months1, weather, feelings, software};
 		Button[] greenButtons = {days1, babies, months2, compass, work, uni, engineering};
+		
+		
+		// Alternating Button Colours
 		for(int i = 0; i < orangeButtons.length; i++) {
 			HoverEffects.addHoverEffects(orangeButtons[i], "DarkOrange", "Black");
 		}
+		
 		for(int i = 0; i < greenButtons.length; i++) {
 			HoverEffects.addHoverEffects(greenButtons[i], "LawnGreen", "Black");
 		}
+		
 		HoverEffects.addHoverEffects(back, "Red", "Black");
 	}
 	
@@ -51,7 +55,7 @@ public class TopicSelectionController implements Initializable {
 	/**
 	 * This function gets the topic name from the respective button click, and then switches to begin quiz scene
 	 * Essential for fx button id to be exactly the same as the filename for the corresponding word list
-	 * @param event - button click on topic button
+	 * @param event - button click on topic button with fxid that is the same as the filename
 	 */
 	public void getTopic(ActionEvent event) throws IOException{
 		Button topicButton = (Button) event.getSource();

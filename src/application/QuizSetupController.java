@@ -1,9 +1,5 @@
 package application;
 
-/**
- * This class sets up a new quiz (test or practice) - gets words and resets game variables
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,11 +10,16 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class QuizSetupController extends QuizController implements Initializable{
+/**
+ * This class sets up a new quiz (test or practice) - gets words and resets game variables
+ * Controls BeginQuiz.fxml
+ */
+	
 	@FXML private Button beginButton, returnButton, helpButton;
 
 
 	/**
-	 * This function initializes buttons and allows them to have a hover effect
+	 * This function sets up JavaFX to allow a hover effect
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		styleButtons();
@@ -26,7 +27,7 @@ public class QuizSetupController extends QuizController implements Initializable
 	
 	
 	/**
-	 * This function adds an on-hover effect to the buttons
+	 * This function adds an on-hover effect to the buttons, giving them a different colour when cursor is on them
 	 */
 	public void styleButtons() {
 		HoverEffects.addHoverEffects(beginButton, "LawnGreen", "Black");

@@ -1,9 +1,5 @@
 package application;
 
-/**
- * This class controls the process for switching scenes
- */
-
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +9,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SwitchScene {
+/**
+ * This class controls the process for switching scenes after an event (button click, word entry etc)
+ */
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
+	/**
+	 * This is the constructor class for switch scene that sets up an FXML loader ready to be switched to 
+	 * @param filename - string containing path to file 
+	 * @param event - action event to get previous screen to (loads new scene in same window)
+	 */
 	public SwitchScene(String filename, ActionEvent event) {
 		try {
 			root= FXMLLoader.load(getClass().getResource(filename));

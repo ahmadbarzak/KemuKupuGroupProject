@@ -1,13 +1,5 @@
 package application;
 
-/**
- * This class is the controller class for the quiz attempt screen
- * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
- * Calculates score bonus using timer
- * Uses wordProgress, wordAttempt, currentScore from parent QuizController.java class to keep track of progress
- * Controls WordAttempt.fxml
- */
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,8 +16,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 
-
 public class AttemptController extends QuizController implements Initializable{
+/**
+ * This class is the controller class for the quiz attempt screen
+ * Allows user to play word, adjust speed of synthesis, and enter spelling attempt
+ * Calculates score bonus using timer
+ * Uses wordProgress, wordAttempt, currentScore from parent QuizController.java class to keep track of progress
+ * Controls WordAttempt.fxml
+ */
+	
 	@FXML private Label wordProgress, attemptNum, timer, score, dashedWord;
 	@FXML private TextField wordAttempt;
 	@FXML private Slider playbackSpeed;
@@ -37,7 +36,7 @@ public class AttemptController extends QuizController implements Initializable{
 	
 	
 	/**
-	 * This function initializes the progress labels when reloaded and updates playback speed when slider is changed
+	 * This function initializes the progress labels when scene is reloaded and updates playback speed when slider is changed
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -50,7 +49,7 @@ public class AttemptController extends QuizController implements Initializable{
 		score.setText("current score: "+Integer.toString(getCurrentScore()));
 		showDashed(getDashed());
 		
-		wordPlayer.fire();
+		wordPlayer.fire(); // Plays word on immediately on entry to scene 
 		runTimer();
 		
 		// Slider for speed of synthesis
@@ -119,7 +118,8 @@ public class AttemptController extends QuizController implements Initializable{
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		ScriptCall getTestWord = new ScriptCall(command);
 		String testWord = getTestWord.getStdOut();
-		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "_"
+		
+		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "-"
 		return dashedWord;
 	}
 
@@ -139,7 +139,7 @@ public class AttemptController extends QuizController implements Initializable{
 
 
 	/**
-	 * This function gets the second letter of the word
+	 * This function gets the second letter of the word for the hint on second attempt
 	 * @return character - String containing second letter
 	 */
 	public String hintGetter(){
@@ -167,15 +167,17 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @param event - button click
 	 */
 	public void dontKnow(ActionEvent event) throws IOException{
+		// Makes note that word was skipped for final reward screen
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "writeSkipped",Integer.toString(getWordProgress()),Integer.toString(getWordAttempt())};
 		ScriptCall writeSkipped = new ScriptCall(command);
 		writeSkipped.startProcess();
+		
 		toSecondIncorrect(event);
 	}
 
 
 	/**
-	 * This function allows user to enter a macronned letter by button press
+	 * This function allows user to enter a macronned letter by button press on on screen button
 	 * @param event - button click
 	 */
 	public void insertMacron(ActionEvent event){
@@ -193,6 +195,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void submitWord(ActionEvent event) throws IOException{
 		if(wordAttempt.getText().isEmpty() || wordAttempt.getText().isBlank()){
+			// Alerts if user presses enter or clicks submit with no entry
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Empty attempt");
 			alert.setHeaderText("You didn't enter a spelling attempt.\n\nTo skip this word, press skip, otherwise, give it your best shot!");

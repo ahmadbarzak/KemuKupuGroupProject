@@ -3,7 +3,10 @@ package application;
 import java.util.Comparator;
 
 public class ScoreComparator implements Comparator<String> {
-	
+/**
+ * This is the class that overrides the compare method to allow leading integer to be sorted in descending order
+ * Used to sort the leaderboard	
+ */
 	
 	/**
 	 * This function sorts strings that have a leader integer in descending order

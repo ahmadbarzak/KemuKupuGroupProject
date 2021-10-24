@@ -1,11 +1,5 @@
 package application;
 
-/**
- * This class is the controller class for the leader board screen
- * Allows user to view top 15 scores and clear leader board on confirmation
- * Controls Leaderboard.fxml
- */
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,6 +19,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class LeaderboardController implements Initializable{
+/**
+ * This class is the controller class for the leader board screen
+ * Allows user to view top 15 scores and clear leader board on confirmation
+ * Controls Leaderboard.fxml
+ */
+	
 	@FXML private Button menuButton, clearButton;
 	@FXML private TextArea placingArea,nameArea,scoreArea,topicArea;
 

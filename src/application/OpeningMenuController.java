@@ -1,11 +1,5 @@
 package application;
 
-/**
- * This class is the controller class for the Opening Menu GUI
- * Allows user to navigate to test, practice, help, leaderboard, or to quit
- * Controls Opening.fxml
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,6 +12,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class OpeningMenuController implements Initializable {
+/**
+ * This class is the controller class for the Opening Menu GUI
+ * Allows user to navigate to test, practice, help, leaderboard, or to quit
+ * Controls Opening.fxml
+ */	
+	
 	@FXML private Button test, practice, leaderBoard, help, quit;
 
 	
