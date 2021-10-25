@@ -79,6 +79,8 @@ public class QuizSetupController extends QuizController implements Initializable
 	/**
 	 * This function gives the user a dialog alert with basic instructions on how to play
 	 * @param event - button click on help button
+	 * note the usage of alerts in this code can be attributed to the following:
+	 * https://stackoverflow.com/questions/28937392/javafx-alerts-and-their-size
 	 */
 	public void quickHelp(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);

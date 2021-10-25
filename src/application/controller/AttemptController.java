@@ -58,6 +58,8 @@ public class AttemptController extends QuizController implements Initializable{
 		runTimer();
 		
 		// Slider for speed of synthesis
+		//code attributed to the following:
+		//https://www.dummies.com/programming/java/javafx-how-to-use-property-events/
 		playbackSpeed.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
@@ -99,7 +101,9 @@ public class AttemptController extends QuizController implements Initializable{
 	public void runTimer() {
 		TimerBackgroundTask timerTask = new TimerBackgroundTask();
 		
-		// listener to check what the current time is from the TimerBackgroundTask
+		//Listener to check what the current time is from the TimerBackgroundTask
+		//Code attributed to the following:
+		//https://www.dummies.com/programming/java/javafx-how-to-use-property-events/
 		timerTask.messageProperty().addListener(new ChangeListener<String>() {
 
 			@Override // When the time value is changed, this new time is used to update the time bonus message

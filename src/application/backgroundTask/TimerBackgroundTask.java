@@ -9,6 +9,10 @@ public class TimerBackgroundTask extends Task<Object> {
 /**
  * This class controls the process for the count down timer
  * Used in AttemptController and PracticeAttemptController 
+ * Code attributed to softeng206 GUI concurrency lab,
+ * and the following links:
+ * https://docs.oracle.com/javase/9/docs/api/index.html?javafx%2Fconcurrent%2FTask.html
+ * https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html
  */	
 	
 	

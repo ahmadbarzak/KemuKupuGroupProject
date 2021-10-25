@@ -22,6 +22,8 @@ public class ScriptCall {
 	
 	/**
 	 * This function begins the command
+	 * This code can be attributed to Softeng206 lectures and Nasser
+	 * Giacaman's lecture slides for process building.
 	 */
 	public void startProcess() {
 		try {
