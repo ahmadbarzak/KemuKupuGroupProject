@@ -25,7 +25,7 @@
             <Font name="Monospaced Bold" size="45.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="-100.0" />
+            <Insets bottom="-400.0" />
          </GridPane.margin>
       </Button>
       <Button fx:id="returnButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toGameModules" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #ebe5d9;" text="&lt; back" textFill="#5b88bf" GridPane.halignment="LEFT" GridPane.valignment="TOP">
@@ -41,15 +41,15 @@
             <Font name="Monospaced Bold" size="45.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-100.0" />
+            <Insets bottom="-200" />
          </GridPane.margin>
       </Button>
-      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="Hint: hold the right alt key to type macrons or click the macron buttons instead" textAlignment="CENTER" wrappingWidth="600.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="Hint: hold the right alt key to type macrons or click the macron buttons instead" textAlignment="CENTER" wrappingWidth="1100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="42.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-450.0" />
+            <Insets top="-350.0" />
          </GridPane.margin>
       </Text>
    </children>
