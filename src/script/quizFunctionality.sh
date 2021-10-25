@@ -141,6 +141,7 @@ case $option in
     echo "$word"
 	;;
   "saveScore" )
+    # Saves game score to leaderboard
     name=$2
     score=$3
     topic=$4
@@ -148,10 +149,12 @@ case $option in
     echo "$score $name $topic" >> src/script/leaderboard
   ;;
   "clearScores" )
+    # Clears leaderboard
     rm src/script/leaderboard
     touch src/script/leaderboard
   ;;
   "writeSkipped" )
+    # Writes skipped to results to show at end
     actual=`sed "${wordNum}q;d" src/script/tempWords`
     if [ $attemptNumber -eq 1 ]; then
       echo "$actual:skip:skip:4" >> src/script/results
