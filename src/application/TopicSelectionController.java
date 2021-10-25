@@ -26,23 +26,24 @@ public class TopicSelectionController implements Initializable {
 	 * This function sets up JavaFX to allow a hover effect
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		styleButtons();
+		styleTopicSelectionController();
 	}
 	
 	
 	/**
 	 * This function adds an on-hover effect to the buttons, giving them a different colour when cursor is on them
 	 */
-	public void styleButtons() {
+	public void styleTopicSelectionController() {
 		Button[] orangeButtons = {colours, days2, months1, weather, feelings, software};
 		Button[] greenButtons = {days1, babies, months2, compass, work, uni, engineering};
 		
 		
-		// Alternating Button Colours
+		// Adding the DarkOrange colour to the list of buttons
 		for(int i = 0; i < orangeButtons.length; i++) {
 			HoverEffects.addHoverEffects(orangeButtons[i], "DarkOrange", "Black");
 		}
 		
+		// Adding the LawnGreen colour to the list of buttons
 		for(int i = 0; i < greenButtons.length; i++) {
 			HoverEffects.addHoverEffects(greenButtons[i], "LawnGreen", "Black");
 		}

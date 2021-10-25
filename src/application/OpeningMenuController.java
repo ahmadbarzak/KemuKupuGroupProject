@@ -25,14 +25,14 @@ public class OpeningMenuController implements Initializable {
 	 * This function initializes buttons and allows them to have a hover effect
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		styleButtons();
+		styleOpeningMenuController();
 	}
 
 
 	/**
 	 * This function adds an on-hover effect to the buttons
 	 */
-	public void styleButtons() {
+	public void styleOpeningMenuController() {
 		HoverEffects.addHoverEffects(test, "DarkOrange", "Black");
 		HoverEffects.addHoverEffects(practice, "DarkOrange", "Black");
 		HoverEffects.addHoverEffects(leaderBoard, "DarkOrange", "Black");

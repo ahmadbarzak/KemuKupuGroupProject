@@ -20,14 +20,14 @@ public class PracticeRewardController extends QuizController implements Initiali
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		styleButtons();
+		stylePracticeRewardController();
 	}
 	
 	
 	/**
 	 * This function adds an on hover effect to the buttons
 	 */
-	public void styleButtons() {
+	public void stylePracticeRewardController() {
 		HoverEffects.addHoverEffects(mainMenu, "Red", "Black");
 		HoverEffects.addHoverEffects(playAgain, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(gamesModule, "Red", "Black");

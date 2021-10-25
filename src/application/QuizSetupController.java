@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Region;
 import javafx.scene.control.Button;
 
 public class QuizSetupController extends QuizController implements Initializable{
@@ -22,14 +23,14 @@ public class QuizSetupController extends QuizController implements Initializable
 	 * This function sets up JavaFX to allow a hover effect
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		styleButtons();
+		styleQuizSetupController();
 	}
 	
 	
 	/**
 	 * This function adds an on-hover effect to the buttons, giving them a different colour when cursor is on them
 	 */
-	public void styleButtons() {
+	public void styleQuizSetupController() {
 		HoverEffects.addHoverEffects(beginButton, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(returnButton, "Red", "Black");
 		HoverEffects.addHoverEffects(helpButton, "DarkOrange", "Black");
@@ -82,6 +83,7 @@ public class QuizSetupController extends QuizController implements Initializable
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
 		alert.getDialogPane().setMinWidth(650);
+		alert.getDialogPane().setMinHeight(350);
 		
 		alert.setTitle("Quick Test Help");
 		alert.setHeaderText("Pre-test Help");
@@ -94,7 +96,7 @@ public class QuizSetupController extends QuizController implements Initializable
 				+ "Repeat this for the 5 words.\n\n"
 				+ "Scoring: 20 points for correct + full time bonus (if correct on first go) or 1/2 x time bonus (correct on second go)\n"
 				+ "Your total score will be the score of all 5 words cumulated\n\n"
-				+ "Good luck!");
+				+ "Good luck, Kia Ora!");
 
 		alert.showAndWait();
 	}

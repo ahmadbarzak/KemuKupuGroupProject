@@ -36,7 +36,7 @@ public class LeaderboardController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		styleButtons();
+		styleLeaderBoardController();
 		leaderboard=orderScores(getScores());
 		populateLeaderboard(leaderboard);
 	}	
@@ -45,7 +45,7 @@ public class LeaderboardController implements Initializable{
 	/**
 	 * This function adds an on-hover effect to the buttons
 	 */
-	public void styleButtons() {
+	public void styleLeaderBoardController() {
 		HoverEffects.addHoverEffects(menuButton, "Red", "Black");
 		HoverEffects.addHoverEffects(clearButton, "Red", "Black");
 	}

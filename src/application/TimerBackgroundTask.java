@@ -16,8 +16,10 @@ public class TimerBackgroundTask extends Task<Object> {
 	@Override
 	protected Object call() throws Exception {
 		try {
-			// i=20, 20 second timer
+			//1.6 second delay to give user time to hear the word before timer goes down
 			Thread.sleep(1600);
+			
+			// i=20, 20 second timer
 			String cmd = "for (( i = 20 ; $i > 0; i=i-1)) ; do echo $i ; sleep 1; done";
 			ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", cmd);
 			

@@ -38,7 +38,7 @@ public class PracticeAttemptController extends AttemptController {
 		// FXML initialization
 		setProgressLabels();
 		showDashed(getDashed());
-		styleButtons();
+		styleAttemptController();
 		
 		wordPlayer.fire();
 

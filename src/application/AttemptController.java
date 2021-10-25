@@ -42,9 +42,9 @@ public class AttemptController extends QuizController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		speed=1;
 		setWordAttempt((getWordAttempt()+1));
-
+		styleAttemptController();
+		
 		// FXML initialization
-		styleButtons();
 		setProgressLabels();
 		score.setText("current score: "+Integer.toString(getCurrentScore()));
 		showDashed(getDashed());
@@ -67,12 +67,13 @@ public class AttemptController extends QuizController implements Initializable{
 	/**
 	 * This function adds an on-hover effect to the buttons
 	 */
-	public void styleButtons() {
+	public void styleAttemptController() {
 		HoverEffects.addHoverEffects(submitButton, "LawnGreen", "Black");
 		HoverEffects.addHoverEffects(dontKnow, "Red", "Black");
 		HoverEffects.addHoverEffects(exitButton, "Red", "Black");
 		Button[] macrons = {ā, ē, ī, ō, ū, Ā, Ē, Ī, Ō, Ū};
 		
+		//adds black background and white text to the list of macrons
 		for (int i = 0; i < 10; i ++) {
 			HoverEffects.addHoverEffects(macrons[i], "Black", "White");
 		}
@@ -93,9 +94,11 @@ public class AttemptController extends QuizController implements Initializable{
 	 */
 	public void runTimer() {
 		TimerBackgroundTask timerTask = new TimerBackgroundTask();
+		
+		// listener to check what the current time is from the TimerBackgroundTask
 		timerTask.messageProperty().addListener(new ChangeListener<String>() {
 
-			@Override
+			@Override // When the time value is changed, this new time is used to update the time bonus message
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 				String time = timerTask.getMessage();
 				timer.setText("time bonus: "+ time);
@@ -103,9 +106,12 @@ public class AttemptController extends QuizController implements Initializable{
 
 		});
 
+		//
 		timerTask.setOnSucceeded(event
 	            -> timer.setText(timerTask.getMessage()));
 
+		//Applies concurrency to the timerTask so that the time limit can go down while other
+		//buttons are being pushed etc.
 		Thread timerThread = new Thread(timerTask);
 		timerThread.start();
 	}
@@ -116,11 +122,12 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @return dashedWord - string of dashes
 	 */
 	public String getDashed(){		
+		//calls bash script which gets the word being test
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "getTestWord", Integer.toString(getWordProgress())};
 		ScriptCall getTestWord = new ScriptCall(command);
 		String testWord = getTestWord.getStdOut();
 		
-		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with an "-"
+		String dashedWord = testWord.replaceAll("[a-zA-Zāēīōū]", "-"); // replace each letter with a "-"
 		return dashedWord;
 	}
 
