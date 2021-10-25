@@ -32,10 +32,10 @@ public class RewardController extends QuizController implements Initializable{
 	@FXML private ImageView word1res, word2res, word3res, word4res, word5res;
 
 	ArrayList<ImageView> resultSymbol;
-	Image correctImg = new Image("/scenes/fullstar.png");
-	Image halfCorrectImg = new Image("/scenes/halfstar.png");
-	Image skipImg = new Image("/scenes/skip.png");
-	Image wrongImg = new Image("/scenes/wrong.png");
+	Image correctImg = new Image("/scenes/images/fullstar.png");
+	Image halfCorrectImg = new Image("/scenes/images/halfstar.png");
+	Image skipImg = new Image("/scenes/images/skip.png");
+	Image wrongImg = new Image("/scenes/images/wrong.png");
 
 	private boolean scoreSaved = false;
 
