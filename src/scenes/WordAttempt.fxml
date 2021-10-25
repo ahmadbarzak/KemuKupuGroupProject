@@ -77,7 +77,7 @@
       </TextField>
       <Slider fx:id="playbackSpeed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" value="50.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets top="-125.0" />
+            <Insets top="-60.0" />
          </GridPane.margin></Slider>
       <Label fx:id="attemptNum" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" text="attempt x of x" textFill="#ebe5d9" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <font>
@@ -87,12 +87,20 @@
             <Insets right="20.0" top="15.0" />
          </GridPane.margin>
       </Label>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="(replay word)" textAlignment="CENTER" wrappingWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="28.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="-200.0" />
+         </GridPane.margin>
+      </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="(adjust speed)" textAlignment="CENTER" wrappingWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="28.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-65.0" />
+            <Insets/>
          </GridPane.margin>
       </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="0.5x" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -100,7 +108,7 @@
             <Font name="Monospaced Bold Italic" size="20.0" />
          </font>
          <GridPane.margin>
-            <Insets left="-350.0" top="-125.0" />
+            <Insets left="-350.0" top="-60.0" />
          </GridPane.margin>
       </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="2.0x" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -108,7 +116,7 @@
             <Font name="Monospaced Bold Italic" size="20.0" />
          </font>
          <GridPane.margin>
-            <Insets right="-350.0" top="-125.0" />
+            <Insets right="-350.0" top="-60.0" />
          </GridPane.margin>
       </Text>
       <Label fx:id="timer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" text="timer" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
