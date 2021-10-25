@@ -119,7 +119,7 @@
             <Insets right="-350.0" top="-60.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="timer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" text="timer" textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <Label fx:id="timer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" text="..." textAlignment="CENTER" textFill="#ebe5d9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <font>
             <Font name="Monospaced Bold" size="40.0" />
          </font>
