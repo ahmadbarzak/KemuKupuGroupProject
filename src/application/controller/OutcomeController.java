@@ -1,9 +1,9 @@
-package application;
+package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
+import application.ScriptCall;
 public class OutcomeController extends QuizController{
 /**
  * This class is the controller class for the outcome screens

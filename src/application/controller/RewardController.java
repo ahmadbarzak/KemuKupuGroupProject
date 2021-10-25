@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +18,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import application.HoverEffects;
+import application.ScriptCall;
 
 public class RewardController extends QuizController implements Initializable{
 /**

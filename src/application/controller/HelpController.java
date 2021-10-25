@@ -1,19 +1,20 @@
-package application;
+package application.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import application.HoverEffects;
+import application.SwitchScene;
 
 /**
  * This class is the controller class for the help screen
  * Allows user to view instructions of the applications
  * Controls Help.fxml
  */
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 
 public class HelpController implements Initializable{
 /**

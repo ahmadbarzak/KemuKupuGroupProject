@@ -1,4 +1,6 @@
-package application;
+package application.controller;
+import application.HoverEffects;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import application.SwitchScene;
 
 public class OpeningMenuController implements Initializable {
 /**

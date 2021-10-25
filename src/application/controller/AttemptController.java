@@ -1,5 +1,9 @@
-package application;
+package application.controller;
 
+import application.HoverEffects;
+import application.backgroundTask.TimerBackgroundTask;
+import application.ScriptCall;
+import application.backgroundTask.PlayWordBackgroundTask;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

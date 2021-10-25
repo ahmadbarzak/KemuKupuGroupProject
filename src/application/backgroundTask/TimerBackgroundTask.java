@@ -1,5 +1,4 @@
-package application;
-
+package application.backgroundTask;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

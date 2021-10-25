@@ -1,4 +1,6 @@
-package application;
+package application.backgroundTask;
+import application.controller.QuizController;
+import application.ScriptCall;
 
 import javafx.concurrent.Task;
 import javafx.scene.control.Button;

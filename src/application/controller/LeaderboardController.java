@@ -1,4 +1,5 @@
-package application;
+package application.controller;
+
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,6 +18,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import application.HoverEffects;
+import application.ScoreComparator;
+import application.ScriptCall;
+import application.SwitchScene;
 
 public class LeaderboardController implements Initializable{
 /**

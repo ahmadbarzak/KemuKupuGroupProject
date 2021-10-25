@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import java.io.IOException;
+import application.SwitchScene;
+import application.ScriptCall;
 
 public class QuizController{
 /**
