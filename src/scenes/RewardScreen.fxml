@@ -24,12 +24,20 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
+      <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="Ka Pai" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Monospaced Bold" size="90.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="-450.0" />
+         </GridPane.margin>
+      </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="you scored" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="70.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-600.0" />
+            <Insets top="-800.0" />
          </GridPane.margin>
       </Text>
       <Button fx:id="menu" alignment="CENTER" mnemonicParsing="false" onAction="#toOpeningMenu" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="main menu" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -45,7 +53,7 @@
             <Font name="Monospaced Bold" size="96.0" />
          </font>
          <GridPane.margin>
-            <Insets left="-100.0" right="-100.0" top="-450.0" />
+            <Insets left="-100.0" right="-100.0" top="-650.0" />
          </GridPane.margin>
       </Label>
       <Button fx:id="playAgain" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toPlayAgain" prefHeight="75.0" prefWidth="295.0" style="-fx-background-color: #ebe5d9;" text="play again" textFill="#5b88bf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
