@@ -46,7 +46,7 @@
       </Button>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="Hint: hold the right alt key to type macrons or click the macron buttons instead" textAlignment="CENTER" wrappingWidth="600.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
-            <Font name="Monospaced Bold" size="36.0" />
+            <Font name="Monospaced Bold" size="42.0" />
          </font>
          <GridPane.margin>
             <Insets top="-450.0" />
