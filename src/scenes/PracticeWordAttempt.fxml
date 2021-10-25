@@ -53,7 +53,7 @@
             <Font name="Monospaced Bold" size="32.0" />
          </font>
       </Button>
-      <TextField fx:id="wordAttempt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#submitOnEnter" prefHeight="60.0" prefWidth="600.0" promptText="Enter Word" style="-fx-background-color: #ebe5d9 #ebe5d9;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextField fx:id="wordAttempt" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#submitOnEnter" prefHeight="60.0" prefWidth="600.0" promptText="Enter Word" style="-fx-background-color: #ebe5d9 #ebe5d9;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.halignment="CENTER">
          <font>
             <Font name="Monospaced Bold" size="36.0" />
          </font>

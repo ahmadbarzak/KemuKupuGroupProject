@@ -1,6 +1,7 @@
 package application;
 
 import javafx.concurrent.Task;
+import javafx.scene.control.Button;
 
 public class PlayWordBackgroundTask extends Task<Object> {
 /**
@@ -10,18 +11,26 @@ public class PlayWordBackgroundTask extends Task<Object> {
  */
 	
 	private double speed;
+	private Button submitButton, dontKnow, wordPlayer;
 
 	/**
 	 * This function sets the playback speed for the task to be run
 	 * @param speed
 	 */
-	public PlayWordBackgroundTask(double speed) {
+	public PlayWordBackgroundTask(double speed, Button submitButton, Button dontKnow, Button wordPlayer) {
 		this.speed = speed;
+		this.submitButton = submitButton;
+		this.dontKnow = dontKnow;
+		this.wordPlayer = wordPlayer;
 	}
 
 	
 	@Override
 	protected Object call() throws Exception {
+		submitButton.setDisable(true);
+		dontKnow.setDisable(true);
+		wordPlayer.setDisable(true);
+		
 		String wordProgress = Integer.toString(QuizController.getWordProgress());
 		String wordAttempt = Integer.toString(QuizController.getWordAttempt());
 		String wordSpeed = Double.toString(speed);
@@ -29,8 +38,11 @@ public class PlayWordBackgroundTask extends Task<Object> {
 		String[] command = new String[] {"src/script/quizFunctionality.sh", "play", wordProgress, wordAttempt, wordSpeed};
 		ScriptCall play = new ScriptCall(command);
 		play.startProcess();
-
-		return null;
+		submitButton.setDisable(false);
+		dontKnow.setDisable(false);
+		wordPlayer.setDisable(false);
+		
+		return true;
 	}
 
 }
