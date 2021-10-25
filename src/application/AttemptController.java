@@ -50,6 +50,7 @@ public class AttemptController extends QuizController implements Initializable{
 		showDashed(getDashed());
 		
 		wordPlayer.fire(); // Plays word on immediately on entry to scene 
+		
 		runTimer();
 		
 		// Slider for speed of synthesis
@@ -154,11 +155,13 @@ public class AttemptController extends QuizController implements Initializable{
 	/**
 	 * This function plays the given quiz word at selected speed
 	 * @param event - button click on speaker
+	 * @throws Exception 
 	 */
-	public void playWord(ActionEvent event){
-		PlayWordBackgroundTask playWordTask = new PlayWordBackgroundTask(speed);
+	public void playWord(ActionEvent event) throws Exception{
+		PlayWordBackgroundTask playWordTask = new PlayWordBackgroundTask(speed, submitButton, dontKnow, wordPlayer);
 		Thread playThread = new Thread(playWordTask);
 		playThread.start();
+		
 	}
 
 
@@ -252,7 +255,7 @@ public class AttemptController extends QuizController implements Initializable{
 	 * @returns timeScoreFactor - time bonus
 	 */
 	public int getTimeBonus() {
-		int timeScoreFactor=1;
+		int timeScoreFactor=0;
 
 		String[] timerStringSplitted = timer.getText().split(" ");
 		try {

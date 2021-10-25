@@ -58,7 +58,7 @@ public class PracticeAttemptController extends AttemptController {
 	 */
 	@Override
 	public void playWord(ActionEvent event){
-		PlayWordBackgroundTask bGTaskTwo = new PlayWordBackgroundTask(speed);
+		PlayWordBackgroundTask bGTaskTwo = new PlayWordBackgroundTask(speed, submitButton, dontKnow, wordPlayer);
 		Thread thrdTwo = new Thread(bGTaskTwo);
 		thrdTwo.start();
 	}
