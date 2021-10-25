@@ -4,10 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Region;
 import javafx.scene.control.Button;
 
 public class QuizSetupController extends QuizController implements Initializable{
@@ -83,21 +83,50 @@ public class QuizSetupController extends QuizController implements Initializable
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
 		alert.getDialogPane().setMinWidth(650);
-		alert.getDialogPane().setMinHeight(350);
-		
+		String helpMessage = "";
 		alert.setTitle("Quick Test Help");
 		alert.setHeaderText("Pre-test Help");
-		alert.setContentText(
-				"To complete a Kēmu Kupu test, press begin quiz to hear the first word.\n"
-				+ "Enter the spelling of the played word in the text box, or press on the speaker to replay the word.\n"
-				+ "You can adjust the speed of the speech by moving the slider and pressing on the speaker.\n"
-				+ "Once you have entered your spelling, press enter or submit to check.\n"
-				+ "If correct, you'll move on to the next word, else try again with a second letter hint!"
-				+ "Repeat this for the 5 words.\n\n"
-				+ "Scoring: 20 points for correct + full time bonus (if correct on first go) or 1/2 x time bonus (correct on second go)\n"
-				+ "Your total score will be the score of all 5 words cumulated\n\n"
-				+ "Good luck, Kia Ora!");
-
+		
+		//Check if the mode is practice mode, and set the help message for it
+		if(getQuizType().equals("practice")) {
+			helpMessage = "To complete a Kēmu Kupu practice test, press begin quiz to hear the first word.\n"
+					+ "Enter the spelling of the played word in the text box, or press on the speaker to replay the word.\n"
+					+ "You can adjust the speed of the speech by moving the slider and pressing on the speaker.\n"
+					+ "Once you have entered your spelling, press enter or submit to check.\n"
+					+ "If correct, you'll move on to the next word, otherwise you can try again with a second letter hint!\n"
+					+ "If you get both attempts wrong, you will be able to see the actual spelling of the word, so don't\n"
+					+ "Worry if you don't get it right in the two attempts.\n"
+					+ "Repeat this for all of the words in the topic, to help you practice for the test.\n\n"
+					+ "There is no scoring system here, and you can exit at any time by pressing\n"
+					+ "the exit button in the top left\n\n"
+					+ "Good luck, Kia Ora!";
+			alert.getDialogPane().setMinHeight(350);
+			alert.setTitle("Quick Practice Test Help");
+			alert.setHeaderText("Practice test Help");
+		}
+		
+		//check if the mode is test mode, and set the help message for it
+		else if(getQuizType().equals("test")) {
+			helpMessage = "To complete a Kēmu Kupu test, press begin quiz to hear the first word.\n"
+					+ "Enter the spelling of the played word in the text box, or press on the speaker to replay the word.\n"
+					+ "You can adjust the speed of the speech by moving the slider and pressing on the speaker.\n"
+					+ "Once you have entered your spelling, press enter or submit to check.\n"
+					+ "If correct, you'll move on to the next word, otherwise you can try again with a second letter hint!\n"
+					+ "Repeat this for the 5 words.\n\n"
+					+ "Scoring:\n"
+					+ "If correct on first go, 20 points for correct spelling plus a time bonus.\n"
+					+ "If correct on second go, 10 points for correct spelling plus a time bonus.\n"
+					+ "Do not worry if you take longer than 20 seconds to spell a word,\n"
+					+ "you can still get the 10 or 20 points if you get the word right\n\n"
+					+ "Your total score will be the score of all 5 words cumulated\n\n"
+					+ "Good luck, Kia Ora!";
+			alert.getDialogPane().setMinHeight(450);
+			alert.setTitle("Quick Test Help");
+			alert.setHeaderText("Pre-test Help");
+		}
+		
+		//display the help message
+		alert.setContentText(helpMessage);
 		alert.showAndWait();
 	}
 
