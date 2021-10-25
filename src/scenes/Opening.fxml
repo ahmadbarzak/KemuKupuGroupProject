@@ -49,7 +49,7 @@
             <Font name="Monospaced Bold" size="60.0" />
          </font>
          <GridPane.margin>
-            <Insets top="-550.0" />
+            <Insets top="-600.0" />
          </GridPane.margin>
       </Text>
       <Text fill="#ebe5d9" strokeType="OUTSIDE" strokeWidth="0.0" text="kēmu kupu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
