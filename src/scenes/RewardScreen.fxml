@@ -140,22 +140,22 @@
       </ImageView>
       <ImageView fx:id="word2res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets right="-570.0" top="-165.0" />
+            <Insets right="-570.0" top="-160.0" />
          </GridPane.margin>
       </ImageView>
       <ImageView fx:id="word3res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets right="-570.0" top="-70.0" />
+            <Insets right="-570.0" top="-60.0" />
          </GridPane.margin>
       </ImageView>
       <ImageView fx:id="word4res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="-25.0" right="-570.0" />
+            <Insets bottom="-40.0" right="-570.0" />
          </GridPane.margin>
       </ImageView>
       <ImageView fx:id="word5res" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="-120.0" right="-570.0" />
+            <Insets bottom="-140.0" right="-570.0" />
          </GridPane.margin>
       </ImageView>
    </children>
